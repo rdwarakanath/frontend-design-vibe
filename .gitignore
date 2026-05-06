@@ -1,0 +1,7 @@
+# Ignore docs and raw planning files
+*.docx
+
+# Ignore helper text files
+categories.txt
+categoryformat.txt
+subcategories.txt
