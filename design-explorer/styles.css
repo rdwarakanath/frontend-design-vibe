@@ -634,7 +634,142 @@ body {
 .style--nature-inspired .preview__card-btn { background: #6b8262; color: #f2eee8; border: none; border-radius: 2px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; padding: 10px 20px; font-weight: bold; }
 .style--nature-inspired .preview__card-btn:hover { background: #4e6345; }
 
-/* ---- CONTENT SECTION ---- */
+
+/* ============================
+   NEW: High-Tech & Future Styles
+   ============================ */
+
+body.theme-high-tech-future {
+  --bg-gradient: linear-gradient(135deg, #050b14 0%, #0a1128 30%, #1c0e3a 60%, #0d1e36 100%);
+  --orb1-color: #00f0ff;
+  --orb2-color: #7a00ff;
+  --orb3-color: #ff0055;
+  color: #e0e7ff;
+}
+
+body.theme-high-tech-future .page-header__title,
+body.theme-high-tech-future .page-header__subtitle,
+body.theme-high-tech-future .nav-arrow,
+body.theme-high-tech-future .style-btn,
+body.theme-high-tech-future .preview-label,
+body.theme-high-tech-future .content-loading {
+  color: #e0e7ff;
+}
+
+body.theme-high-tech-future .nav-arrow,
+body.theme-high-tech-future .style-btn,
+body.theme-high-tech-future .content-box,
+body.theme-high-tech-future .preview-container {
+  background: rgba(10, 17, 40, 0.6);
+  border-color: rgba(0, 240, 255, 0.2);
+}
+
+body.theme-high-tech-future .style-btn.active {
+  border-color: #00f0ff;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.4), var(--shadow-soft);
+  color: #fff;
+}
+
+body.theme-high-tech-future .content-rendered h2,
+body.theme-high-tech-future .content-rendered strong {
+  color: #fff;
+}
+
+body.theme-high-tech-future .content-rendered p,
+body.theme-high-tech-future .content-rendered ul {
+  color: #b0b8d6;
+}
+
+/* -- Cyberpunk -- */
+.style--cyberpunk .preview-container { background: #050505; border: 1px solid #ff0055; box-shadow: 0 0 20px rgba(255, 0, 85, 0.2); border-radius: 0; }
+.style--cyberpunk .preview__header { border-bottom: 2px dashed #00f0ff; padding-bottom: 10px; margin-bottom: 20px; }
+.style--cyberpunk .preview__title { font-family: 'Space Grotesk', sans-serif; color: #00f0ff; text-transform: uppercase; text-shadow: 2px 2px 0px rgba(255, 0, 85, 0.8); letter-spacing: 2px; }
+.style--cyberpunk .preview__subtitle { color: #b0b8d6; }
+.style--cyberpunk .preview__card { background: #0a0a0a; border: 1px solid #333; border-left: 4px solid #ccff00; border-radius: 0; position: relative; overflow: hidden; }
+.style--cyberpunk .preview__card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,240,255,0.03) 2px, rgba(0,240,255,0.03) 4px); pointer-events: none; }
+.style--cyberpunk .preview__card-title, .style--cyberpunk .preview__card-text { color: #e0e7ff; }
+.style--cyberpunk .preview__card-btn { background: transparent; color: #00f0ff; border: 1px solid #00f0ff; border-radius: 0; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; padding: 8px 15px; box-shadow: inset 0 0 10px rgba(0, 240, 255, 0.2); }
+.style--cyberpunk .preview__card-btn:hover { background: #00f0ff; color: #000; box-shadow: 0 0 15px #00f0ff; }
+
+/* -- Spatial / 3D UI -- */
+.style--spatial-3d-ui .preview-container { background: rgba(15, 20, 35, 0.5); backdrop-filter: blur(10px); perspective: 1000px; border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; }
+.style--spatial-3d-ui .preview__header { transform: translateZ(30px); }
+.style--spatial-3d-ui .preview__title, .style--spatial-3d-ui .preview__subtitle { color: #fff; }
+.style--spatial-3d-ui .preview__cards { transform-style: preserve-3d; }
+.style--spatial-3d-ui .preview__card { background: rgba(30, 40, 70, 0.8); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; transform: translateZ(50px) rotateX(5deg) rotateY(-5deg); box-shadow: -20px 20px 30px rgba(0,0,0,0.5); transition: transform 0.4s ease; }
+.style--spatial-3d-ui .preview__card:hover { transform: translateZ(80px) rotateX(0deg) rotateY(0deg); }
+.style--spatial-3d-ui .preview__card-title, .style--spatial-3d-ui .preview__card-text { color: #e0e7ff; }
+.style--spatial-3d-ui .preview__card-btn { background: linear-gradient(135deg, #00f0ff, #7a00ff); color: #fff; border: none; border-radius: 8px; transform: translateZ(20px); box-shadow: 0 5px 15px rgba(122, 0, 255, 0.4); }
+
+/* -- Glass + 3D Hybrid -- */
+.style--glass-3d-hybrid .preview-container { background: transparent; perspective: 1200px; border: none; box-shadow: none; padding: 0; }
+.style--glass-3d-hybrid .preview__header { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.2); padding: 30px; border-radius: 24px; transform: translateZ(20px); margin-bottom: 30px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
+.style--glass-3d-hybrid .preview__title { color: #fff; text-shadow: 0 2px 10px rgba(255,255,255,0.3); }
+.style--glass-3d-hybrid .preview__subtitle { color: #c0c8e0; }
+.style--glass-3d-hybrid .preview__cards { transform-style: preserve-3d; gap: 30px; }
+.style--glass-3d-hybrid .preview__card { background: rgba(10, 20, 50, 0.3); backdrop-filter: blur(12px); border: 1px solid rgba(0, 240, 255, 0.3); border-top: 1px solid rgba(255,255,255,0.4); border-left: 1px solid rgba(255,255,255,0.4); border-radius: 20px; padding: 25px; transform: translateZ(40px); box-shadow: 0 25px 50px rgba(0,0,0,0.3), inset 0 0 20px rgba(0, 240, 255, 0.1); }
+.style--glass-3d-hybrid .preview__card-title, .style--glass-3d-hybrid .preview__card-text { color: #fff; }
+.style--glass-3d-hybrid .preview__card-btn { background: rgba(255, 255, 255, 0.1); color: #00f0ff; border: 1px solid rgba(0, 240, 255, 0.5); backdrop-filter: blur(5px); border-radius: 12px; transition: 0.3s; }
+.style--glass-3d-hybrid .preview__card-btn:hover { background: rgba(0, 240, 255, 0.2); transform: translateZ(10px); }
+
+/* -- AI / Generative UI -- */
+.style--ai-generative-ui .preview-container { background: #0c0f1a; border: 1px solid rgba(122, 0, 255, 0.3); border-radius: 12px; position: relative; overflow: hidden; }
+.style--ai-generative-ui .preview-container::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(122, 0, 255, 0.1) 0%, transparent 60%); animation: aiPulse 8s infinite alternate; pointer-events: none; }
+@keyframes aiPulse { 0% { transform: scale(0.8) translate(0, 0); } 100% { transform: scale(1.1) translate(10%, 10%); } }
+.style--ai-generative-ui .preview__header { border-left: 3px solid #7a00ff; padding-left: 15px; position: relative; z-index: 1; }
+.style--ai-generative-ui .preview__title { color: #e0e7ff; font-family: monospace; display: inline-block; overflow: hidden; white-space: nowrap; border-right: 2px solid #7a00ff; animation: typing 3s steps(30, end) infinite; }
+@keyframes typing { 0%, 10% { width: 0; } 50%, 90% { width: 100%; } 100% { width: 0; } }
+.style--ai-generative-ui .preview__subtitle { color: #8a94b5; }
+.style--ai-generative-ui .preview__cards { position: relative; z-index: 1; }
+.style--ai-generative-ui .preview__card { background: rgba(20, 25, 45, 0.6); border: 1px dashed rgba(122, 0, 255, 0.4); border-radius: 8px; transition: 0.4s; }
+.style--ai-generative-ui .preview__card:hover { border-style: solid; border-color: #00f0ff; background: rgba(30, 40, 70, 0.8); }
+.style--ai-generative-ui .preview__card-title, .style--ai-generative-ui .preview__card-text { color: #d0d5e8; }
+.style--ai-generative-ui .preview__card-btn { background: #1a1f33; color: #b0b8d6; border: 1px solid #3a4266; border-radius: 4px; font-family: monospace; font-size: 0.8rem; }
+.style--ai-generative-ui .preview__card-btn:hover { color: #00f0ff; border-color: #00f0ff; }
+
+/* -- Data-Driven Design -- */
+.style--data-driven-design .preview-container { background: #0f1219; border: 1px solid #232836; border-radius: 4px; font-family: 'Inter', sans-serif; }
+.style--data-driven-design .preview__header { border-bottom: 1px solid #232836; padding-bottom: 15px; margin-bottom: 25px; }
+.style--data-driven-design .preview__title { font-size: 1.2rem; font-weight: 600; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+.style--data-driven-design .preview__subtitle { font-size: 0.8rem; color: #6b7280; }
+.style--data-driven-design .preview__cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+.style--data-driven-design .preview__card { background: #141824; border: 1px solid #2a3142; border-radius: 6px; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+.style--data-driven-design .preview__card-icon { font-size: 1rem; color: #3b82f6; margin-bottom: 5px; }
+.style--data-driven-design .preview__card-title { font-size: 0.8rem; color: #9ca3af; text-transform: uppercase; margin-bottom: 10px; }
+.style--data-driven-design .preview__card-text { font-size: 1.5rem; font-weight: 700; color: #f3f4f6; margin-bottom: 15px; }
+.style--data-driven-design .preview__card-btn { background: #1e3a8a; color: #bfdbfe; border: none; border-radius: 4px; padding: 6px 12px; font-size: 0.75rem; width: 100%; transition: 0.2s; }
+.style--data-driven-design .preview__card-btn:hover { background: #2563eb; color: #fff; }
+
+/* -- Holographic UI -- */
+.style--holographic-ui .preview-container { background: transparent; border: 1px solid rgba(0, 240, 255, 0.2); border-radius: 15px; box-shadow: 0 0 30px rgba(0, 240, 255, 0.1), inset 0 0 20px rgba(122, 0, 255, 0.1); position: relative; overflow: hidden; }
+.style--holographic-ui .preview-container::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%); pointer-events: none; animation: holoSweep 4s linear infinite; }
+@keyframes holoSweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+.style--holographic-ui .preview__header { text-align: center; }
+.style--holographic-ui .preview__title { font-weight: 300; letter-spacing: 4px; color: #e0faff; text-shadow: 0 0 10px rgba(0, 240, 255, 0.8), 0 0 20px rgba(0, 240, 255, 0.4); }
+.style--holographic-ui .preview__subtitle { color: rgba(224, 250, 255, 0.6); }
+.style--holographic-ui .preview__card { background: linear-gradient(135deg, rgba(0, 240, 255, 0.05) 0%, rgba(122, 0, 255, 0.05) 100%); border: 1px solid rgba(0, 240, 255, 0.3); border-radius: 10px; backdrop-filter: blur(4px); box-shadow: 0 0 15px rgba(0, 240, 255, 0.1); transition: 0.3s; }
+.style--holographic-ui .preview__card:hover { border-color: rgba(0, 240, 255, 0.8); box-shadow: 0 0 25px rgba(0, 240, 255, 0.3), inset 0 0 15px rgba(0, 240, 255, 0.2); }
+.style--holographic-ui .preview__card-title, .style--holographic-ui .preview__card-text { color: #e0faff; text-shadow: 0 0 5px rgba(0, 240, 255, 0.5); }
+.style--holographic-ui .preview__card-btn { background: transparent; color: #00f0ff; border: 1px solid #00f0ff; border-radius: 20px; box-shadow: 0 0 10px rgba(0, 240, 255, 0.2); transition: 0.3s; }
+.style--holographic-ui .preview__card-btn:hover { background: rgba(0, 240, 255, 0.2); box-shadow: 0 0 20px rgba(0, 240, 255, 0.6); }
+
+/* -- Sci-Fi HUD -- */
+.style--sci-fi-hud .preview-container { background: #020608; border: 2px solid #00aaff; border-radius: 0; box-shadow: inset 0 0 40px rgba(0, 170, 255, 0.2); position: relative; padding: 40px; clip-path: polygon(0 20px, 20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%); }
+.style--sci-fi-hud .preview-container::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,170,255,0.05) 2px, rgba(0,170,255,0.05) 4px); pointer-events: none; }
+.style--sci-fi-hud .preview__header { border-bottom: 1px solid #004466; padding-bottom: 20px; position: relative; margin-bottom: 30px; }
+.style--sci-fi-hud .preview__header::after { content: 'SYS.OP.READY'; position: absolute; bottom: -8px; right: 0; background: #020608; padding: 0 10px; color: #00aaff; font-size: 0.6rem; font-family: monospace; border: 1px solid #00aaff; }
+.style--sci-fi-hud .preview__title { font-family: 'Space Grotesk', sans-serif; color: #00aaff; text-transform: uppercase; letter-spacing: 3px; font-weight: bold; }
+.style--sci-fi-hud .preview__subtitle { color: #006699; font-family: monospace; font-size: 0.8rem; text-transform: uppercase; }
+.style--sci-fi-hud .preview__cards { gap: 20px; }
+.style--sci-fi-hud .preview__card { background: rgba(0, 30, 50, 0.5); border: 1px solid #004466; border-radius: 0; position: relative; padding: 25px 20px; clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px)); }
+.style--sci-fi-hud .preview__card::before { content: ''; position: absolute; top: 0; left: 0; width: 10px; height: 10px; border-top: 2px solid #00aaff; border-left: 2px solid #00aaff; }
+.style--sci-fi-hud .preview__card::after { content: ''; position: absolute; bottom: 0; right: 0; width: 10px; height: 10px; border-bottom: 2px solid #00aaff; border-right: 2px solid #00aaff; }
+.style--sci-fi-hud .preview__card-title { color: #00aaff; font-family: monospace; font-size: 0.9rem; text-transform: uppercase; border-bottom: 1px solid rgba(0, 170, 255, 0.3); padding-bottom: 5px; margin-bottom: 10px; }
+.style--sci-fi-hud .preview__card-text { color: #66ccff; font-family: monospace; font-size: 0.8rem; line-height: 1.4; }
+.style--sci-fi-hud .preview__card-btn { background: #00aaff; color: #000; border: none; border-radius: 0; font-family: monospace; font-size: 0.75rem; text-transform: uppercase; font-weight: bold; padding: 8px 12px; margin-top: auto; cursor: pointer; transition: 0.2s; clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px); }
+.style--sci-fi-hud .preview__card-btn:hover { background: #fff; color: #00aaff; }
+
+\n/* ---- CONTENT SECTION ---- */
 .content-section { margin-bottom: 40px; }
 .content-box {
   background: var(--glass-bg);
