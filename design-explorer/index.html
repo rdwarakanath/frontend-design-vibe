@@ -17,11 +17,19 @@
   <div class="bg-orb bg-orb--3"></div>
 
   <div class="page-wrapper">
+    <!-- Navigation Arrows -->
+    <button class="nav-arrow nav-arrow--left" id="nav-arrow-left" aria-label="Previous Category">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    </button>
+    <button class="nav-arrow nav-arrow--right" id="nav-arrow-right" aria-label="Next Category">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+    </button>
+
     <!-- Header -->
     <header class="page-header" id="page-header">
       <p class="page-header__tag">✦ Design Style Explorer</p>
       <h1 class="page-header__title">
-        Clean &amp; Structural<br>
+        <span id="category-title-text">Clean &amp; Structural</span><br>
         <span class="page-header__title--accent">Design Styles</span>
       </h1>
       <p class="page-header__subtitle">
@@ -29,44 +37,9 @@
       </p>
     </header>
 
-    <!-- Style Buttons Grid -->
+    <!-- Style Buttons Grid (Populated by JS) -->
     <section class="style-grid" id="style-grid" aria-label="Style selection buttons">
-      <button class="style-btn active" data-style="minimalism" id="btn-minimalism">
-        <span class="style-btn__icon">◻</span>
-        <span class="style-btn__label">Minimalism</span>
-      </button>
-      <button class="style-btn" data-style="bento-grid" id="btn-bento-grid">
-        <span class="style-btn__icon">⊞</span>
-        <span class="style-btn__label">Bento Grid</span>
-      </button>
-      <button class="style-btn" data-style="swiss" id="btn-swiss">
-        <span class="style-btn__icon">⊟</span>
-        <span class="style-btn__label">Swiss / International</span>
-      </button>
-      <button class="style-btn" data-style="flat-design" id="btn-flat-design">
-        <span class="style-btn__icon">▣</span>
-        <span class="style-btn__label">Flat Design 2.0</span>
-      </button>
-      <button class="style-btn" data-style="material" id="btn-material">
-        <span class="style-btn__icon">◈</span>
-        <span class="style-btn__label">Material Design</span>
-      </button>
-      <button class="style-btn" data-style="card-based" id="btn-card-based">
-        <span class="style-btn__icon">▦</span>
-        <span class="style-btn__label">Card-Based</span>
-      </button>
-      <button class="style-btn" data-style="split-screen" id="btn-split-screen">
-        <span class="style-btn__icon">◧</span>
-        <span class="style-btn__label">Split-Screen</span>
-      </button>
-      <button class="style-btn" data-style="grid-systems" id="btn-grid-systems">
-        <span class="style-btn__icon">▤</span>
-        <span class="style-btn__label">Grid Systems</span>
-      </button>
-      <button class="style-btn" data-style="typography-first" id="btn-typography-first">
-        <span class="style-btn__icon">Aa</span>
-        <span class="style-btn__label">Typography-First</span>
-      </button>
+      <!-- Buttons will be rendered here dynamically -->
     </section>
 
     <!-- Live Preview Section -->
