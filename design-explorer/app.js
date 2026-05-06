@@ -1839,6 +1839,251 @@ Create a Holographic UI for a speculative future technology concept. Generate ir
 Design a functional Sci-Fi HUD interface. Structure every UI element as part of a coherent overlay system: build angular bracket frames, arc and ring data indicators, circular radar sweeps, and sharp geometric panel dividers. Use an electric blue or amber on black restricted palette. Apply a global scanline overlay and animate numeric readouts to continuously update, simulating a live operational system.
 `
   },
+  "scrollytelling": {
+    title: "Scrollytelling",
+    md: `## 🎨 Scrollytelling
+**Category:** Interactive & Motion
+
+**🧠 Summary:** A narrative design technique where content unfolds dynamically as the user scrolls, using fixed positioning, timed transitions, and sequential visual triggers to tell a cinematic story.
+
+**✨ Feels Like:** Narrative, cinematic, immersive, guided, progressive.
+
+**📌 Key Characteristics:**
+- Content "locks" into place while animations occur in the background or foreground
+- Sequential appearance of text or imagery tied directly to scroll progress
+- Smooth, orchestrated transitions between distinct story "chapters"
+- High emphasis on visual pacing and flow
+
+**✅ Use Case:**
+- Product "How it works" or "The Story" pages
+- Interactive journalism and long-form features
+- Brand heritage and timeline showcases
+
+**🚫 When to Avoid:**
+- Fast-access information portals
+- High-frequency utility apps or dashboards
+- Users looking for a "quick scan" experience
+
+**🧩 Works Well With:** Parallax Design, Motion UI, Liquid / Organic shapes
+
+**🎯 Design Notes (Practical Tips):**
+- Ensure that despite the animations, the "Enter" and "Exit" points of content are clear.
+- Provide a progress indicator so users know how far they are in the story.
+- Keep mobile performance in mind—heavy scroll-jacking can be frustrating on touch screens.
+
+**💻 Prompt (for vibe coding):**
+Design a Scrollytelling experience where content is presented in distinct, full-viewport layers. As the user scrolls, use fixed positioning for the background while text sections fade and slide into view sequentially. Ensure smooth, timed transitions that feel cinematic and narrative-driven.`
+  },
+  "parallax-design": {
+    title: "Parallax Design",
+    md: `## 🎨 Parallax Design
+**Category:** Interactive & Motion
+
+**🧠 Summary:** A visual effect where background and foreground elements move at different speeds during scroll or mouse movement, creating an illusion of genuine three-dimensional depth and immersion.
+
+**✨ Feels Like:** Deep, layered, immersive, high-end, atmospheric.
+
+**📌 Key Characteristics:**
+- Multiple independent layers moving at varied velocities
+- Foreground elements typically move faster than background elements
+- Creates a "window" effect into a deeper virtual space
+- Often used to add life to static hero sections
+
+**✅ Use Case:**
+- Creative agency landing pages
+- Immersive gaming and entertainment sites
+- High-impact landing page hero sections
+
+**🚫 When to Avoid:**
+- Text-heavy pages where motion distracts from reading
+- Performance-critical applications
+- Users prone to motion sickness (ensure "prefers-reduced-motion" support)
+
+**🧩 Works Well With:** Spatial / 3D UI, Aurora UI, Glassmorphism
+
+**🎯 Design Notes (Practical Tips):**
+- Subtle parallax is often more effective than aggressive movement.
+- Use \`will-change: transform\` to ensure smooth rendering.
+- Test across devices to ensure the depth effect doesn't break the layout on smaller screens.
+
+**💻 Prompt (for vibe coding):**
+Implement a Parallax Design effect across multiple layers. Assign different scroll/movement speeds to background, midground, and foreground elements. Ensure the movement feels fluid and natural, creating a strong sense of spatial depth without compromising content readability.`
+  },
+  "microinteractions": {
+    title: "Microinteractions",
+    md: `## 🎨 Microinteractions
+**Category:** Interactive & Motion
+
+**🧠 Summary:** Small, functional animations that provide immediate feedback to user actions—such as a button "clicking" down, an icon morphing, or a subtle vibration—making the UI feel tactile and responsive.
+
+**✨ Feels Like:** Tactile, responsive, polished, satisfying, alive.
+
+**📌 Key Characteristics:**
+- Triggers on hover, click, focus, or state change
+- Brief, subtle, and highly purposeful (usually < 300ms)
+- Provides clear status communication or feedback
+- Often includes physics-based easing (springs/bounces)
+
+**✅ Use Case:**
+- Form validation and submission feedback
+- Navigation menus and interactive buttons
+- Social engagement features (likes, shares)
+
+**🚫 When to Avoid:**
+- Purely decorative animations that provide no functional feedback
+- Contexts where speed is prioritized over "flavor"
+- Overly repetitive animations that become annoying over time
+
+**🧩 Works Well With:** Soft UI, Flat Design 2.0, Neumorphism
+
+**🎯 Design Notes (Practical Tips):**
+- Use spring physics for a more "physical" and less "robotic" feel.
+- Ensure the interaction completes fast enough that it doesn't slow down the user's workflow.
+- Focus on the "feedback" loop: Trigger -> Action -> Feedback -> Result.
+
+**💻 Prompt (for vibe coding):**
+Create a set of polished Microinteractions for primary UI elements. Implement reactive hover states where buttons slightly expand and glow, and active states that provide a satisfying "press" effect. Ensure icons morph or animate subtly when interacted with to provide clear functional feedback.`
+  },
+  "horizontal-scroll": {
+    title: "Horizontal Scroll",
+    md: `## 🎨 Horizontal Scroll
+**Category:** Interactive & Motion
+
+**🧠 Summary:** A layout paradigm that breaks the vertical scrolling convention by moving content sideways, often used for carousels, galleries, or unconventional narrative flows.
+
+**✨ Feels Like:** Unconventional, gallery-like, rhythmic, modern.
+
+**📌 Key Characteristics:**
+- Content overflows and scrolls on the X-axis
+- Often includes snap-points for distinct sections or cards
+- Frequently paired with a visual progress bar or "side-scroll" indicator
+- Useful for comparing items side-by-side
+
+**✅ Use Case:**
+- Portfolio project galleries
+- Product carousels and feature showcases
+- Non-linear storytelling or "slideshow" websites
+
+**🚫 When to Avoid:**
+- Standard text-heavy articles (hard to read horizontally)
+- Navigation-heavy dashboards
+- Users expecting traditional vertical flow
+
+**🧩 Works Well With:** Bento Grid, Card-Based Design, Minimalism
+
+**🎯 Design Notes (Practical Tips):**
+- Clearly indicate that the page scrolls horizontally (e.g., "Scroll sideways" text or an arrow).
+- Implement scroll-snapping for a more controlled and satisfying user experience.
+- Ensure the mouse wheel or trackpad translates vertical scroll to horizontal if needed.
+
+**💻 Prompt (for vibe coding):**
+Design a Horizontal Scroll layout for a series of content cards. Use CSS scroll-snap to ensure cards lock into place as the user moves sideways. Include a subtle horizontal progress indicator and clear visual cues that the content continues to the right.`
+  },
+  "webgl-3d-interactive": {
+    title: "WebGL / 3D Interactive",
+    md: `## 🎨 WebGL / 3D Interactive
+**Category:** Interactive & Motion
+
+**🧠 Summary:** The integration of hardware-accelerated 3D graphics directly into the browser, allowing for complex geometries, lighting, and textures that respond dynamically to user input.
+
+**✨ Feels Like:** Immersive, high-performance, cutting-edge, magical.
+
+**📌 Key Characteristics:**
+- Genuine 3D depth and perspective (not just CSS transforms)
+- Dynamic lighting, shadows, and material reflections
+- Interactive 3D objects that the user can rotate or manipulate
+- Often uses Three.js or similar libraries for rendering
+
+**✅ Use Case:**
+- Product configurators (cars, watches, furniture)
+- High-end creative experimental sites
+- Interactive educational models and visualizations
+
+**🚫 When to Avoid:**
+- Information-first sites where content is priority #1
+- Low-bandwidth or low-performance device targets
+- Simple landing pages where 3D adds unnecessary weight
+
+**🧩 Works Well With:** Spatial / 3D UI, Glass + 3D Hybrid, Sci-Fi HUD
+
+**🎯 Design Notes (Practical Tips):**
+- Optimize textures and geometries to maintain a high frame rate (60fps).
+- Provide a fallback (static image) for browsers or devices that don't support WebGL.
+- Use 3D as a central focus or a background atmospheric element, not a distraction from text.
+
+**💻 Prompt (for vibe coding):**
+Implement a WebGL-inspired interactive section. Create the illusion of a floating 3D object that subtly rotates and reacts to mouse movement. Apply dynamic lighting effects and materials that shimmer as the perspective shifts, providing an immersive, high-tech interactive experience.`
+  },
+  "motion-ui": {
+    title: "Motion UI",
+    md: `## 🎨 Motion UI
+**Category:** Interactive & Motion
+
+**🧠 Summary:** A design philosophy that treats movement as a core component of the user interface, using fluid transitions and animations to guide focus, explain relationships, and delight the user.
+
+**✨ Feels Like:** Fluid, intuitive, elegant, energetic, seamless.
+
+**📌 Key Characteristics:**
+- Meaningful transitions between pages or states
+- Staggered entrance animations for list items
+- Elements that "stretch" or "squash" to imply physical weight
+- Motion used to reinforce the spatial mental model of the app
+
+**✅ Use Case:**
+- High-end mobile apps and modern web platforms
+- Onboarding flows and multi-step processes
+- Dynamic dashboards and data visualizations
+
+**🚫 When to Avoid:**
+- Overly cluttered pages where too many things move at once
+- Accessibility-first sites where motion can be distracting or nauseating
+- Purely decorative "animation for the sake of animation"
+
+**🧩 Works Well With:** Liquid / Organic, Aurora UI, Microinteractions
+
+**🎯 Design Notes (Practical Tips):**
+- Use a consistent motion language (same easing, same duration) across the whole app.
+- Follow the "Principles of Animation" (timing, staging, exaggeration) adapted for UI.
+- Ensure animations can be skipped or are fast enough to not hinder power users.
+
+**💻 Prompt (for vibe coding):**
+Apply a comprehensive Motion UI system to the layout. Ensure all elements enter the screen with staggered, fluid animations. Use smooth transitions between different UI states and implement "squash and stretch" physics on interactive components to give them a sense of life and physical presence.`
+  },
+  "hover-driven-ui": {
+    title: "Hover-driven UI",
+    md: `## 🎨 Hover-driven UI
+**Category:** Interactive & Motion
+
+**🧠 Summary:** An interface designed specifically for desktop interaction, where content is revealed, highlighted, or transformed primarily through mouse-over actions, creating a "discovery-based" user experience.
+
+**✨ Feels Like:** Playful, discovery-led, responsive, elegant, interactive.
+
+**📌 Key Characteristics:**
+- Hidden content revealed only on hover
+- Dynamic changes in color, size, or depth when the mouse enters an area
+- Custom cursors or "magnetic" elements that follow the mouse
+- High emphasis on the "resting" vs "active" state of components
+
+**✅ Use Case:**
+- Creative portfolios and digital experiments
+- Desktop-first premium product showcases
+- Interactive maps and detailed infographics
+
+**🚫 When to Avoid:**
+- Mobile-primary websites (hover doesn't exist on touch screens)
+- Critical navigation elements that should always be visible
+- Users with motor impairments who may struggle with precise hovering
+
+**🧩 Works Well With:** Typography-First, Minimalism, Glassmorphism
+
+**🎯 Design Notes (Practical Tips):**
+- Always provide a clear visual cue that an element *is* interactive (e.g., cursor change or subtle glow).
+- Ensure that for mobile users, the "hover" state is either always visible or triggered by a tap.
+- Keep hover transitions smooth and predictable to avoid a "jittery" feel.
+
+**💻 Prompt (for vibe coding):**
+Design a Hover-driven UI where the primary content interaction happens on mouse-over. Implement cards that expand and reveal additional information when hovered, and use a magnetic cursor effect or animated highlights to guide the user's attention. Ensure all transitions are fluid and encourage exploration.`
+  }
 };
 
 // ---- CATEGORY DATA ----
@@ -1928,6 +2173,20 @@ const categories = [
       { key: "data-driven-design", label: "Data-Driven Design", icon: "📊" },
       { key: "holographic-ui", label: "Holographic UI", icon: "🔮" },
       { key: "sci-fi-hud", label: "Sci-Fi HUD", icon: "🎯" }
+    ]
+  },
+  {
+    id: "interactive-motion",
+    title: "Interactive & Motion Design Styles",
+    themeClass: "theme-interactive-motion",
+    styles: [
+      { key: "scrollytelling", label: "Scrollytelling", icon: "📜" },
+      { key: "parallax-design", label: "Parallax Design", icon: "🖼️" },
+      { key: "microinteractions", label: "Microinteractions", icon: "🖱️" },
+      { key: "horizontal-scroll", label: "Horizontal Scroll", icon: "↔️" },
+      { key: "webgl-3d-interactive", label: "WebGL / 3D Interactive", icon: "🌐" },
+      { key: "motion-ui", label: "Motion UI", icon: "🎬" },
+      { key: "hover-driven-ui", label: "Hover-driven UI", icon: "✨" }
     ]
   }
 ];
