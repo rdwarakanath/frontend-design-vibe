@@ -43,6 +43,13 @@ body.theme-retro-nostalgic {
   --orb3-color: #e0c3fc;
 }
 
+body.theme-artistic-experimental {
+  --bg-gradient: linear-gradient(135deg, #fdf1e7 0%, #e8ccc7 30%, #e2c2c6 60%, #fff4cd 100%);
+  --orb1-color: #ffd8cb;
+  --orb2-color: #d8b4e2;
+  --orb3-color: #ffb885;
+}
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -503,6 +510,88 @@ body {
 .style--cyber-retro .preview__card-icon { color: #0f0; text-shadow: 0 0 5px #0f0; }
 .style--cyber-retro .preview__card-btn { background: #0f0; color: #000; border: none; border-radius: 0; font-weight: bold; text-transform: uppercase; font-family: 'Courier New', Courier, monospace; }
 .style--cyber-retro .preview__card-btn:hover { background: #fff; color: #000; box-shadow: 0 0 10px #0f0; }
+
+/* ============================
+   NEW: Artistic & Experimental Styles
+   ============================ */
+
+/* -- Maximalism -- */
+.style--maximalism .preview-container { background: repeating-radial-gradient(circle at 0 0, #fff 0, #fff 10px, #ffcc00 10px, #ffcc00 20px); border: 8px solid #ff00ff; border-radius: 0; box-shadow: 12px 12px 0 #00ffff; overflow: hidden; position: relative; }
+.style--maximalism .preview__title { font-size: 3.5rem; color: #ff00ff; text-transform: uppercase; text-shadow: 4px 4px 0 #00ffff, -2px -2px 0 #fff; line-height: 0.8; margin-bottom: 20px; z-index: 2; position: relative; }
+.style--maximalism .preview__subtitle { background: #000; color: #fff; display: inline-block; padding: 5px 15px; transform: rotate(-5deg); z-index: 2; position: relative; font-weight: 900; letter-spacing: 2px; }
+.style--maximalism .preview__card { background: rgba(0,0,0,0.8); border: 4px dashed #00ffff; color: #fff; transform: rotate(2deg); z-index: 1; }
+.style--maximalism .preview__card-btn { background: #ffcc00; color: #000; border: 4px solid #ff00ff; font-weight: 900; text-transform: uppercase; font-size: 1.2rem; transform: rotate(-3deg); transition: 0.1s; box-shadow: 4px 4px 0 #00ffff; }
+.style--maximalism .preview__card-btn:hover { transform: scale(1.1) rotate(5deg); background: #00ffff; color: #000; }
+
+/* -- Editorial Design -- */
+.style--editorial-design .preview-container { background: #faf9f6; border: none; border-top: 6px solid #222; border-bottom: 2px solid #222; border-radius: 0; border-left: 1px solid #ddd; border-right: 1px solid #ddd; position: relative; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+.style--editorial-design .preview__header { text-align: left; border-bottom: 1px solid #222; padding-bottom: 20px; margin-bottom: 30px; }
+.style--editorial-design .preview__title { font-family: 'Playfair Display', serif; font-size: 3rem; color: #111; letter-spacing: -1px; line-height: 1.1; margin-bottom: 10px; }
+.style--editorial-design .preview__subtitle { font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; color: #666; }
+.style--editorial-design .preview__cards { display: grid; grid-template-columns: 2fr 1fr; gap: 30px; align-items: start; }
+.style--editorial-design .preview__card { background: transparent; border: none; padding: 0; box-shadow: none; border-radius: 0; }
+.style--editorial-design .preview__card:first-child { border-right: 1px solid #ddd; padding-right: 30px; }
+.style--editorial-design .preview__card-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: #111; margin-bottom: 10px; }
+.style--editorial-design .preview__card-text { font-family: 'Georgia', serif; color: #444; line-height: 1.6; font-size: 0.95rem; }
+.style--editorial-design .preview__card-btn { background: #222; color: #fff; font-family: 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 1px; font-size: 0.7rem; padding: 10px 20px; border-radius: 0; border: none; margin-top: 15px; }
+
+/* -- Paper / Zine -- */
+.style--paper-zine .preview-container { background: #e9e3d3; background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>'); mix-blend-mode: multiply; border: none; border-radius: 0; padding: 30px; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+.style--paper-zine .preview-container::after { content: ''; position: absolute; inset: 0; border: 10px solid #fff; opacity: 0.5; pointer-events: none; mix-blend-mode: overlay; }
+.style--paper-zine .preview__title { font-family: 'Courier New', Courier, monospace; font-weight: bold; font-size: 2.2rem; color: #111; text-transform: uppercase; letter-spacing: -2px; background: #fff; display: inline-block; padding: 0 10px; transform: rotate(-2deg); mix-blend-mode: screen; border: 2px solid #000; }
+.style--paper-zine .preview__subtitle { font-family: 'Marker Felt', 'Comic Sans MS', sans-serif; color: #d00; transform: rotate(3deg); font-size: 1.2rem; }
+.style--paper-zine .preview__card { background: #fff; border: 1px solid #888; border-radius: 0; box-shadow: 2px 2px 5px rgba(0,0,0,0.2); transform: rotate(1deg); padding: 20px; margin-top: 20px; }
+.style--paper-zine .preview__card-title { font-family: 'Courier New', Courier, monospace; font-weight: bold; background: #000; color: #fff; display: inline-block; padding: 2px 8px; transform: rotate(-1deg); }
+.style--paper-zine .preview__card-text { font-family: 'Courier New', Courier, monospace; color: #333; line-height: 1.4; }
+.style--paper-zine .preview__card-btn { background: transparent; border: 2px dashed #000; color: #000; font-family: 'Marker Felt', 'Comic Sans MS', sans-serif; font-size: 1.2rem; text-transform: lowercase; }
+.style--paper-zine .preview__card-btn:hover { background: #000; color: #fff; border-style: solid; }
+
+/* -- Collage Design -- */
+.style--collage-design .preview-container { background: #f0e6d2; border: none; position: relative; padding: 50px; overflow: hidden; box-shadow: inset 0 0 50px rgba(0,0,0,0.05); }
+.style--collage-design .preview__header { position: absolute; top: 10%; left: 5%; z-index: 10; transform: rotate(-5deg); background: #fff; padding: 10px 20px; border: 1px solid #ccc; box-shadow: 5px 5px 15px rgba(0,0,0,0.1); }
+.style--collage-design .preview__title { font-family: 'Times New Roman', Times, serif; font-size: 3rem; color: #c0392b; letter-spacing: -2px; mix-blend-mode: multiply; }
+.style--collage-design .preview__cards { display: flex; justify-content: flex-end; align-items: center; margin-top: 60px; position: relative; z-index: 5; }
+.style--collage-design .preview__card { background: #fff; padding: 15px; border-radius: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.15); transform: rotate(4deg); max-width: 250px; }
+.style--collage-design .preview__card:nth-child(2) { transform: rotate(-6deg) translateY(-20px) translateX(-30px); background: #34495e; color: #fff; z-index: 6; }
+.style--collage-design .preview__card-btn { background: #f39c12; color: #fff; border: none; font-weight: bold; border-radius: 50px; padding: 10px 20px; text-transform: uppercase; font-size: 0.8rem; box-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
+
+/* -- Abstract Design -- */
+.style--abstract-design .preview-container { background: #fcfcfc; border: none; border-radius: 40px 0 40px 0; position: relative; overflow: hidden; }
+.style--abstract-design .preview-container::before { content: ''; position: absolute; width: 300px; height: 300px; background: #ff6b6b; border-radius: 50% 50% 0 0; top: -100px; right: -50px; opacity: 0.8; mix-blend-mode: multiply; }
+.style--abstract-design .preview-container::after { content: ''; position: absolute; width: 200px; height: 200px; background: #4ecdc4; border-radius: 0 50% 50% 50%; bottom: -50px; left: -20px; opacity: 0.8; mix-blend-mode: multiply; }
+.style--abstract-design .preview__header { text-align: center; position: relative; z-index: 10; margin-bottom: 50px; }
+.style--abstract-design .preview__title { font-family: 'Montserrat', sans-serif; font-weight: 200; font-size: 2.8rem; color: #2d3436; letter-spacing: 5px; }
+.style--abstract-design .preview__subtitle { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #e17055; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; }
+.style--abstract-design .preview__cards { position: relative; z-index: 10; display: flex; justify-content: center; gap: 40px; }
+.style--abstract-design .preview__card { background: rgba(255,255,255,0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.5); border-radius: 50%; width: 200px; height: 200px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.style--abstract-design .preview__card-title { font-size: 1rem; color: #2d3436; }
+.style--abstract-design .preview__card-btn { background: #2d3436; color: #fff; border-radius: 30px; padding: 8px 20px; font-size: 0.75rem; border: none; letter-spacing: 1px; transition: 0.4s; }
+.style--abstract-design .preview__card-btn:hover { background: #ff6b6b; border-radius: 0; }
+
+/* -- Asymmetrical Layout -- */
+.style--asymmetrical-layout .preview-container { background: #fff; border: 1px solid #eee; padding: 0; border-radius: 0; box-shadow: none; }
+.style--asymmetrical-layout .preview__header { text-align: left; padding: 60px 40px 20px; width: 40%; border-right: 1px solid #eee; float: left; height: 100%; min-height: 300px; }
+.style--asymmetrical-layout .preview__title { font-size: 2.2rem; font-weight: 300; line-height: 1.2; color: #111; margin-bottom: 20px; }
+.style--asymmetrical-layout .preview__subtitle { font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+.style--asymmetrical-layout .preview__cards { width: 60%; float: right; padding: 40px; display: block; clear: none; }
+.style--asymmetrical-layout .preview__card { background: #f9f9f9; border: none; border-radius: 0; margin-bottom: 30px; padding: 30px; margin-left: -80px; position: relative; box-shadow: -10px 10px 30px rgba(0,0,0,0.03); transition: 0.3s; }
+.style--asymmetrical-layout .preview__card:nth-child(2) { margin-left: 40px; background: #111; color: #fff; }
+.style--asymmetrical-layout .preview__card:nth-child(2) .preview__card-title, .style--asymmetrical-layout .preview__card:nth-child(2) .preview__card-text { color: #fff; }
+.style--asymmetrical-layout .preview__card-btn { background: none; border: 1px solid #111; color: #111; border-radius: 0; padding: 8px 16px; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
+.style--asymmetrical-layout .preview__card:nth-child(2) .preview__card-btn { border-color: #fff; color: #fff; }
+.style--asymmetrical-layout .preview-container::after { content: ""; display: table; clear: both; }
+
+/* -- Deconstructivism -- */
+.style--deconstructivism .preview-container { background: #e0e0e0; border: none; overflow: hidden; position: relative; border-radius: 0; padding: 60px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1); }
+.style--deconstructivism .preview__header { position: absolute; bottom: -20px; right: -20px; transform: rotate(-90deg) translateX(50%); transform-origin: bottom right; z-index: 10; }
+.style--deconstructivism .preview__title { font-size: 4rem; color: rgba(0,0,0,0.1); letter-spacing: -3px; line-height: 0.8; font-weight: 900; }
+.style--deconstructivism .preview__subtitle { position: absolute; top: 20px; left: -10px; transform: rotate(90deg); color: #d35400; font-weight: bold; font-size: 1.5rem; letter-spacing: 5px; }
+.style--deconstructivism .preview__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0; position: relative; z-index: 5; }
+.style--deconstructivism .preview__card { background: #fff; border: 1px solid #000; border-radius: 0; padding: 30px; box-shadow: 10px 10px 0 #000; transform: skewX(-5deg) translateY(20px); transition: 0.4s; }
+.style--deconstructivism .preview__card:nth-child(2) { background: #d35400; color: #fff; transform: skewX(5deg) translateY(-20px) translateX(-40px); mix-blend-mode: multiply; border-color: #fff; box-shadow: -10px 10px 0 #000; }
+.style--deconstructivism .preview__card-btn { background: #000; color: #fff; border: none; border-radius: 0; transform: skewX(10deg); font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
+.style--deconstructivism .preview__card:nth-child(2) .preview__card-title, .style--deconstructivism .preview__card:nth-child(2) .preview__card-text { color: #fff; }
+.style--deconstructivism .preview__card:nth-child(2) .preview__card-btn { background: #fff; color: #d35400; }
 
 /* ---- CONTENT SECTION ---- */
 .content-section { margin-bottom: 40px; }
