@@ -2083,6 +2083,214 @@ Apply a comprehensive Motion UI system to the layout. Ensure all elements enter 
 
 **💻 Prompt (for vibe coding):**
 Design a Hover-driven UI where the primary content interaction happens on mouse-over. Implement cards that expand and reveal additional information when hovered, and use a magnetic cursor effect or animated highlights to guide the user's attention. Ensure all transitions are fluid and encourage exploration.`
+  },
+  "dashboard-ui": {
+    title: "Dashboard UI",
+    md: `## 🎨 Dashboard UI
+**Category:** Product & UX-Centered
+
+**🧠 Summary:** A realistic, data-dense interface designed for administrative tasks and complex system management — prioritizing clear hierarchy, efficient space utilization, and consistent component patterns found in modern SaaS tools.
+
+**✨ Feels Like:** Professional, organized, authoritative, efficient, reliable.
+
+**📌 Key Characteristics:**
+- Sidebar or top-nav based navigation structure
+- KPI "Value" cards with sparklines or trend indicators
+- Data tables with robust sorting and filtering affordages
+- Consistent grid-based layout (often 12-column or fluid)
+
+**✅ Use Case:**
+- Enterprise Resource Planning (ERP) systems
+- Marketing analytics and reporting tools
+- Content management systems and internal ops tools
+
+**🚫 When to Avoid:**
+- Simple landing pages with minimal content
+- High-emotion, artistic, or narrative-driven experiences
+- Mobile-only platforms where data density is a liability
+
+**🧩 Works Well With:** Data-Driven Design, Bento Grid, Minimalism
+
+**🎯 Design Notes (Practical Tips):**
+- Use a neutral, desaturated color palette to allow data visualizations to stand out.
+- Maintain consistent spacing (padding/margins) across all cards to create a "stable" feeling.
+- Implement clear "Empty States" for when data has not yet been populated.
+
+**💻 Prompt (for vibe coding):**
+Design a professional SaaS dashboard interface. Implement a persistent sidebar, a series of KPI cards displaying numerical data and trend indicators, and a clean data table. Use a high-density but readable layout with a desaturated blue/gray professional palette. Focus on realistic component sizing and consistent spacing.`
+  },
+  "mobile-first": {
+    title: "Mobile-First",
+    md: `## 🎨 Mobile-First
+**Category:** Product & UX-Centered
+
+**🧠 Summary:** A design philosophy that prioritizes the mobile user experience during the creation process, ensuring that core functionality is optimized for touch interaction, limited screen real estate, and varied connection speeds before scaling up to desktop.
+
+**✨ Feels Like:** Compact, focused, thumb-friendly, fast, essential.
+
+**📌 Key Characteristics:**
+- Large, easily tappable interaction targets (min 44x44px)
+- Linear, vertical content flow optimized for scrolling
+- Hidden or collapsed secondary navigation (hamburger or bottom-bar)
+- High performance and optimized asset delivery
+
+**✅ Use Case:**
+- Social media and messaging applications
+- E-commerce and food delivery services
+- Any product where >60% of traffic originates from mobile
+
+**🚫 When to Avoid:**
+- Complex B2B desktop-only software
+- Deep architectural drafting or coding environments
+- Platforms requiring massive multi-window data comparison
+
+**🧩 Works Well With:** Minimalism, Flat Design 2.0, Human-Centered
+
+**🎯 Design Notes (Practical Tips):**
+- Design for "The Thumb Zone"—place primary actions within easy reach of a single hand.
+- Use progressive disclosure to keep the initial view uncluttered.
+- Ensure all images and icons have alt text for screen readers, as mobile users often use accessibility features.
+
+**💻 Prompt (for vibe coding):**
+Create a Mobile-First layout for a content-heavy application. Prioritize a single-column flow with large, touch-friendly cards. Implement a bottom navigation bar for primary actions and ensure all typography is legible at small sizes. Focus on essential functionality and clean vertical rhythm.`
+  },
+  "accessibility-first": {
+    title: "Accessibility-First",
+    md: `## 🎨 Accessibility-First
+**Category:** Product & UX-Centered
+
+**🧠 Summary:** A design approach that considers users of all abilities from the start, ensuring the interface is perceivable, operable, understandable, and robust (POUR), resulting in a better experience for everyone, regardless of impairment.
+
+**✨ Feels Like:** Clear, inclusive, usable, thoughtful, high-contrast.
+
+**📌 Key Characteristics:**
+- High color contrast ratios (WCAG AAA standards)
+- Explicit focus states for keyboard navigation
+- Large, legible font sizes and clear typeface choices
+- Semantic HTML structure and comprehensive ARIA labeling
+
+**✅ Use Case:**
+- Government and public service websites
+- Educational platforms and digital libraries
+- Global products with a highly diverse user base
+
+**🚫 When to Avoid:**
+- *Never* truly avoid, but strictly aesthetic "art-first" experiments may find it challenging.
+- Contexts where low-contrast, atmospheric visuals are the primary artistic goal (though a toggle should exist).
+
+**🧩 Works Well With:** Swiss Style, Minimalism, Clean & Structural
+
+**🎯 Design Notes (Practical Tips):**
+- Don't rely solely on color to communicate information (use icons or text labels).
+- Ensure the site is fully navigable using only the 'Tab' key.
+- Test with screen readers (like VoiceOver or NVDA) early in the design process.
+
+**💻 Prompt (for vibe coding):**
+Design an Accessibility-First interface with high contrast and clear visual hierarchy. Use a font size of at least 18px for body text and ensure all interactive elements have highly visible focus indicators. Prioritize semantic structure and inclusive UX patterns that work seamlessly for screen reader and keyboard-only users.`
+  },
+  "human-centered": {
+    title: "Human-Centered",
+    md: `## 🎨 Human-Centered
+**Category:** Product & UX-Centered
+
+**🧠 Summary:** A process that starts with the people you’re designing for and ends with new solutions that are tailor-made to suit their needs—focusing on clarity, empathy, and intuitive flow to reduce cognitive load.
+
+**✨ Feels Like:** Natural, intuitive, empathetic, calm, supportive.
+
+**📌 Key Characteristics:**
+- Visual language that mirrors real-world mental models
+- Descriptive, jargon-free copy and instructions
+- Forgiving error states and clear paths to recovery
+- Layouts that follow natural eye-scanning patterns (F-pattern, Z-pattern)
+
+**✅ Use Case:**
+- Healthcare and wellness applications
+- Financial services and personal banking
+- Complex onboarding flows for new technology
+
+**🚫 When to Avoid:**
+- Specialist tools where "speed-to-action" for experts overrides "ease-of-use"
+- Experimental artistic sites where "confusion" or "discovery" is the intended vibe
+
+**🧩 Works Well With:** Organic / Natural, Soft UI, Minimalism
+
+**🎯 Design Notes (Practical Tips):**
+- Use familiar icons and metaphors (e.g., a magnifying glass for search).
+- Provide feedback for every action so the user never feels lost.
+- Conduct user testing at every stage to validate your assumptions.
+
+**💻 Prompt (for vibe coding):**
+Implement a Human-Centered UI that prioritizes clarity and empathy. Use generous whitespace to reduce cognitive load, and include helpful micro-copy to guide the user. Ensure the layout is intuitive and follows common mental models for navigation and task completion.`
+  },
+  "form-centric-design": {
+    title: "Form-Centric Design",
+    md: `## 🎨 Form-Centric Design
+**Category:** Product & UX-Centered
+
+**🧠 Summary:** A design focus on the most critical interaction point of many products: data entry. It prioritizes the layout, validation, and flow of inputs to ensure high completion rates and a frictionless "conversational" experience.
+
+**✨ Feels Like:** Precise, helpful, frictionless, logical, productive.
+
+**📌 Key Characteristics:**
+- Clear, top-aligned labels and accessible input fields
+- Real-time inline validation and helpful error messaging
+- Logical grouping of fields (e.g., Personal Info vs. Payment)
+- Minimalist aesthetic to keep the user focused on the task
+
+**✅ Use Case:**
+- SaaS onboarding and registration flows
+- Checkout processes and payment forms
+- Survey tools and data collection platforms
+
+**🚫 When to Avoid:**
+- Content-only blogs or news sites
+- Visual portfolios and galleries
+- Immersive gaming or entertainment experiences
+
+**🧩 Works Well With:** Minimalism, Clean & Structural, Flat Design 2.0
+
+**🎯 Design Notes (Practical Tips):**
+- Avoid using placeholders as labels—they disappear once the user starts typing.
+- Use "Single Column" layouts for forms to make them easier to scan.
+- Break long forms into multi-step "wizards" to prevent overwhelm.
+
+**💻 Prompt (for vibe coding):**
+Design a polished, Form-Centric onboarding experience. Create a multi-step flow with clear progress indicators, beautifully styled inputs, and real-time validation feedback. Focus on reducing friction through logical field grouping and a minimalist, focused aesthetic.`
+  },
+  "conversion-focused": {
+    title: "Conversion-Focused",
+    md: `## 🎨 Conversion-Focused
+**Category:** Product & UX-Centered
+
+**🧠 Summary:** A design strategy specifically engineered to drive a particular user action—such as a signup, purchase, or download—using visual hierarchy, social proof, and clear calls-to-action (CTAs).
+
+**✨ Feels Like:** Persuasive, direct, trustworthy, high-impact, results-driven.
+
+**📌 Key Characteristics:**
+- Highly prominent, high-contrast primary CTA buttons
+- Use of social proof (testimonials, logos, ratings)
+- "Benefit-first" headline and value proposition
+- Reduced "exit points" (minimal distractions from the main goal)
+
+**✅ Use Case:**
+- SaaS landing pages and pricing tables
+- E-commerce product pages
+- Marketing campaigns and lead-capture funnels
+
+**🚫 When to Avoid:**
+- Purely informational or educational resources
+- Internal tools and dashboards (where "conversion" isn't relevant)
+- Artistic explorations where "selling" isn't the goal
+
+**🧩 Works Well With:** Flat Design 2.0, Card-Based Design, Minimalism
+
+**🎯 Design Notes (Practical Tips):**
+- Use the "Isolated CTA" technique—place your button in a sea of whitespace to make it unmissable.
+- Keep the value proposition "Above the Fold."
+- Use Directional Cues (arrows, eye-lines in photos) to point users toward the CTA.
+
+**💻 Prompt (for vibe coding):**
+Create a high-impact, Conversion-Focused landing page section. Implement a bold headline, a clear value proposition, and a prominent, high-contrast primary CTA. Include trust-building elements like customer testimonials and brand logos, ensuring the visual hierarchy leads directly to the conversion point.`
   }
 };
 
@@ -2187,6 +2395,19 @@ const categories = [
       { key: "webgl-3d-interactive", label: "WebGL / 3D Interactive", icon: "🌐" },
       { key: "motion-ui", label: "Motion UI", icon: "🎬" },
       { key: "hover-driven-ui", label: "Hover-driven UI", icon: "✨" }
+    ]
+  },
+  {
+    id: "product-ux",
+    title: "Product & UX-Centered Design Styles",
+    themeClass: "theme-product-ux",
+    styles: [
+      { key: "dashboard-ui", label: "Dashboard UI", icon: "📊" },
+      { key: "mobile-first", label: "Mobile-First", icon: "📱" },
+      { key: "accessibility-first", label: "Accessibility-First", icon: "♿" },
+      { key: "human-centered", label: "Human-Centered", icon: "👥" },
+      { key: "form-centric-design", label: "Form-Centric Design", icon: "📝" },
+      { key: "conversion-focused", label: "Conversion-Focused", icon: "🎯" }
     ]
   }
 ];
