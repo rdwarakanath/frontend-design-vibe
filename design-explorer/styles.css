@@ -36,6 +36,13 @@ body.theme-depth-material {
   --orb3-color: #9bf6ff;
 }
 
+body.theme-retro-nostalgic {
+  --bg-gradient: linear-gradient(135deg, #ffe0e0 0%, #ffdfba 30%, #e0c3fc 60%, #bae1ff 100%);
+  --orb1-color: #ffb3ba;
+  --orb2-color: #ffdfba;
+  --orb3-color: #e0c3fc;
+}
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -435,6 +442,67 @@ body {
 .style--shadow-based-depth .preview__card:hover { transform: translateY(-8px); box-shadow: 0 30px 60px rgba(45, 27, 78, 0.08); }
 .style--shadow-based-depth .preview__card-btn { background: #fff; color: #2d1b4e; border: none; border-radius: 4px; box-shadow: 0 4px 12px rgba(45, 27, 78, 0.06); font-weight: 600; transition: 0.3s; }
 .style--shadow-based-depth .preview__card-btn:hover { box-shadow: 0 6px 16px rgba(45, 27, 78, 0.1); transform: translateY(-2px); }
+
+/* ============================
+   NEW: Retro & Nostalgic Styles
+   ============================ */
+
+/* -- Neo-Brutalism -- */
+.style--neo-brutalism .preview-container { background: #ffdfba; border: 4px solid #000; border-radius: 0; box-shadow: 8px 8px 0 #000; }
+.style--neo-brutalism .preview__title, .style--neo-brutalism .preview__subtitle { color: #000; text-transform: uppercase; font-weight: 900; letter-spacing: -1px; }
+.style--neo-brutalism .preview__card { background: #bae1ff; border: 3px solid #000; border-radius: 0; box-shadow: 6px 6px 0 #000; color: #000; }
+.style--neo-brutalism .preview__card-btn { background: #ffb3ba; border: 2px solid #000; border-radius: 0; box-shadow: 4px 4px 0 #000; color: #000; font-weight: 800; text-transform: uppercase; }
+.style--neo-brutalism .preview__card-btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #000; }
+
+/* -- Brutalism (Raw) -- */
+.style--brutalism .preview-container { background: #fff; border: none; border-radius: 0; box-shadow: none; font-family: "Times New Roman", Times, serif; }
+.style--brutalism .preview__title { font-weight: normal; color: #000; text-decoration: underline; font-size: 2.5rem; }
+.style--brutalism .preview__subtitle { color: #000; }
+.style--brutalism .preview__card { background: transparent; border: 1px solid #000; border-radius: 0; box-shadow: none; color: #000; margin-bottom: 20px; }
+.style--brutalism .preview__card-title { font-size: 1.5rem; font-weight: normal; }
+.style--brutalism .preview__card-btn { background: transparent; border: none; border-radius: 0; color: blue; text-decoration: underline; font-family: "Times New Roman", Times, serif; padding: 0; font-size: 1rem; }
+.style--brutalism .preview__card-btn:hover { color: purple; }
+
+/* -- Y2K / Frutiger Aero -- */
+.style--y2k-frutiger-aero .preview-container { background: linear-gradient(180deg, #e0f7fa 0%, #80deea 100%); border: 2px solid rgba(255,255,255,0.8); border-radius: 24px; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 150, 136, 0.2); }
+.style--y2k-frutiger-aero .preview-container::before { content: ''; position: absolute; width: 150px; height: 150px; background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, transparent 60%); top: -20px; right: -20px; border-radius: 50%; pointer-events: none; }
+.style--y2k-frutiger-aero .preview__title { color: #006064; text-shadow: 0 2px 4px rgba(255,255,255,0.8); font-weight: 900; }
+.style--y2k-frutiger-aero .preview__card { background: rgba(255, 255, 255, 0.4); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.8); border-radius: 20px; box-shadow: inset 0 2px 10px rgba(255,255,255,1), 0 4px 15px rgba(0,0,0,0.05); }
+.style--y2k-frutiger-aero .preview__card-btn { background: linear-gradient(180deg, #b2ebf2 0%, #4dd0e1 100%); border: 1px solid #00bcd4; border-top: 1px solid #e0f7fa; border-radius: 20px; color: #006064; font-weight: 800; box-shadow: inset 0 2px 4px rgba(255,255,255,0.8), 0 2px 6px rgba(0,0,0,0.1); text-transform: uppercase; letter-spacing: 1px; }
+.style--y2k-frutiger-aero .preview__card-btn:hover { filter: brightness(1.1); transform: scale(1.02); }
+
+/* -- Retro 70s/80s -- */
+.style--retro-70s-80s .preview-container { background: #f4ecd8; border: 8px solid #c9643b; border-radius: 8px; position: relative; }
+.style--retro-70s-80s .preview-container::after { content: ''; position: absolute; inset: 0; background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>'); opacity: 0.15; pointer-events: none; mix-blend-mode: multiply; }
+.style--retro-70s-80s .preview__title { font-family: 'Georgia', serif; font-weight: 800; letter-spacing: -1px; color: #5c3a21; }
+.style--retro-70s-80s .preview__subtitle { color: #8a6345; font-family: 'Georgia', serif; font-style: italic; }
+.style--retro-70s-80s .preview__card { background: #e8d5b5; border: 2px solid #5c3a21; border-radius: 4px; box-shadow: 4px 4px 0 #5c3a21; color: #5c3a21; font-family: 'Georgia', serif; }
+.style--retro-70s-80s .preview__card-btn { background: #c9643b; color: #f4ecd8; border: 2px solid #5c3a21; border-radius: 4px; font-family: 'Georgia', serif; font-weight: bold; text-transform: uppercase; box-shadow: 2px 2px 0 #5c3a21; }
+
+/* -- Pixel / 8-bit -- */
+.style--pixel-8-bit .preview-container { background: #222; border: 4px solid #fff; border-radius: 0; font-family: 'Courier New', Courier, monospace; color: #fff; }
+.style--pixel-8-bit .preview__title { font-weight: bold; color: #ffd700; text-transform: uppercase; text-shadow: 2px 2px 0 #ff00ff; }
+.style--pixel-8-bit .preview__subtitle { color: #00ffff; }
+.style--pixel-8-bit .preview__card { background: #000; border: 2px dashed #00ffff; border-radius: 0; color: #fff; box-shadow: none; }
+.style--pixel-8-bit .preview__card-btn { background: #ff00ff; color: #fff; border: 2px solid #fff; border-radius: 0; font-weight: bold; text-transform: uppercase; box-shadow: 2px 2px 0 #fff; }
+.style--pixel-8-bit .preview__card-btn:active { transform: translate(2px, 2px); box-shadow: 0 0 0 #fff; }
+
+/* -- Vaporwave -- */
+.style--vaporwave .preview-container { background: linear-gradient(135deg, #ff71ce 0%, #01cdfe 50%, #05ffa1 100%); border: 2px solid #b967ff; border-radius: 0; box-shadow: 0 0 20px rgba(185, 103, 255, 0.5); position: relative; overflow: hidden; }
+.style--vaporwave .preview-container::before { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 50%; background: repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(255,255,255,0.2) 10px, rgba(255,255,255,0.2) 12px); pointer-events: none; }
+.style--vaporwave .preview__title { color: #fff; text-shadow: 2px 2px 0 #ff71ce, -2px -2px 0 #01cdfe; font-style: italic; letter-spacing: 2px; }
+.style--vaporwave .preview__card { background: rgba(255, 255, 255, 0.8); border: 2px solid #ffb2f5; border-radius: 0; box-shadow: 4px 4px 0 #01cdfe; color: #333; position: relative; z-index: 1; }
+.style--vaporwave .preview__card-btn { background: #b967ff; color: #fff; border: 2px solid #fff; border-radius: 0; box-shadow: 2px 2px 0 #05ffa1; font-weight: bold; text-transform: uppercase; }
+
+/* -- Cyber Retro -- */
+.style--cyber-retro .preview-container { background: #000; border: 2px solid #0f0; border-radius: 0; font-family: 'Courier New', Courier, monospace; color: #0f0; box-shadow: 0 0 15px rgba(0, 255, 0, 0.3); position: relative; }
+.style--cyber-retro .preview-container::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,255,0,0.05) 2px, rgba(0,255,0,0.05) 4px); pointer-events: none; }
+.style--cyber-retro .preview__title { font-weight: normal; text-shadow: 0 0 5px #0f0; }
+.style--cyber-retro .preview__subtitle { color: #0a0; }
+.style--cyber-retro .preview__card { background: transparent; border: 1px dashed #0f0; border-radius: 0; color: #0f0; box-shadow: none; }
+.style--cyber-retro .preview__card-icon { color: #0f0; text-shadow: 0 0 5px #0f0; }
+.style--cyber-retro .preview__card-btn { background: #0f0; color: #000; border: none; border-radius: 0; font-weight: bold; text-transform: uppercase; font-family: 'Courier New', Courier, monospace; }
+.style--cyber-retro .preview__card-btn:hover { background: #fff; color: #000; box-shadow: 0 0 10px #0f0; }
 
 /* ---- CONTENT SECTION ---- */
 .content-section { margin-bottom: 40px; }
