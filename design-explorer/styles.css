@@ -50,6 +50,13 @@ body.theme-artistic-experimental {
   --orb3-color: #ffb885;
 }
 
+body.theme-organic-natural {
+  --bg-gradient: linear-gradient(135deg, #f0f4eb 0%, #dbe7d3 30%, #e6dfcd 60%, #daeaf6 100%);
+  --orb1-color: #b2d3c2;
+  --orb2-color: #f5f0e1;
+  --orb3-color: #a8d5e2;
+}
+
 html { scroll-behavior: smooth; }
 
 body {
@@ -592,6 +599,40 @@ body {
 .style--deconstructivism .preview__card-btn { background: #000; color: #fff; border: none; border-radius: 0; transform: skewX(10deg); font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
 .style--deconstructivism .preview__card:nth-child(2) .preview__card-title, .style--deconstructivism .preview__card:nth-child(2) .preview__card-text { color: #fff; }
 .style--deconstructivism .preview__card:nth-child(2) .preview__card-btn { background: #fff; color: #d35400; }
+
+/* ============================
+   NEW: Organic & Natural Styles
+   ============================ */
+
+/* -- Liquid / Organic -- */
+.style--liquid-organic .preview-container { background: linear-gradient(135deg, #e3fdf5 0%, #ffe6fa 100%); border: none; border-radius: 40px; position: relative; overflow: hidden; }
+.style--liquid-organic .preview__card { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); border-radius: 40px 60px 40px 60px; border: 1px solid rgba(255, 255, 255, 0.5); box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.5s ease; }
+.style--liquid-organic .preview__card:hover { border-radius: 60px 40px 60px 40px; transform: translateY(-5px); }
+.style--liquid-organic .preview__card-btn { background: linear-gradient(90deg, #74ebd5 0%, #9face6 100%); color: #fff; border: none; border-radius: 30px; padding: 10px 20px; font-weight: 600; }
+
+/* -- Biomorphism -- */
+.style--biomorphism .preview-container { background: #f4f9f4; border: none; border-radius: 20px; position: relative; box-shadow: inset 0 0 40px rgba(0, 150, 100, 0.05); background-image: radial-gradient(circle at 50% 50%, rgba(100, 200, 150, 0.1) 0%, transparent 60%); }
+.style--biomorphism .preview__card { background: #fff; border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; border: 1px solid rgba(100, 200, 150, 0.2); box-shadow: 0 15px 35px rgba(0, 100, 50, 0.05); padding-top: 35px; padding-bottom: 35px; transition: all 0.6s ease; }
+.style--biomorphism .preview__card:hover { border-radius: 50% 40% 30% 70% / 60% 40% 70% 40%; }
+.style--biomorphism .preview__card-icon { color: #2ea77f; }
+.style--biomorphism .preview__card-btn { background: #2ea77f; color: #fff; border: none; border-radius: 20px; padding: 10px 20px; font-weight: 600; }
+
+/* -- Soft UI -- */
+.style--soft-ui .preview-container { background: #faf8f5; border: none; border-radius: 30px; box-shadow: none; }
+.style--soft-ui .preview__card { background: #faf8f5; border-radius: 24px; border: 2px solid #fff; box-shadow: 8px 8px 16px rgba(200, 190, 180, 0.3), -8px -8px 16px rgba(255, 255, 255, 0.8); color: #6e655f; transition: box-shadow 0.3s ease; }
+.style--soft-ui .preview__title, .style--soft-ui .preview__subtitle, .style--soft-ui .preview__card-text { color: #6e655f; }
+.style--soft-ui .preview__card-btn { background: #faf8f5; color: #8c827a; border: 1px solid #fff; border-radius: 16px; box-shadow: 4px 4px 8px rgba(200, 190, 180, 0.3), -4px -4px 8px rgba(255, 255, 255, 0.8); font-weight: 500; transition: box-shadow 0.3s ease; }
+.style--soft-ui .preview__card-btn:hover { box-shadow: inset 2px 2px 5px rgba(200, 190, 180, 0.3), inset -2px -2px 5px rgba(255, 255, 255, 0.8); }
+
+/* -- Nature-Inspired -- */
+.style--nature-inspired .preview-container { background: #e9e3d9; border: none; border-radius: 8px; position: relative; }
+.style--nature-inspired .preview-container::before { content: ''; position: absolute; inset: 0; background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23noiseFilter)"/></svg>'); opacity: 0.1; mix-blend-mode: multiply; pointer-events: none; }
+.style--nature-inspired .preview__title { color: #3b4d3c; font-family: 'Georgia', serif; }
+.style--nature-inspired .preview__subtitle { color: #5c6353; }
+.style--nature-inspired .preview__card { background: #f2eee8; border: 1px solid #d5ceb8; border-radius: 4px; box-shadow: 0 4px 10px rgba(59, 77, 60, 0.05); border-top: 4px solid #6b8262; transition: background 0.3s ease; }
+.style--nature-inspired .preview__card-title, .style--nature-inspired .preview__card-text { color: #4a4238; }
+.style--nature-inspired .preview__card-btn { background: #6b8262; color: #f2eee8; border: none; border-radius: 2px; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; padding: 10px 20px; font-weight: bold; }
+.style--nature-inspired .preview__card-btn:hover { background: #4e6345; }
 
 /* ---- CONTENT SECTION ---- */
 .content-section { margin-bottom: 40px; }
