@@ -4212,6 +4212,13 @@ body.theme-category-finance {
   --orb3-color: #94a3b8;
 }
 
+body.theme-category-ai {
+  --bg-gradient: linear-gradient(135deg, #1A0533 0%, #0A1628 50%, #0D3B2E 100%);
+  --orb1-color: #8B5CF6;
+  --orb2-color: #22D3EE;
+  --orb3-color: #0ea5e9;
+}
+
 /* ---- MODE TOGGLE ---- */
 .mode-toggle-bar {
   display: flex;
@@ -4265,8 +4272,15 @@ body.theme-category-finance {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .cat-header {
@@ -4278,7 +4292,7 @@ body.theme-category-finance {
   font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(2rem, 4vw, 2.8rem);
   font-weight: 800;
-  color: #0f172a;
+  color: white;
   margin-bottom: 20px;
 }
 
@@ -4494,7 +4508,8 @@ body.theme-category-finance {
   font-size: 0.8rem;
 }
 
-.saas-table th, .saas-table td {
+.saas-table th,
+.saas-table td {
   padding: 10px 12px;
   text-align: left;
   border-bottom: 1px solid transparent;
@@ -4573,6 +4588,20 @@ body.theme-category-finance {
   font-weight: bold;
 }
 
+/* AI Category Dark Mode Overrides for Docs */
+body.theme-category-ai .cat-doc-box {
+  color: #e2e8f0;
+}
+
+body.theme-category-ai .cat-doc-text,
+body.theme-category-ai .cat-doc-list li {
+  color: #94a3b8;
+}
+
+body.theme-category-ai .cat-doc-heading {
+  color: #38bdf8;
+}
+
 .cat-prompt-box {
   background: #0f172a;
   color: #f8fafc;
@@ -4608,7 +4637,8 @@ body.theme-category-finance {
   font-family: 'Inter', sans-serif;
 }
 
-.cat-decision-table th, .cat-decision-table td {
+.cat-decision-table th,
+.cat-decision-table td {
   padding: 16px 24px;
   text-align: left;
   border-bottom: 1px solid #f1f5f9;
@@ -4644,20 +4674,25 @@ body.theme-category-finance {
   .saas-preview {
     flex-direction: column;
   }
+
   .saas-sidebar {
     width: 100%;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     border-right: none;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
+
   .saas-nav {
     flex-direction: row;
   }
-  .saas-bento-grid, .saas-kpi-row {
+
+  .saas-bento-grid,
+  .saas-kpi-row {
     grid-template-columns: 1fr;
   }
+
   .saas-card--wide {
     grid-row: auto;
   }
@@ -4670,19 +4705,23 @@ body.theme-category-finance {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
 }
+
 .saas-style--minimal-bento .saas-sidebar {
   background: #ffffff;
   border-right: 1px solid #e2e8f0;
 }
+
 .saas-style--minimal-bento .saas-nav-item:hover {
   background: #f1f5f9;
 }
+
 .saas-style--minimal-bento .saas-card,
 .saas-style--minimal-bento .saas-kpi-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
+
 .saas-style--minimal-bento .saas-chart-placeholder {
   background: #f8fafc;
 }
@@ -4692,39 +4731,45 @@ body.theme-category-finance {
   background: #ffffff;
   border: 1px solid #cbd5e1;
 }
+
 .saas-style--minimal-data .saas-sidebar {
   border-right: 1px solid #e2e8f0;
 }
+
 .saas-style--minimal-data .saas-card,
 .saas-style--minimal-data .saas-kpi-card {
   border: 1px solid #e2e8f0;
   border-radius: 8px;
 }
+
 .saas-style--minimal-data .saas-kpi-value {
   color: #0f172a;
   font-family: 'Space Grotesk', sans-serif;
 }
+
 .saas-style--minimal-data .saas-table th {
   border-bottom: 2px solid #e2e8f0;
 }
+
 .saas-style--minimal-data .saas-table td {
   border-bottom: 1px solid #f1f5f9;
 }
 
 /* 3. Glassmorphism (Light) + Minimal */
 .saas-style--glass-minimal {
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.05));
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
   backdrop-filter: blur(30px);
-  border: 1px solid rgba(255,255,255,0.4);
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
+
 .saas-style--glass-minimal .saas-card,
 .saas-style--glass-minimal .saas-kpi-card {
-  background: rgba(255,255,255,0.25);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.6);
-  border-bottom: 1px solid rgba(255,255,255,0.2);
-  border-right: 1px solid rgba(255,255,255,0.2);
-  box-shadow: 0 16px 40px rgba(31,38,135,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16px 40px rgba(31, 38, 135, 0.1);
 }
 
 /* 4. Bento + Data UI */
@@ -4733,12 +4778,15 @@ body.theme-category-finance {
   border: 2px solid #94a3b8;
   border-radius: 0;
 }
+
 .saas-style--bento-data .saas-sidebar {
   border-right: 2px solid #94a3b8;
 }
+
 .saas-style--bento-data .saas-main {
   background: transparent;
 }
+
 .saas-style--bento-data .saas-card,
 .saas-style--bento-data .saas-kpi-card {
   background: #ffffff;
@@ -4746,6 +4794,7 @@ body.theme-category-finance {
   box-shadow: none;
   border: 2px solid #94a3b8;
 }
+
 .saas-style--bento-data .saas-bento-grid,
 .saas-style--bento-data .saas-kpi-row {
   gap: 2px;
@@ -4757,6 +4806,7 @@ body.theme-category-finance {
   border: 2px solid #0f172a;
   border-radius: 0;
 }
+
 .saas-style--flat-card .saas-card,
 .saas-style--flat-card .saas-kpi-card {
   background: #ffffff;
@@ -4764,6 +4814,7 @@ body.theme-category-finance {
   border-radius: 0;
   box-shadow: 4px 4px 0 #0f172a;
 }
+
 .saas-style--flat-card .saas-btn--primary {
   background: #0f172a;
   border-radius: 0;
@@ -4774,12 +4825,14 @@ body.theme-category-finance {
   background: #ffffff;
   border: none;
 }
+
 .saas-style--minimal-type .saas-kpi-value {
   font-size: 3rem;
   letter-spacing: -0.05em;
   font-weight: 900;
   font-family: 'Space Grotesk', sans-serif;
 }
+
 .saas-style--minimal-type .saas-card,
 .saas-style--minimal-type .saas-kpi-card {
   border: none;
@@ -4956,7 +5009,7 @@ body.theme-category-finance {
   font-size: 0.85rem;
 }
 
-.finance-transaction-table th, 
+.finance-transaction-table th,
 .finance-transaction-table td {
   padding: 12px 0;
   text-align: left;
@@ -5016,6 +5069,7 @@ body.theme-category-finance {
   border: none;
   border-top: 4px solid #0f172a;
 }
+
 .finance-style--minimal-data .finance-balance-value,
 .finance-style--minimal-data .finance-transaction-table td:last-child,
 .finance-style--minimal-data .finance-kpi-mini-value {
@@ -5027,31 +5081,36 @@ body.theme-category-finance {
 .finance-style--glass-minimal {
   background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
   color: #f8fafc;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
+
 .finance-style--glass-minimal .finance-topbar,
 .finance-style--glass-minimal .finance-card,
 .finance-style--glass-minimal .finance-kpi-mini {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 .finance-style--glass-minimal .finance-date-picker {
-  background: rgba(255,255,255,0.1);
+  background: rgba(255, 255, 255, 0.1);
   border: none;
   color: #fff;
 }
+
 .finance-style--glass-minimal .finance-balance-label,
 .finance-style--glass-minimal .finance-transaction-table th,
 .finance-style--glass-minimal .finance-kpi-mini-label {
   color: #94a3b8;
 }
+
 .finance-style--glass-minimal .finance-chart-area {
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
 }
+
 .finance-style--glass-minimal .finance-transaction-table td {
-  border-bottom: 1px solid rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* 3. Bento + Data UI */
@@ -5060,25 +5119,29 @@ body.theme-category-finance {
   border: none;
   gap: 16px;
 }
+
 .finance-style--bento-data .finance-topbar {
   background: #fff;
   border-radius: 16px;
   margin: 16px 16px 0 16px;
   border: 1px solid #e2e8f0;
 }
+
 .finance-style--bento-data .finance-main {
   padding: 0 16px 16px 16px;
 }
+
 .finance-style--bento-data .finance-hero-section {
   background: #fff;
   padding: 24px;
   border-radius: 16px;
   border: 1px solid #e2e8f0;
 }
+
 .finance-style--bento-data .finance-card {
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
 /* 4. Neumorphism (Light) + Minimal */
@@ -5086,6 +5149,7 @@ body.theme-category-finance {
   background: #e2e8f0;
   border: none;
 }
+
 .finance-style--neumorphism-light .finance-card,
 .finance-style--neumorphism-light .finance-date-picker,
 .finance-style--neumorphism-light .finance-kpi-mini,
@@ -5095,10 +5159,12 @@ body.theme-category-finance {
   box-shadow: 6px 6px 12px #b8bec7, -6px -6px 12px #ffffff;
   border-radius: 16px;
 }
+
 .finance-style--neumorphism-light .finance-topbar {
   border-bottom: none;
   padding-bottom: 0;
 }
+
 .finance-style--neumorphism-light .finance-trend-badge {
   background: transparent;
   box-shadow: inset 4px 4px 8px #b8bec7, inset -4px -4px 8px #ffffff;
@@ -5110,27 +5176,33 @@ body.theme-category-finance {
   color: #f0f4ff;
   border: 1px solid #1a2035;
 }
+
 .finance-style--dark-data .finance-topbar {
   border-bottom: 1px solid #1a2035;
 }
+
 .finance-style--dark-data .finance-card,
 .finance-style--dark-data .finance-kpi-mini {
   background: #151b2c;
   border: 1px solid #1a2035;
 }
+
 .finance-style--dark-data .finance-balance-label,
 .finance-style--dark-data .finance-transaction-table th {
   color: #64748b;
 }
+
 .finance-style--dark-data .finance-transaction-table td {
   border-bottom: 1px solid #1a2035;
 }
+
 .finance-style--dark-data .finance-date-picker,
 .finance-style--dark-data .finance-chart-area {
   background: #0f1117;
   border: 1px solid #1a2035;
   color: #fff;
 }
+
 .finance-style--dark-data .finance-trend-badge {
   background: rgba(16, 185, 129, 0.2);
   color: #10b981;
@@ -5141,11 +5213,13 @@ body.theme-category-finance {
   background: #ffffff;
   border: none;
 }
+
 .finance-style--minimal-type .finance-balance-value {
   font-size: clamp(3.5rem, 6vw, 6rem);
   letter-spacing: -0.04em;
   font-weight: 800;
 }
+
 .finance-style--minimal-type .finance-card {
   border: none;
   border-top: 2px solid #0f172a;
@@ -5153,10 +5227,509 @@ body.theme-category-finance {
   padding-left: 0;
   padding-right: 0;
 }
+
 .finance-style--minimal-type .finance-topbar {
   border-bottom: 2px solid #0f172a;
 }
+
 .finance-style--minimal-type .finance-chart-area {
   background: transparent;
   border: 1px dashed #cbd5e1;
+}
+
+/* ---- AI PREVIEW BASE STRUCTURE ---- */
+.ai-preview-wrapper {
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(14px);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 40px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.ai-preview {
+  display: flex;
+  flex-direction: column;
+  min-height: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.4s ease;
+  position: relative;
+  background: #080C14;
+  color: #ffffff;
+  z-index: 1;
+}
+
+.ai-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transition: all 0.5s ease;
+}
+
+.ai-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 32px;
+  z-index: 10;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.ai-logo {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 800;
+  font-size: 1.2rem;
+  letter-spacing: -0.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ai-nav {
+  display: flex;
+  gap: 24px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ai-hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  transition: all 0.4s ease;
+}
+
+.ai-headline {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+  font-family: 'Space Grotesk', sans-serif;
+  transition: all 0.4s ease;
+}
+
+.ai-subheadline {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  max-width: 500px;
+  margin-bottom: 40px;
+  line-height: 1.5;
+}
+
+.ai-prompt-box {
+  width: 100%;
+  max-width: 600px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  backdrop-filter: blur(10px);
+  transition: all 0.4s ease;
+}
+
+.ai-prompt-text {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.95rem;
+}
+
+.ai-prompt-btn {
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ai-floating-panels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.ai-panel {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  opacity: 1;
+  /* Always visible for simplicity in pure CSS switching */
+}
+
+.ai-panel-1 {
+  top: 25%;
+  left: 5%;
+  width: 220px;
+}
+
+.ai-panel-2 {
+  bottom: 25%;
+  right: 5%;
+  width: 240px;
+}
+
+.ai-panel-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #a1b0cc;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ai-panel-content {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.ai-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 0 40px 40px;
+  z-index: 10;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+.ai-feature-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.4s ease;
+}
+
+.ai-feature-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+}
+
+.ai-feature-title {
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.ai-feature-desc {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.5;
+}
+
+/* ---- AI THEME VARIATIONS ---- */
+
+/* 1. Glassmorphism + Aurora Gradient */
+@keyframes aurora {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.ai-style--glass-aurora .ai-background {
+  background: linear-gradient(-45deg, #1A0533, #0A1628, #0D3B2E, #8B5CF6);
+  background-size: 400% 400%;
+  animation: aurora 15s ease infinite;
+}
+
+.ai-style--glass-aurora .ai-prompt-box,
+.ai-style--glass-aurora .ai-feature-card,
+.ai-style--glass-aurora .ai-panel {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.ai-style--glass-aurora .ai-prompt-btn {
+  background: linear-gradient(135deg, #8B5CF6, #22D3EE);
+  color: white;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+.ai-style--glass-aurora .ai-headline {
+  background: linear-gradient(to right, #FFFFFF, #A1B0CC);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.ai-style--glass-aurora .ai-feature-icon {
+  background: rgba(139, 92, 246, 0.2);
+  color: #22D3EE;
+}
+
+/* 2. Bento + AI Illustration */
+.ai-style--bento-illustration {
+  background: #0D1117;
+}
+
+.ai-style--bento-illustration .ai-hero {
+  padding-bottom: 20px;
+}
+
+.ai-style--bento-illustration .ai-feature-grid {
+  grid-template-columns: 2fr 1fr;
+  grid-auto-rows: minmax(180px, auto);
+}
+
+.ai-style--bento-illustration .ai-feature-card:first-child {
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.ai-style--bento-illustration .ai-feature-card {
+  background: #161B22;
+  border: 1px solid #30363D;
+  border-radius: 12px;
+}
+
+.ai-style--bento-illustration .ai-prompt-box {
+  background: #161B22;
+  border: 1px solid #30363D;
+}
+
+.ai-style--bento-illustration .ai-prompt-btn {
+  background: #238636;
+  color: white;
+}
+
+.ai-style--bento-illustration .ai-panel {
+  display: none;
+}
+
+/* 3. Dark UI + Neon (Cyberpunk Lite) */
+.ai-style--dark-neon {
+  background: #050810;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.ai-style--dark-neon .ai-headline {
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+
+.ai-style--dark-neon .ai-prompt-box,
+.ai-style--dark-neon .ai-feature-card,
+.ai-style--dark-neon .ai-panel {
+  background: #0D1117;
+  border: 1px solid #1A202C;
+  border-radius: 4px;
+}
+
+.ai-style--dark-neon .ai-prompt-btn {
+  background: transparent;
+  color: #39FF14;
+  border: 1px solid #39FF14;
+  box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+  border-radius: 4px;
+}
+
+.ai-style--dark-neon .ai-feature-icon {
+  background: transparent;
+  color: #39FF14;
+  border: 1px solid #39FF14;
+}
+
+/* 4. 3D Elements + Minimal */
+.ai-style--3d-minimal {
+  background: #080C14;
+}
+
+.ai-style--3d-minimal .ai-background {
+  background:
+    radial-gradient(circle at 50% 40%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.1) 0%, transparent 50%);
+}
+
+.ai-style--3d-minimal .ai-feature-grid,
+.ai-style--3d-minimal .ai-panel {
+  display: none;
+}
+
+.ai-style--3d-minimal .ai-hero {
+  padding-top: 100px;
+}
+
+.ai-style--3d-minimal .ai-headline {
+  font-size: clamp(3.5rem, 8vw, 6rem);
+}
+
+.ai-style--3d-minimal .ai-prompt-box {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+}
+
+.ai-style--3d-minimal .ai-prompt-btn {
+  border-radius: 100px;
+}
+
+@keyframes float-orb {
+  0% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translateY(-20px);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) translateY(0px);
+  }
+}
+
+.ai-style--3d-minimal::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffffff, #8B5CF6 30%, #080C14 70%);
+  box-shadow: 0 0 60px rgba(139, 92, 246, 0.6), inset 0 0 40px rgba(255, 255, 255, 0.5);
+  z-index: 0;
+  opacity: 0.8;
+  animation: float-orb 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* 5. Glass + Motion UI */
+.ai-style--glass-motion {
+  background: #0f172a;
+}
+
+.ai-style--glass-motion .ai-background {
+  background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.15), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.1), transparent 40%);
+}
+
+.ai-style--glass-motion .ai-feature-card,
+.ai-style--glass-motion .ai-prompt-box,
+.ai-style--glass-motion .ai-panel {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ai-style--glass-motion .ai-feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  100% {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+    border-color: rgba(59, 130, 246, 0.5);
+  }
+}
+
+.ai-style--glass-motion .ai-panel {
+  animation: pulse-glow 3s infinite alternate;
+}
+
+/* 6. Spatial UI + Floating Cards */
+.ai-style--spatial-floating {
+  background: #111827;
+  perspective: 1000px;
+}
+
+.ai-style--spatial-floating .ai-background {
+  background: linear-gradient(180deg, #1f2937 0%, #111827 100%);
+  filter: blur(8px);
+  transform: translateZ(-100px) scale(1.1);
+}
+
+.ai-style--spatial-floating .ai-hero {
+  transform: translateZ(20px);
+  transform-style: preserve-3d;
+}
+
+.ai-style--spatial-floating .ai-prompt-box {
+  transform: translateZ(40px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), 0 8px 24px rgba(0, 0, 0, 0.3);
+  background: rgba(31, 41, 55, 0.8);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.ai-style--spatial-floating .ai-feature-grid {
+  transform-style: preserve-3d;
+}
+
+.ai-style--spatial-floating .ai-feature-card {
+  transform: translateZ(10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  background: rgba(31, 41, 55, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ai-style--spatial-floating .ai-panel {
+  transform: translateZ(60px) rotateY(-5deg) rotateX(5deg);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+  background: rgba(31, 41, 55, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 900px) {
+  .ai-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-panel {
+    display: none !important;
+  }
 }
