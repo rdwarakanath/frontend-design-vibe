@@ -5,12 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Explore Clean & Structural design styles with live previews. Discover Minimalism, Bento Grid, Swiss Style, Material Design, and more.">
-  <title>Design Style Explorer – Clean &amp; Structural</title>
+    content="Design Decision System for Vibe Coders — explore Design Styles and Category-specific UI patterns with live previews, documentation, and prompts.">
+  <title>Design Style Explorer – Design Decision System</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -22,84 +22,110 @@
   <div class="bg-orb bg-orb--3"></div>
 
   <div class="page-wrapper">
+
+    <!-- ★ MODE TOGGLE — NEW ★ -->
+    <div class="mode-toggle-bar" id="mode-toggle-bar" role="tablist" aria-label="Explorer mode">
+      <button class="mode-toggle-btn active" id="mode-btn-styles" role="tab" aria-selected="true"
+        data-mode="styles">
+        <span class="mode-toggle-btn__icon">✦</span> Styles
+      </button>
+      <button class="mode-toggle-btn" id="mode-btn-categories" role="tab" aria-selected="false"
+        data-mode="categories">
+        <span class="mode-toggle-btn__icon">💼</span> Categories
+      </button>
+    </div>
+
     <!-- Navigation Arrows -->
-    <button class="nav-arrow nav-arrow--left" id="nav-arrow-left" aria-label="Previous Category">
+    <button class="nav-arrow nav-arrow--left" id="nav-arrow-left" aria-label="Previous">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
         stroke-linecap="round" stroke-linejoin="round">
         <polyline points="15 18 9 12 15 6"></polyline>
       </svg>
     </button>
-    <button class="nav-arrow nav-arrow--right" id="nav-arrow-right" aria-label="Next Category">
+    <button class="nav-arrow nav-arrow--right" id="nav-arrow-right" aria-label="Next">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
         stroke-linecap="round" stroke-linejoin="round">
         <polyline points="9 18 15 12 9 6"></polyline>
       </svg>
     </button>
 
-    <!-- Header -->
-    <header class="page-header" id="page-header">
-      <p class="page-header__tag">✦ Design Style Explorer</p>
-      <h1 class="page-header__title">
-        <span id="category-title-text">Clean &amp; Structural</span><br>
-        <span class="page-header__title--accent">Design Styles</span>
-      </h1>
-      <p class="page-header__subtitle">
-        Click a style below to see it in action — live preview with full breakdown.
-      </p>
-    </header>
+    <!-- ============================================
+         STYLES MODE (existing — fully preserved)
+         ============================================ -->
+    <div id="styles-mode">
+      <!-- Header -->
+      <header class="page-header" id="page-header">
+        <p class="page-header__tag">✦ Design Style Explorer</p>
+        <h1 class="page-header__title">
+          <span id="category-title-text">Clean &amp; Structural</span><br>
+          <span class="page-header__title--accent">Design Styles</span>
+        </h1>
+        <p class="page-header__subtitle">
+          Click a style below to see it in action — live preview with full breakdown.
+        </p>
+      </header>
 
-    <!-- Style Buttons Grid (Populated by JS) -->
-    <section class="style-grid" id="style-grid" aria-label="Style selection buttons">
-      <!-- Buttons will be rendered here dynamically -->
-    </section>
+      <!-- Style Buttons Grid (Populated by JS) -->
+      <section class="style-grid" id="style-grid" aria-label="Style selection buttons">
+        <!-- Buttons will be rendered here dynamically -->
+      </section>
 
-    <!-- Live Preview Section -->
-    <section class="preview-section" id="preview-section" aria-label="Style live preview">
-      <div class="preview-label">
-        <span class="preview-label__dot"></span>
-        Live Preview — <span id="preview-style-name">Minimalism</span>
-      </div>
-      <div class="preview-container" id="preview-container">
-        <!-- The ONE consistent HTML structure — only CSS classes change -->
-        <div class="preview" id="preview-box">
-          <div class="preview__header">
-            <h2 class="preview__title">Sample Dashboard</h2>
-            <p class="preview__subtitle">A preview of the selected design style applied to a common UI pattern.</p>
-          </div>
-          <div class="preview__cards">
-            <div class="preview__card">
-              <div class="preview__card-icon">📊</div>
-              <h3 class="preview__card-title">Analytics</h3>
-              <p class="preview__card-text">Track your performance metrics with beautiful, clear visualisations.</p>
-              <button class="preview__card-btn">View Details</button>
+      <!-- Live Preview Section -->
+      <section class="preview-section" id="preview-section" aria-label="Style live preview">
+        <div class="preview-label">
+          <span class="preview-label__dot"></span>
+          Live Preview — <span id="preview-style-name">Minimalism</span>
+        </div>
+        <div class="preview-container" id="preview-container">
+          <!-- The ONE consistent HTML structure — only CSS classes change -->
+          <div class="preview" id="preview-box">
+            <div class="preview__header">
+              <h2 class="preview__title">Sample Dashboard</h2>
+              <p class="preview__subtitle">A preview of the selected design style applied to a common UI pattern.</p>
             </div>
-            <div class="preview__card">
-              <div class="preview__card-icon">🎯</div>
-              <h3 class="preview__card-title">Goals</h3>
-              <p class="preview__card-text">Set, track, and achieve your targets with structured progress reports.</p>
-              <button class="preview__card-btn">Set Goals</button>
-            </div>
-            <div class="preview__card">
-              <div class="preview__card-icon">⚙️</div>
-              <h3 class="preview__card-title">Settings</h3>
-              <p class="preview__card-text">Configure your workspace, preferences, and notification options.</p>
-              <button class="preview__card-btn">Configure</button>
+            <div class="preview__cards">
+              <div class="preview__card">
+                <div class="preview__card-icon">📊</div>
+                <h3 class="preview__card-title">Analytics</h3>
+                <p class="preview__card-text">Track your performance metrics with beautiful, clear visualisations.</p>
+                <button class="preview__card-btn">View Details</button>
+              </div>
+              <div class="preview__card">
+                <div class="preview__card-icon">🎯</div>
+                <h3 class="preview__card-title">Goals</h3>
+                <p class="preview__card-text">Set, track, and achieve your targets with structured progress reports.</p>
+                <button class="preview__card-btn">Set Goals</button>
+              </div>
+              <div class="preview__card">
+                <div class="preview__card-icon">⚙️</div>
+                <h3 class="preview__card-title">Settings</h3>
+                <p class="preview__card-text">Configure your workspace, preferences, and notification options.</p>
+                <button class="preview__card-btn">Configure</button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Markdown Content Section -->
-    <section class="content-section" id="content-section" aria-label="Style details">
-      <div class="content-box" id="content-box">
-        <div class="content-loading" id="content-loading">
-          <div class="content-loading__spinner"></div>
-          <span>Loading style details…</span>
+      <!-- Markdown Content Section -->
+      <section class="content-section" id="content-section" aria-label="Style details">
+        <div class="content-box" id="content-box">
+          <div class="content-loading" id="content-loading">
+            <div class="content-loading__spinner"></div>
+            <span>Loading style details…</span>
+          </div>
+          <div class="content-rendered" id="content-rendered"></div>
         </div>
-        <div class="content-rendered" id="content-rendered"></div>
-      </div>
-    </section>
+      </section>
+    </div>
+    <!-- end #styles-mode -->
+
+    <!-- ============================================
+         CATEGORIES MODE — injected by JS
+         ============================================ -->
+    <div id="categories-mode" style="display:none;" aria-live="polite">
+      <!-- Category HTML injected here by app.js -->
+    </div>
 
     <!-- Footer -->
     <footer class="page-footer" id="page-footer">

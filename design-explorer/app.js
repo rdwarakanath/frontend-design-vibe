@@ -2546,12 +2546,24 @@ function loadContent(styleKey) {
 
 // ---- Event Listeners ----
 document.getElementById('nav-arrow-left').addEventListener('click', () => {
-  currentCategoryIndex = (currentCategoryIndex - 1 + categories.length) % categories.length;
-  renderCategory(currentCategoryIndex);
+  if (currentAppMode === 'styles') {
+    currentCategoryIndex = (currentCategoryIndex - 1 + categories.length) % categories.length;
+    renderCategory(currentCategoryIndex);
+  } else {
+    currentCatExplorerIndex = (currentCatExplorerIndex - 1 + categoryRegistry.length) % categoryRegistry.length;
+    renderCategoryMode(currentCatExplorerIndex);
+    document.body.className = 'theme-category-' + categoryRegistry[currentCatExplorerIndex].id;
+  }
 });
 document.getElementById('nav-arrow-right').addEventListener('click', () => {
-  currentCategoryIndex = (currentCategoryIndex + 1) % categories.length;
-  renderCategory(currentCategoryIndex);
+  if (currentAppMode === 'styles') {
+    currentCategoryIndex = (currentCategoryIndex + 1) % categories.length;
+    renderCategory(currentCategoryIndex);
+  } else {
+    currentCatExplorerIndex = (currentCatExplorerIndex + 1) % categoryRegistry.length;
+    renderCategoryMode(currentCatExplorerIndex);
+    document.body.className = 'theme-category-' + categoryRegistry[currentCatExplorerIndex].id;
+  }
 });
 
 // ---- Initial Load ----
@@ -2560,3 +2572,780 @@ document.addEventListener('DOMContentLoaded', () => {
   contentRendered.style.transition = 'opacity 0.3s ease';
   renderCategory(0);
 });
+
+/* ============================================
+   CATEGORY EXPLORER MODE LOGIC
+   ============================================ */
+
+const modeBtnStyles = document.getElementById('mode-btn-styles');
+const modeBtnCategories = document.getElementById('mode-btn-categories');
+const stylesModeContainer = document.getElementById('styles-mode');
+const categoriesModeContainer = document.getElementById('categories-mode');
+
+let currentAppMode = 'styles'; // 'styles' or 'categories'
+
+modeBtnStyles.addEventListener('click', () => switchMode('styles'));
+modeBtnCategories.addEventListener('click', () => switchMode('categories'));
+
+function switchMode(mode) {
+  if (currentAppMode === mode) return;
+  currentAppMode = mode;
+
+  if (mode === 'styles') {
+    modeBtnStyles.classList.add('active');
+    modeBtnCategories.classList.remove('active');
+    categoriesModeContainer.style.display = 'none';
+    stylesModeContainer.style.display = 'block';
+
+    // Restore styling theme
+    document.body.className = categories[currentCategoryIndex].themeClass;
+
+  } else {
+    modeBtnCategories.classList.add('active');
+    modeBtnStyles.classList.remove('active');
+    stylesModeContainer.style.display = 'none';
+    categoriesModeContainer.style.display = 'block';
+
+    // Set category mode theme
+    document.body.className = 'theme-category-' + categoryRegistry[currentCatExplorerIndex].id;
+
+    // Load category registry
+    renderCategoryMode(currentCatExplorerIndex);
+  }
+}
+
+/* --- Category Registry Data --- */
+let currentCatExplorerIndex = 0;
+
+const saasCategoryData = {
+  id: 'saas',
+  title: '💼 SaaS / Productivity / Tools',
+  covers: 'SaaS platforms, B2B tools, workflow apps, admin panels, dashboards, project management tools, CRM tools, dev tools',
+  coreGoal: 'Usability + Clarity + Structure + Scalability',
+  options: [
+    {
+      key: 'minimal-bento',
+      label: 'Minimal + Bento',
+      cssClass: 'saas-style--minimal-bento',
+      doc: {
+        why: ['Minimal → strips away all distraction, keeps cognitive load near zero', 'Bento → organizes multiple features into a digestible, scannable card grid', 'Together they deliver a professional, approachable tool UI with no learning curve'],
+        bestFor: '👉 CLARITY + STRUCTURE',
+        useWhen: ['Building multi-feature SaaS dashboards', 'Displaying many tools or modules at once', 'Users need to navigate between different sections quickly'],
+        avoidWhen: ['The product has a single focused action (a simple converter or timer)', 'You need deep emotional storytelling', 'Highly creative or artistic brand positioning'],
+        keyUi: ['Bento card grid as the primary layout system', 'Clean sidebar or top nav with icon + label', 'Subtle card shadows with generous padding', 'Clear section headers and status indicators'],
+        visual: ['Off-white or very light gray background', 'Neutral type (dark gray/charcoal) with one brand accent', 'Thin, clean card borders or soft box shadows', 'Inter, DM Sans, or Outfit as primary typeface'],
+        mistakes: ['Making bento cards too equal in size — vary the grid to create hierarchy', 'Using more than 2 accent colors across cards', 'Adding decorative elements that compete with the data inside cards'],
+        notes: ['Use CSS Grid with grid-template-areas to define named Bento zones', 'Make the hero/primary card 2–3x the size of secondary cards', 'Keep all interactive elements (buttons, inputs) visually consistent across every card'],
+        prompt: 'Design a clean SaaS dashboard using a minimal Bento grid layout. Organize core features into varied-size cards with generous whitespace and a neutral color palette. Prioritize scannability and fast navigation. Use a light background, soft card shadows, and consistent typography throughout.'
+      }
+    },
+    {
+      key: 'minimal-data',
+      label: 'Minimal + Data UI',
+      cssClass: 'saas-style--minimal-data',
+      doc: {
+        why: ['Minimal → removes all visual noise so data can breathe', 'Data UI → presents metrics, tables, and charts in a structured, readable format', 'Together they create the gold standard for serious productivity tools'],
+        bestFor: '👉 USABILITY + PRECISION',
+        useWhen: ['Building project management or task tracking apps', 'The UI needs charts, tables, progress bars, and stat cards', 'Users are power users who need information density'],
+        avoidWhen: ['Marketing or promotional landing pages', 'Creative or artistic audiences', 'First-time users who need strong onboarding visuals'],
+        keyUi: ['Stat/KPI cards at the top', 'Data tables with sorting and filtering', 'Progress indicators and status badges', 'Compact sidebar navigation'],
+        visual: ['White or very light gray base', 'Dark text with high contrast', 'Blue or teal as the data accent color', 'Monospace or tabular-number fonts for figures'],
+        mistakes: ['Overloading every screen with every data point — prioritize key metrics', 'Using colorful charts that clash with the minimal palette', 'Forgetting empty and loading states for data components'],
+        notes: ['Use CSS custom properties to define chart color scales that stay within your palette', 'Implement skeleton loaders for all data-heavy components', 'Always pair a number with a label AND a trend indicator (up/down arrow, % change)'],
+        prompt: 'Design a minimal SaaS productivity interface with strong data UI components. Include stat cards, a data table with filters, and a progress tracker. Use a clean white layout with high-contrast typography and a single blue accent. Focus on dense but digestible information architecture.'
+      }
+    },
+    {
+      key: 'glass-minimal',
+      label: 'Glassmorphism (Light)',
+      cssClass: 'saas-style--glass-minimal',
+      doc: {
+        why: ['Light Glassmorphism → adds a premium, modern feel without the heaviness of dark glass', 'Minimal → keeps the interface readable and professional', 'Together they make the tool feel modern and trustworthy without being flashy'],
+        bestFor: '👉 PREMIUM FEEL + APPROACHABILITY',
+        useWhen: ['Building a SaaS product that needs to feel modern but not overwhelming', 'Targeting professionals who appreciate subtle sophistication', 'Creating login/onboarding screens, modal dialogs, and overlay panels'],
+        avoidWhen: ['Performance is a strict requirement (blur is GPU-expensive)', 'Accessibility contrast requirements are strict (AA/AAA)', 'The UI has large amounts of text content (blur hurts readability)'],
+        keyUi: ['Frosted glass cards on a soft gradient background', 'Clean, minimal navigation bar', 'Overlay modals and panels with glass treatment', 'Subtle inner borders (rgba white stroke)'],
+        visual: ['Soft light background (very pale blue/lavender or white)', 'Cards: background: rgba(255,255,255,0.6), backdrop-filter: blur(12px)', 'Thin glass borders: border: 1px solid rgba(255,255,255,0.4)', 'Clean dark typography over the frosted surface'],
+        mistakes: ['Applying glassmorphism to the entire layout background (only use on cards and panels)', 'Using too much blur on elements with dense text', 'Pairing glass with saturated, dark backgrounds (ruins the light glass effect)'],
+        notes: ['Keep blur radius between 8px–16px; beyond that, performance degrades significantly', 'Always test glass contrast ratios with actual content inside the card', 'Use a very subtle gradient background (two close hues) behind the glass for the effect to read well'],
+        prompt: 'Design a modern SaaS interface using light glassmorphism. Apply frosted glass treatment to cards, panels, and modals over a soft gradient background. Keep the overall layout minimal and professional. Use light rgba fills, subtle blur, and thin white borders to create a premium, airy feel.'
+      }
+    },
+    {
+      key: 'bento-data',
+      label: 'Bento + Data UI',
+      cssClass: 'saas-style--bento-data',
+      doc: {
+        why: ['Bento → provides a scalable, modular structure for organizing multiple data views', 'Data UI → fills each cell with meaningful, actionable information', 'Together they are the dominant pattern in modern enterprise and SaaS dashboards'],
+        bestFor: '👉 STRUCTURE + SCANNABILITY',
+        useWhen: ['Building admin panels, dashboards, and analytics views', 'Displaying multiple KPIs and data widgets simultaneously', 'Users need a high-density overview at a glance'],
+        avoidWhen: ['Simple task-completion flows (forms, wizards)', 'Marketing pages or public-facing landing pages', 'Products with a single primary action'],
+        keyUi: ['CSS Grid Bento layout with named zones', 'Inline mini-charts (sparklines, donut, bar)', 'Status and badge components', 'Filter bar above the grid'],
+        visual: ['White or very light gray background', 'Muted brand accent for chart highlights', 'Consistent card size with a defined sizing scale (1x, 2x, 4x)', 'Clean tabular typography inside data cells'],
+        mistakes: ['Making all bento cards identical sizes (defeats the purpose of bento hierarchy)', 'Overloading individual cards with too much data — one insight per card', 'Inconsistent spacing between cards'],
+        notes: ['Define a base card unit (e.g., 240px × 200px) and build all larger cards as multiples', 'Each card should have exactly ONE primary metric and ONE supporting trend', 'Always design the grid for both collapsed and expanded states'],
+        prompt: 'Design a SaaS analytics dashboard using a Bento grid with embedded data UI components. Organize multiple KPI cards, sparklines, a primary chart, and a data table into a cohesive, scalable grid layout. Use a clean light palette, consistent card sizing, and strong typographic hierarchy for numbers.'
+      }
+    },
+    {
+      key: 'flat-card',
+      label: 'Flat + Card-Based',
+      cssClass: 'saas-style--flat-card',
+      doc: {
+        why: ['Flat → removes all depth illusions for a clean, unambiguous visual system', 'Card-based → groups related content into discreet, tactile containers', 'Together they create highly accessible, fast-rendering productivity UIs'],
+        bestFor: '👉 ACCESSIBILITY + SPEED',
+        useWhen: ['Building CRM tools, task managers, and project boards', 'Targeting users who prefer no-frills professional interfaces', 'Performance is a top priority (mobile SaaS)'],
+        avoidWhen: ['You need to convey premium quality or luxury', 'The product has a strong visual brand personality', 'Marketing sections require visual richness'],
+        keyUi: ['Flat cards with solid borders (no shadows)', 'Status color tags and priority labels', 'List views and Kanban-style columns', 'Clean icon set (Phosphor, Lucide, or Heroicons)'],
+        visual: ['Pure white background', '1px solid gray card borders', 'Bright status colors (red/green/yellow/blue) used sparingly as tags only', 'System-native or geometric sans-serif typeface'],
+        mistakes: ['Flat doesn\'t mean boring — use bold color blocks and strong type contrast', 'Avoid removing all visual cues for interactivity; use color or underline as affordance', 'Don\'t flatten icons to the point of being unrecognizable at small sizes'],
+        notes: ['Use border-left: 4px solid [status-color] on cards as a non-intrusive status indicator', 'Implement drag-and-drop affordances with subtle on-hover elevation (a single box shadow)', 'Pair flat style with a strong iconography system; icons do the heavy visual lifting'],
+        prompt: 'Design a flat, card-based SaaS productivity UI. Use solid-border cards, bold status labels, and a clean white background. Implement a Kanban or list view as the primary interaction pattern. Keep all visual depth minimal — rely on color and type weight for hierarchy rather than shadows or gradients.'
+      }
+    },
+    {
+      key: 'minimal-type',
+      label: 'Minimal + Typography',
+      cssClass: 'saas-style--minimal-type',
+      doc: {
+        why: ['Minimal layout → gives the large type room to breathe and command attention', 'Massive Typography → communicates hierarchy and brand confidence instantly', 'Together they make product messaging feel confident and bold for SaaS landing pages'],
+        bestFor: '👉 IMPACT + BRAND CLARITY',
+        useWhen: ['SaaS landing pages, hero sections, and onboarding screens', 'Communicating a single powerful value proposition', 'The product has a strong brand voice'],
+        avoidWhen: ['Complex dashboard screens with multiple data points', 'Users who are not native speakers (massive type reduces space for explanation)', 'Products with long or complex names/taglines'],
+        keyUi: ['Hero heading at 80–140px with tight leading', 'Minimal supporting subtext at modest size', 'Single strong CTA button', 'Almost no other visual elements in the hero zone'],
+        visual: ['White or off-white background', 'Near-black display type', 'One accent color used only on the CTA', 'Variable font or a strong geometric display typeface (Clash Display, Space Grotesk)'],
+        mistakes: ['Using a massive font without adjusting letter-spacing (letter-spacing: -0.03em at large sizes is essential)', 'Choosing a decorative typeface that sacrifices legibility at scale', 'Adding too many supporting visual elements that compete with the type'],
+        notes: ['Use CSS clamp() for fluid responsive type: font-size: clamp(3rem, 10vw, 9rem)', 'Apply -0.02em to -0.04em letter-spacing at hero scale for professional tightness', 'Split the headline into two weight zones (light thin line + bold thick line) for visual rhythm'],
+        prompt: 'Design a minimal SaaS landing page hero section dominated by massive, bold typography. Let the headline command the entire viewport. Use near-black type on a white background, tight letter-spacing, and a single bold CTA. Keep all other visual elements stripped away to let the typography carry the full visual weight.'
+      }
+    }
+  ],
+  antipatterns: [
+    '❌ <strong>Glassmorphism on everything</strong> → decimates readability and performance on complex screens',
+    '❌ <strong>Brutalism or maximalism</strong> → destroys the trust and professionalism users expect from tools',
+    '❌ <strong>Too many accent colors</strong> → breaks visual consistency and confuses status hierarchies',
+    '❌ <strong>Animation-heavy UIs</strong> → distracts power users trying to complete tasks efficiently',
+    '❌ <strong>Decorative hero sections on dashboard screens</strong> → wastes vertical space users need for actual data'
+  ]
+};
+
+const financeCategoryData = {
+  id: 'finance',
+  title: '💰 Finance / Data / Analytics',
+  covers: 'Fintech apps, crypto platforms, banking dashboards, investment platforms, analytics tools, data-heavy apps',
+  coreGoal: 'Trust + Precision + Readability + Structure',
+  options: [
+    {
+      key: 'minimal-data',
+      label: 'Minimal + Data UI',
+      cssClass: 'finance-style--minimal-data',
+      doc: {
+        why: ['Minimal → eliminates visual noise so complex financial data can dominate without distraction', 'Data UI → structures raw numbers into charts, tables, and stat cards that communicate instantly', 'Together they create the foundational pattern of every trustworthy finance product'],
+        bestFor: '👉 TRUST + CLARITY',
+        useWhen: ['Building banking dashboards and investment tracking apps', 'Displaying complex analytics, trend data, or transactional history', 'Users are professionals who need data density without cognitive overload'],
+        avoidWhen: ['You want emotional engagement or creative storytelling', 'The product is consumer-facing and needs strong visual warmth', 'You\'re building a marketing/landing page, not a dashboard'],
+        keyUi: ['KPI stat cards with trend indicators (arrow + percentage)', 'Line and bar charts with labeled axes', 'Sortable, filterable data tables', 'Date range picker and filter controls'],
+        visual: ['Pure white or very light gray (#F7F8FA) background', 'Dark charcoal text (#1A1D23) for all data labels', 'Single brand blue or green as the chart accent color', 'Tabular-figure monospace font for numbers (e.g., IBM Plex Mono, Roboto Mono)'],
+        mistakes: ['Using multiple chart colors that confuse the data hierarchy — stick to one primary + one secondary color', 'Forgetting to show percentage change alongside raw numbers', 'Missing loading skeletons for data components (jarring layout shift on load)'],
+        notes: ['Always pair every number with a label, a unit, and a trend direction', 'Use font-variant-numeric: tabular-nums so numbers align cleanly in tables', 'Define a strict spacing scale so data density never feels cluttered'],
+        prompt: 'Design a clean finance dashboard using a minimal layout with strong typography and a data-first UI. Include KPI stat cards, a primary line chart with labeled axes, and a sortable transaction table. Use high contrast, tabular number fonts, and a single blue accent. Avoid all decorative elements — let the data dominate.'
+      }
+    },
+    {
+      key: 'glass-minimal',
+      label: 'Glassmorphism + Minimal',
+      cssClass: 'finance-style--glass-minimal',
+      doc: {
+        why: ['Glassmorphism → adds a modern, premium fintech aesthetic that feels sleek and innovative', 'Minimal → keeps the glass surfaces readable and avoids the "too futuristic" trap', 'Together they signal that the product is both trustworthy and ahead of its time'],
+        bestFor: '👉 TRUST + MODERN FEEL',
+        useWhen: ['Building fintech startups and neobanking apps', 'Targeting younger, tech-savvy users who expect modern UI', 'Creating login screens, card interfaces, and modal overlays'],
+        avoidWhen: ['Low-end device performance is a concern (backdrop-filter is GPU-heavy)', 'Accessibility contrast is a strict legal requirement', 'The interface is text-heavy (regulatory disclosures, tables)'],
+        keyUi: ['Glass cards displaying account balance and portfolio summary', 'Frosted navigation bar', 'Modal dialogs and action sheets with glass treatment', 'Subtle glow highlights around key numbers'],
+        visual: ['Deep navy or dark purple gradient background (#0D1B2A → #1B2A4A)', 'Cards: background: rgba(255,255,255,0.08), backdrop-filter: blur(16px)', 'Thin border: border: 1px solid rgba(255,255,255,0.15)', 'White text with light gray secondary labels'],
+        mistakes: ['Applying glass to backgrounds — only use on cards, panels, and overlays', 'Too much blur (>20px) making card contents unreadable', 'Low contrast white text on a light section of the gradient background'],
+        notes: ['Use backdrop-filter: blur(12px) saturate(180%) for a richer glass effect', 'Always test glass readability against both the lightest and darkest parts of the gradient', 'Keep the background gradient subtle — two tones of the same dark hue, not two clashing colors'],
+        prompt: 'Design a modern fintech UI using dark glassmorphism with subtle blur effects on a deep navy gradient background. Apply glass treatment to account cards and stat panels. Combine it with a minimal layout and clean white typography. Highlight key financial figures with soft glow accents.'
+      }
+    },
+    {
+      key: 'bento-data',
+      label: 'Bento + Data UI',
+      cssClass: 'finance-style--bento-data',
+      doc: {
+        why: ['Bento → structures multiple data widgets into a scalable, modular grid', 'Data UI → fills each Bento cell with exactly one high-value insight or chart', 'Together they power the gold-standard layout of enterprise analytics platforms'],
+        bestFor: '👉 STRUCTURE + SCANNABILITY',
+        useWhen: ['Building financial dashboards, admin panels, and multi-metric views', 'Users need a bird\'s-eye overview of multiple KPIs simultaneously', 'The product serves analysts, traders, or financial managers'],
+        avoidWhen: ['Simple single-metric tracking apps', 'Story-driven or narrative financial reporting', 'Consumer-facing products where data density feels intimidating'],
+        keyUi: ['Bento grid with 1x, 2x, and 4x card sizes', 'Inline sparkline charts inside smaller cards', 'A full-width primary chart in the hero card', 'Status badges (green/red) for portfolio or market indicators'],
+        visual: ['White or light (#F5F7FA) background', 'Strong card borders or very light shadows', 'One blue and one green accent (for bullish/bearish or income/expense)', 'Tight, compact typography with clear hierarchy'],
+        mistakes: ['All cards the same size — defeats Bento\'s core purpose of visual hierarchy', 'Too many data points per card — one primary metric per card, maximum', 'Inconsistent padding inside cards across the grid'],
+        notes: ['Start with a 12-column grid and define named grid areas for each card zone', 'Hero card (full width, 2x height) should always be the primary chart', 'Use min-height constraints on cards so they don\'t collapse when data is absent'],
+        prompt: 'Design a finance analytics dashboard using a Bento grid layout. Organize KPI cards, sparklines, a primary portfolio chart, and a transactions table into a modular grid. Use a clean light background, high-contrast numbers, and color-coded status indicators for gains and losses. One primary insight per card.'
+      }
+    },
+    {
+      key: 'neumorphism-light',
+      label: 'Neumorphism (Light)',
+      cssClass: 'finance-style--neumorphism-light',
+      doc: {
+        why: ['Light Neumorphism → creates a soft, tactile quality that feels approachable and calm — good for personal finance', 'Minimal → ensures the interface doesn\'t feel heavy or claustrophobic', 'Together they\'re ideal for consumer personal finance apps that need to feel friendly, not corporate'],
+        bestFor: '👉 APPROACHABILITY + TACTILE FEEL',
+        useWhen: ['Building personal budgeting apps, savings trackers, or expense managers', 'Targeting non-technical consumers who find traditional finance UIs intimidating', 'Creating a calm, friendly alternative to cold banking aesthetics'],
+        avoidWhen: ['Enterprise-grade data dashboards (neumorphism doesn\'t scale to data density)', 'Dark mode interfaces (neumorphism only works on light backgrounds)', 'Accessibility-first products (neumorphic contrast ratios often fail WCAG AA)'],
+        keyUi: ['Soft extruded cards for account balance displays', 'Neumorphic toggle switches and buttons', 'Circular progress indicators for savings goals', 'Subtle recessed input fields'],
+        visual: ['Flat light gray base (#E0E5EC)', 'Shadow pairs: box-shadow: 6px 6px 12px #B8BEC7, -6px -6px 12px #FFFFFF', 'Minimal use of color — single green or blue accent for positive states only', 'Rounded corners on all elements (border-radius: 16px)'],
+        mistakes: ['Failing contrast audits — neumorphic elements must still meet AA contrast minimums', 'Using neumorphism in dark mode (the shadow logic breaks entirely)', 'Applying neumorphic style to complex multi-state data components'],
+        notes: ['Limit neumorphic effects to 2–3 key UI components — don\'t apply it globally', 'Use convex style for interactive elements (buttons) and concave for input fields', 'Always layer a color accent on top of neumorphic components to maintain accessibility'],
+        prompt: 'Design a personal finance app UI using soft light neumorphism on a pale gray background. Apply extruded card styling to account balance displays, savings goal trackers, and budget categories. Keep the overall layout minimal and calm. Use a single green accent color for positive states and progress indicators.'
+      }
+    },
+    {
+      key: 'dark-data',
+      label: 'Dark UI + Data Viz',
+      cssClass: 'finance-style--dark-data',
+      doc: {
+        why: ['Dark UI → reduces eye strain for power users who stare at data all day, and makes charts pop with brilliant contrast', 'Data Visualization → rich, colorful charts feel even more vibrant and impactful against a dark background', 'Together they dominate professional trading, crypto, and analytics interfaces'],
+        bestFor: '👉 POWER USER FOCUS + VISUAL IMPACT',
+        useWhen: ['Building trading terminals, crypto dashboards, and real-time analytics', 'Targeting power users and analysts who use the product for hours at a time', 'You need charts and data visualizations to be the visual centerpiece'],
+        avoidWhen: ['Consumer-facing banking products that need to feel approachable and trustworthy', 'Products used primarily in bright office environments', 'Users who need large amounts of text content (dark mode reduces long-read comfort)'],
+        keyUi: ['Candlestick or area charts as hero visual elements', 'Dense data tables with alternating row colors', 'Real-time metric tickers', 'Color-coded status indicators (green for gain, red for loss)'],
+        visual: ['Deep background: #0A0E1A or #0F1117', 'Card surfaces: #151B2C or #1A2035', 'Chart accent palette: electric blue, emerald green, hot coral', 'Pure white or very light gray text for primary labels'],
+        mistakes: ['Pure black (#000000) background — causes halation and fatigue; use very dark navy instead', 'Too many chart colors that lose meaning — define a strict 4-color data palette', 'Low contrast secondary text that disappears on dark surfaces'],
+        notes: ['Use #F0F4FF (slightly cool white) for primary text, not pure #FFFFFF — less harsh', 'Define elevation through lightness: background layer → card layer → overlay layer each ~10% lighter', 'Apply a very subtle grid overlay on chart backgrounds for depth without distraction'],
+        prompt: 'Design a dark-mode finance analytics dashboard with rich data visualizations. Use a deep navy background with slightly lighter card surfaces. Feature a large candlestick or area chart as the hero element, surrounded by dense KPI cards and a real-time data ticker. Use a vivid chart palette of electric blue, green, and coral on the dark surface.'
+      }
+    },
+    {
+      key: 'minimal-type',
+      label: 'Minimal + Typography',
+      cssClass: 'finance-style--minimal-type',
+      doc: {
+        why: ['Minimal layout → makes large financial figures the undisputed hero of every screen', 'Numbers-first typography → treats financial data as expressive design elements, not just labels', 'Together they create bold, confident financial UIs that communicate precision and authority'],
+        bestFor: '👉 CONFIDENCE + DATA AS DESIGN',
+        useWhen: ['Investment portfolio overviews and wealth management summaries', 'Financial reporting screens where one key number tells the story', 'Product moments where the number itself is the achievement (e.g., "You saved $1,200 this month")'],
+        avoidWhen: ['Complex multi-metric dashboards requiring simultaneous comparison', 'B2B tools where relational data matters more than single figures', 'Products with unreliable or frequently empty data states'],
+        keyUi: ['Hero number displayed at 64–120px as the primary UI element', 'Supporting label and trend badge flanking the number', 'Minimal surrounding context — almost no other competing elements', 'One clean CTA underneath the hero figure'],
+        visual: ['Off-white or pure white background', 'Near-black or deep navy hero number', 'One green (positive) or red (negative) accent used only on trend indicators', 'Premium tabular typeface: Neue Haas Grotesk, DM Sans, or Inter Display'],
+        mistakes: ['Choosing a display font that isn\'t designed for tabular numbers (digits misalign)', 'Using the large number without clear unit and context labels', 'Forgetting the empty state when no data is available yet'],
+        notes: ['Apply font-feature-settings: "tnum" to ensure tabular number alignment', 'Set the hero number with line-height: 1 and tight letter-spacing for maximum impact', 'Animate the number counting up on load using a simple JS counter for delight'],
+        prompt: 'Design a minimal finance overview screen where the primary financial figure dominates the layout at massive scale. Treat the number as the main design element with a supporting trend indicator and context label. Keep everything else stripped to near-zero. Use a premium tabular typeface, a white background, and a single accent color for trend states.'
+      }
+    }
+  ],
+  antipatterns: [
+    '❌ <strong>Brutalism or maximalism</strong> → destroys trust; finance UIs must feel controlled and precise',
+    '❌ <strong>Too many colors across charts</strong> → loses the data hierarchy; 3–4 chart colors maximum',
+    '❌ <strong>Decorative illustration-heavy layouts</strong> → makes the product feel playful when it needs to feel serious',
+    '❌ <strong>Animations on financial figures</strong> → can feel gimmicky and undermine data credibility',
+    '❌ <strong>Low contrast on dark dashboards</strong> → a critical failure in data-dense environments where every label matters'
+  ]
+};
+
+const categoryRegistry = [saasCategoryData, financeCategoryData]; // Extensible for future categories
+let currentSaasOption = null;
+let currentFinanceOption = null;
+
+function renderCategoryMode(index) {
+  const catData = categoryRegistry[index];
+
+  if (catData.id === 'saas') {
+    renderSaasCategoryHTML(catData);
+  } else if (catData.id === 'finance') {
+    renderFinanceCategoryHTML(catData);
+  }
+}
+
+function renderSaasCategoryHTML(catData) {
+  categoriesModeContainer.innerHTML = `
+    <div class="cat-mode">
+      <div class="cat-header">
+        <h2 class="cat-header__title">${catData.title}</h2>
+        <div class="cat-header__badges">
+          <div class="cat-badge"><strong>👉 Covers:</strong> ${catData.covers}</div>
+          <div class="cat-badge"><strong>🧠 Core Goal:</strong> ${catData.coreGoal}</div>
+        </div>
+      </div>
+      
+      <div class="cat-options-grid" id="saas-options-grid"></div>
+      
+      <div class="saas-preview-wrapper">
+        <div class="preview-label">
+          <span class="preview-label__dot"></span>
+          Live Preview — <span id="saas-preview-label">Minimal + Bento</span>
+        </div>
+        
+        <div class="saas-preview" id="saas-preview-box">
+          <div class="saas-sidebar">
+            <div class="saas-logo">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              AcmeCorp
+            </div>
+            <div class="saas-nav">
+              <div class="saas-nav-item">🏠 Overview</div>
+              <div class="saas-nav-item">📊 Analytics</div>
+              <div class="saas-nav-item">👥 Customers</div>
+              <div class="saas-nav-item">⚙️ Settings</div>
+            </div>
+            <div class="saas-sidebar-footer">
+              Pro Plan (Active)
+            </div>
+          </div>
+          <div class="saas-main">
+            <div class="saas-topbar">
+              <div class="saas-breadcrumb">Overview / Analytics</div>
+              <div class="saas-actions">
+                <button class="saas-btn">Export</button>
+                <button class="saas-btn saas-btn--primary">New Report</button>
+              </div>
+            </div>
+            <div class="saas-kpi-row">
+              <div class="saas-kpi-card">
+                <div class="saas-kpi-label">Revenue</div>
+                <div class="saas-kpi-value">$45,231</div>
+              </div>
+              <div class="saas-kpi-card">
+                <div class="saas-kpi-label">Active Users</div>
+                <div class="saas-kpi-value">2,405</div>
+              </div>
+              <div class="saas-kpi-card">
+                <div class="saas-kpi-label">Conversion</div>
+                <div class="saas-kpi-value">3.2%</div>
+              </div>
+              <div class="saas-kpi-card">
+                <div class="saas-kpi-label">Churn</div>
+                <div class="saas-kpi-value">1.1%</div>
+              </div>
+            </div>
+            <div class="saas-bento-grid">
+              <div class="saas-card saas-card--wide">
+                <div class="saas-card-title">Revenue Overview</div>
+                <div class="saas-chart-placeholder"></div>
+              </div>
+              <div class="saas-card">
+                <div class="saas-card-title">Top Sources</div>
+                <div class="saas-chart-placeholder"></div>
+              </div>
+              <div class="saas-card">
+                <div class="saas-card-title">Device Split</div>
+                <div class="saas-chart-placeholder"></div>
+              </div>
+            </div>
+            <div class="saas-data-row">
+              <div class="saas-card">
+                <div class="saas-card-title">Recent Transactions</div>
+                <table class="saas-table">
+                  <thead>
+                    <tr>
+                      <th>Customer</th>
+                      <th>Date</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Stripe Inc.</td>
+                      <td>Oct 24, 2023</td>
+                      <td>$1,200</td>
+                      <td><span class="saas-badge" style="background:#dcfce7;color:#166534;">Completed</span></td>
+                    </tr>
+                    <tr>
+                      <td>Vercel Corp</td>
+                      <td>Oct 23, 2023</td>
+                      <td>$850</td>
+                      <td><span class="saas-badge" style="background:#fef9c3;color:#854d0e;">Pending</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="saas-doc-container"></div>
+      
+      <!-- Anti-Pattern Warning Box -->
+      <div class="cat-warning-box">
+        <div class="cat-warning-heading">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Anti-Patterns for SaaS / Productivity / Tools
+        </div>
+        <ul class="cat-doc-list" style="color: inherit;">
+          ${catData.antipatterns.map(a => `<li>${a}</li>`).join('')}
+        </ul>
+      </div>
+
+      <!-- Quick Decision Table -->
+      <div class="cat-decision-table-container">
+        <div class="cat-decision-table-title">⚡ Quick Decision Guide</div>
+        <table class="cat-decision-table">
+          <thead>
+            <tr>
+              <th>If your priority is…</th>
+              <th>Use this combo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Structure + many features</td><td>Bento + Minimal</td></tr>
+            <tr><td>Data density + precision</td><td>Minimal + Data UI</td></tr>
+            <tr><td>Premium modern feel</td><td>Glassmorphism (Light) + Minimal</td></tr>
+            <tr><td>Scalable dashboard view</td><td>Bento + Data UI</td></tr>
+            <tr><td>Accessibility + speed</td><td>Flat + Card-Based UI</td></tr>
+            <tr><td>Strong brand impact</td><td>Minimal + Massive Typography</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  // Render options buttons
+  const optionsGrid = document.getElementById('saas-options-grid');
+  catData.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'style-btn';
+    btn.dataset.key = opt.key;
+    btn.innerHTML = `<span class="style-btn__label">${opt.label}</span>`;
+    btn.onclick = () => switchSaasOption(opt);
+    optionsGrid.appendChild(btn);
+  });
+
+  // Auto-select first option
+  currentSaasOption = null;
+  switchSaasOption(catData.options[0]);
+}
+
+function switchSaasOption(opt) {
+  if (currentSaasOption === opt.key) return;
+  currentSaasOption = opt.key;
+
+  // Update buttons
+  document.querySelectorAll('#saas-options-grid .style-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.key === opt.key);
+  });
+
+  const previewBox = document.getElementById('saas-preview-box');
+  const previewLabel = document.getElementById('saas-preview-label');
+
+  // Fade effect
+  previewBox.style.opacity = '0';
+  previewBox.style.transform = 'translateY(10px)';
+
+  setTimeout(() => {
+    previewLabel.textContent = opt.label;
+    previewBox.className = 'saas-preview ' + opt.cssClass;
+    previewBox.style.opacity = '1';
+    previewBox.style.transform = 'translateY(0)';
+  }, 200);
+
+  renderSaasDoc(opt.doc);
+}
+
+function renderSaasDoc(doc) {
+  const container = document.getElementById('saas-doc-container');
+
+  container.innerHTML = `
+    <div class="cat-doc-box">
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🤔 Why This Works</div>
+        <ul class="cat-doc-list">${doc.why.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🎯 Best For</div>
+        <div class="cat-doc-text"><strong>${doc.bestFor}</strong></div>
+      </div>
+      
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:32px;">
+        <div style="flex:1;min-width:250px;">
+          <div class="cat-doc-heading">✅ Use When</div>
+          <ul class="cat-doc-list">${doc.useWhen.map(i => `<li>${i}</li>`).join('')}</ul>
+        </div>
+        <div style="flex:1;min-width:250px;">
+          <div class="cat-doc-heading">🚫 Avoid When</div>
+          <ul class="cat-doc-list">${doc.avoidWhen.map(i => `<li>${i}</li>`).join('')}</ul>
+        </div>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">⚙️ Key UI Elements</div>
+        <ul class="cat-doc-list">${doc.keyUi.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🎨 Visual Direction</div>
+        <ul class="cat-doc-list">${doc.visual.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">⚠️ Common Mistakes</div>
+        <ul class="cat-doc-list">${doc.mistakes.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">💡 Design Notes (Practical)</div>
+        <ul class="cat-doc-list">${doc.notes.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">💻 Prompt (for vibe coding)</div>
+        <div class="cat-prompt-box">${doc.prompt}</div>
+      </div>
+    </div>
+  `;
+}
+
+/* ============================================
+   FINANCE CATEGORY RENDER LOGIC
+   ============================================ */
+
+function renderFinanceCategoryHTML(catData) {
+  categoriesModeContainer.innerHTML = `
+    <div class="cat-mode">
+      <div class="cat-header">
+        <h2 class="cat-header__title">${catData.title}</h2>
+        <div class="cat-header__badges">
+          <div class="cat-badge"><strong>👉 Covers:</strong> ${catData.covers}</div>
+          <div class="cat-badge"><strong>🧠 Core Goal:</strong> ${catData.coreGoal}</div>
+        </div>
+      </div>
+      
+      <div class="cat-options-grid" id="finance-options-grid"></div>
+      
+      <div class="finance-preview-wrapper">
+        <div class="preview-label">
+          <span class="preview-label__dot"></span>
+          Live Preview — <span id="finance-preview-label">Minimal + Data UI</span>
+        </div>
+        
+        <div class="finance-preview" id="finance-preview-box">
+          <div class="finance-topbar">
+            <div class="finance-topbar-left">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              Acme Wealth
+            </div>
+            <div class="finance-topbar-right">
+              <div class="finance-date-picker">
+                Last 30 Days
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              </div>
+            </div>
+          </div>
+          
+          <div class="finance-main">
+            <div class="finance-hero-section">
+              <div>
+                <div class="finance-balance-label">Total Portfolio Value</div>
+                <div class="finance-balance-value">$1,284,500.00</div>
+              </div>
+              <div class="finance-trend-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                +12.4%
+              </div>
+            </div>
+            
+            <div class="finance-bento-grid">
+              <div class="finance-card">
+                <div class="finance-card-header">
+                  Portfolio Performance
+                </div>
+                <div class="finance-chart-area">
+                  [ Candlestick / Area Chart Placeholder ]
+                </div>
+              </div>
+              
+              <div class="finance-card">
+                <div class="finance-card-header">
+                  Key Metrics
+                </div>
+                <div class="finance-kpi-grid">
+                  <div class="finance-kpi-mini">
+                    <div class="finance-kpi-mini-label">YTD Return</div>
+                    <div class="finance-kpi-mini-value" style="color: #10b981;">+$142K</div>
+                  </div>
+                  <div class="finance-kpi-mini">
+                    <div class="finance-kpi-mini-label">Unrealized P&L</div>
+                    <div class="finance-kpi-mini-value">+$89K</div>
+                  </div>
+                  <div class="finance-kpi-mini">
+                    <div class="finance-kpi-mini-label">Margin Avail</div>
+                    <div class="finance-kpi-mini-value">$45K</div>
+                  </div>
+                  <div class="finance-kpi-mini">
+                    <div class="finance-kpi-mini-label">Day Gain</div>
+                    <div class="finance-kpi-mini-value" style="color: #ef4444;">-$1.2K</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="finance-card" style="margin-top: 0;">
+              <div class="finance-card-header">
+                Recent Transactions
+              </div>
+              <table class="finance-transaction-table">
+                <thead>
+                  <tr>
+                    <th>Asset</th>
+                    <th>Type</th>
+                    <th>Date</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>AAPL (Apple Inc.)</td>
+                    <td>Buy</td>
+                    <td>Oct 24, 2023</td>
+                    <td>$4,500.00</td>
+                  </tr>
+                  <tr>
+                    <td>BTC (Bitcoin)</td>
+                    <td>Sell</td>
+                    <td>Oct 23, 2023</td>
+                    <td>$12,450.00</td>
+                  </tr>
+                  <tr>
+                    <td>VTI (Vanguard ETF)</td>
+                    <td>Buy</td>
+                    <td>Oct 20, 2023</td>
+                    <td>$2,100.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="finance-doc-container"></div>
+      
+      <!-- Anti-Pattern Warning Box -->
+      <div class="cat-warning-box">
+        <div class="cat-warning-heading">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Anti-Patterns for Finance / Data / Analytics
+        </div>
+        <ul class="cat-doc-list" style="color: inherit;">
+          ${catData.antipatterns.map(a => `<li>${a}</li>`).join('')}
+        </ul>
+      </div>
+
+      <!-- Quick Decision Table -->
+      <div class="cat-decision-table-container">
+        <div class="cat-decision-table-title">⚡ Quick Decision Guide</div>
+        <table class="cat-decision-table">
+          <thead>
+            <tr>
+              <th>If your priority is…</th>
+              <th>Use this combo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Trust + clarity</td><td>Minimal + Data UI</td></tr>
+            <tr><td>Modern fintech feel</td><td>Glassmorphism + Minimal</td></tr>
+            <tr><td>Dashboard overview</td><td>Bento + Data UI</td></tr>
+            <tr><td>Consumer-friendly</td><td>Neumorphism (Light) + Minimal</td></tr>
+            <tr><td>Power user tool</td><td>Dark UI + Data Visualization</td></tr>
+            <tr><td>Bold data statement</td><td>Minimal + Typography (Numbers Focus)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  // Render options buttons
+  const optionsGrid = document.getElementById('finance-options-grid');
+  catData.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'style-btn';
+    btn.dataset.key = opt.key;
+    btn.innerHTML = `<span class="style-btn__label">${opt.label}</span>`;
+    btn.onclick = () => switchFinanceOption(opt);
+    optionsGrid.appendChild(btn);
+  });
+
+  // Auto-select first option
+  currentFinanceOption = null;
+  switchFinanceOption(catData.options[0]);
+}
+
+function switchFinanceOption(opt) {
+  if (currentFinanceOption === opt.key) return;
+  currentFinanceOption = opt.key;
+
+  // Update buttons
+  document.querySelectorAll('#finance-options-grid .style-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.key === opt.key);
+  });
+
+  const previewBox = document.getElementById('finance-preview-box');
+  const previewLabel = document.getElementById('finance-preview-label');
+
+  // Fade effect
+  previewBox.style.opacity = '0';
+  previewBox.style.transform = 'translateY(10px)';
+
+  setTimeout(() => {
+    previewLabel.textContent = opt.label;
+    previewBox.className = 'finance-preview ' + opt.cssClass;
+    previewBox.style.opacity = '1';
+    previewBox.style.transform = 'translateY(0)';
+  }, 200);
+
+  renderFinanceDoc(opt.doc);
+}
+
+function renderFinanceDoc(doc) {
+  const container = document.getElementById('finance-doc-container');
+
+  container.innerHTML = `
+    <div class="cat-doc-box">
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🤔 Why This Works</div>
+        <ul class="cat-doc-list">${doc.why.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🎯 Best For</div>
+        <div class="cat-doc-text"><strong>${doc.bestFor}</strong></div>
+      </div>
+      
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:32px;">
+        <div style="flex:1;min-width:250px;">
+          <div class="cat-doc-heading">✅ Use When</div>
+          <ul class="cat-doc-list">${doc.useWhen.map(i => `<li>${i}</li>`).join('')}</ul>
+        </div>
+        <div style="flex:1;min-width:250px;">
+          <div class="cat-doc-heading">🚫 Avoid When</div>
+          <ul class="cat-doc-list">${doc.avoidWhen.map(i => `<li>${i}</li>`).join('')}</ul>
+        </div>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">⚙️ Key UI Elements</div>
+        <ul class="cat-doc-list">${doc.keyUi.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🎨 Visual Direction</div>
+        <ul class="cat-doc-list">${doc.visual.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">⚠️ Common Mistakes</div>
+        <ul class="cat-doc-list">${doc.mistakes.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">💡 Design Notes (Practical)</div>
+        <ul class="cat-doc-list">${doc.notes.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">💻 Prompt (for vibe coding)</div>
+        <div class="cat-prompt-box">${doc.prompt}</div>
+      </div>
+    </div>
+  `;
+}
