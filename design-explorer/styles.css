@@ -5733,3 +5733,766 @@ body.theme-category-ai .cat-doc-heading {
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   PORTFOLIO / PERSONAL / CREATOR CATEGORY
+   ========================================================================== */
+
+
+/* The overall app shell theme for Portfolio Mode */
+body.theme-category-portfolio {
+  --bg-gradient: linear-gradient(135deg, #FDFCFB 0%, #E2D1C3 30%, #F5EFEF 60%, #FFFAF0 100%);
+  --orb1-color: #E2D1C3;
+  --orb2-color: #FDFCFB;
+  --orb3-color: #F5EFEF;
+}
+
+
+/* ==========================================================================
+   PORTFOLIO PREVIEW SKELETON (Shared across all 6 styles)
+   ========================================================================== */
+
+.portfolio-preview-wrapper {
+  background: var(--glass-bg);
+  border: 1.5px solid var(--glass-border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(14px);
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
+  margin-bottom: 40px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.portfolio-preview {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s ease-in-out;
+  font-family: 'Inter', sans-serif;
+  color: #111;
+  overflow-y: auto;
+}
+
+.portfolio-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.portfolio-header {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 40px;
+}
+
+.portfolio-logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.portfolio-nav {
+  display: flex;
+  gap: 24px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.portfolio-hero {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  min-height: 400px;
+}
+
+.portfolio-hero-content {
+  flex: 1;
+  max-width: 600px;
+}
+
+.portfolio-headline {
+  font-size: 4rem;
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.portfolio-subheadline {
+  font-size: 1.25rem;
+  color: #555;
+  margin: 0 0 32px 0;
+  line-height: 1.5;
+  max-width: 500px;
+}
+
+.portfolio-cta {
+  padding: 14px 28px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.portfolio-cta:hover {
+  opacity: 0.8;
+}
+
+.portfolio-hero-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.portfolio-hero-image-placeholder {
+  width: 300px;
+  height: 380px;
+  background: #f0f0f0;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ccc;
+}
+
+.portfolio-featured {
+  position: relative;
+  z-index: 10;
+  padding: 60px 40px;
+  background: #fcfcfc;
+}
+
+.portfolio-section-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 40px;
+  letter-spacing: -0.01em;
+}
+
+.portfolio-work-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.portfolio-project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.portfolio-project-card--large {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+
+.portfolio-project-image {
+  background: #eee;
+  border-radius: 8px;
+  height: 240px;
+  display: flex;
+  padding: 20px;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.portfolio-project-card--large .portfolio-project-image {
+  flex: 1.5;
+  height: 360px;
+}
+
+.portfolio-project-details {
+  flex: 1;
+}
+
+.portfolio-project-title {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.portfolio-project-desc {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.portfolio-project-link {
+  display: inline-block;
+  margin-top: 16px;
+  color: #111;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.portfolio-project-tag {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 6px 12px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.portfolio-footer {
+  position: relative;
+  z-index: 10;
+  padding: 80px 40px;
+  background: #111;
+  color: #fff;
+  text-align: center;
+}
+
+.portfolio-footer-content h2 {
+  font-size: 2.5rem;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.02em;
+}
+
+.portfolio-footer-content p {
+  color: #aaa;
+  font-size: 1.1rem;
+}
+
+
+/* ==========================================================================
+   STYLE 1: MINIMAL + TYPOGRAPHY-FIRST
+   ========================================================================== */
+.portfolio-style--minimal-type {
+  background: #FAFAF8;
+  font-family: 'Playfair Display', serif;
+}
+
+.portfolio-style--minimal-type .portfolio-logo {
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+}
+
+.portfolio-style--minimal-type .portfolio-headline {
+  font-size: 5.5rem;
+  font-weight: 400;
+  font-style: italic;
+  line-height: 1;
+  margin-bottom: 40px;
+}
+
+.portfolio-style--minimal-type .portfolio-subheadline {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  max-width: 400px;
+  color: #666;
+}
+
+.portfolio-style--minimal-type .portfolio-hero-visual {
+  display: none;
+  /* No imagery in hero */
+}
+
+.portfolio-style--minimal-type .portfolio-hero-content {
+  max-width: 100%;
+}
+
+.portfolio-style--minimal-type .portfolio-cta {
+  background: transparent;
+  color: #111;
+  border: 1px solid #111;
+  border-radius: 0;
+  font-family: 'Inter', sans-serif;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+.portfolio-style--minimal-type .portfolio-featured {
+  background: transparent;
+  border-top: 1px solid #e0e0e0;
+}
+
+.portfolio-style--minimal-type .portfolio-work-grid {
+  display: block;
+  /* Stack as a list */
+}
+
+.portfolio-style--minimal-type .portfolio-project-card {
+  flex-direction: row;
+  align-items: baseline;
+  padding: 30px 0;
+  border-bottom: 1px solid #eee;
+  gap: 20px;
+}
+
+.portfolio-style--minimal-type .portfolio-project-card--large {
+  padding: 30px 0;
+}
+
+.portfolio-style--minimal-type .portfolio-project-image {
+  display: none;
+  /* Remove images for typographic list */
+}
+
+.portfolio-style--minimal-type .portfolio-project-title {
+  font-size: 2.5rem;
+  font-weight: 400;
+  margin: 0;
+  flex: 1;
+}
+
+.portfolio-style--minimal-type .portfolio-project-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  flex: 1;
+  text-align: right;
+}
+
+.portfolio-style--minimal-type .portfolio-project-link {
+  display: none;
+}
+
+
+/* ==========================================================================
+   STYLE 2: BENTO + MINIMAL
+   ========================================================================== */
+.portfolio-style--bento-minimal {
+  background: #f4f4f5;
+  padding: 20px;
+}
+
+.portfolio-style--bento-minimal .portfolio-header {
+  background: #fff;
+  border-radius: 16px;
+  margin-bottom: 20px;
+  padding: 20px 30px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.portfolio-style--bento-minimal .portfolio-hero {
+  background: #fff;
+  border-radius: 24px;
+  padding: 60px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  min-height: auto;
+}
+
+.portfolio-style--bento-minimal .portfolio-headline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3.5rem;
+  letter-spacing: -0.04em;
+}
+
+.portfolio-style--bento-minimal .portfolio-hero-image-placeholder {
+  border-radius: 50%;
+  /* Circle profile pic style */
+  width: 240px;
+  height: 240px;
+}
+
+.portfolio-style--bento-minimal .portfolio-featured {
+  background: transparent;
+  padding: 0;
+}
+
+.portfolio-style--bento-minimal .portfolio-section-title {
+  display: none;
+}
+
+.portfolio-style--bento-minimal .portfolio-work-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.portfolio-style--bento-minimal .portfolio-project-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  gap: 0;
+}
+
+.portfolio-style--bento-minimal .portfolio-project-card--large {
+  grid-column: span 2;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.portfolio-style--bento-minimal .portfolio-project-image {
+  margin-bottom: 20px;
+  height: 200px;
+  border-radius: 12px;
+}
+
+.portfolio-style--bento-minimal .portfolio-project-card--large .portfolio-project-image {
+  height: 300px;
+}
+
+.portfolio-style--bento-minimal .portfolio-footer {
+  border-radius: 24px;
+  margin-top: 20px;
+}
+
+
+/* ==========================================================================
+   STYLE 3: EDITORIAL + SPLIT LAYOUT
+   ========================================================================== */
+.portfolio-style--editorial-split {
+  background: #fff;
+  font-family: 'Playfair Display', serif;
+}
+
+.portfolio-style--editorial-split .portfolio-header {
+  border-bottom: 1px solid #eee;
+}
+
+.portfolio-style--editorial-split .portfolio-logo {
+  font-weight: 900;
+  font-size: 1.5rem;
+}
+
+.portfolio-style--editorial-split .portfolio-hero {
+  padding: 80px 40px;
+  border-bottom: 1px solid #eee;
+}
+
+.portfolio-style--editorial-split .portfolio-headline {
+  font-size: 4.5rem;
+  line-height: 1.05;
+}
+
+.portfolio-style--editorial-split .portfolio-hero-image-placeholder {
+  border-radius: 0;
+  /* Sharp edges */
+  width: 100%;
+  height: 400px;
+}
+
+.portfolio-style--editorial-split .portfolio-featured {
+  padding: 0;
+  background: #fff;
+}
+
+.portfolio-style--editorial-split .portfolio-section-title {
+  padding: 40px;
+  margin: 0;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.portfolio-style--editorial-split .portfolio-work-grid {
+  display: block;
+}
+
+.portfolio-style--editorial-split .portfolio-project-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  gap: 0;
+}
+
+.portfolio-style--editorial-split .portfolio-project-card:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.portfolio-style--editorial-split .portfolio-project-image {
+  flex: 1.5;
+  border-radius: 0;
+  height: 500px;
+  margin: 0;
+}
+
+.portfolio-style--editorial-split .portfolio-project-details {
+  flex: 1;
+  padding: 60px;
+}
+
+.portfolio-style--editorial-split .portfolio-project-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.portfolio-style--editorial-split .portfolio-project-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+
+/* ==========================================================================
+   STYLE 4: SCROLLYTELLING + MOTION
+   ========================================================================== */
+.portfolio-style--scrollytelling {
+  background: #0a0a0a;
+  color: #fff;
+}
+
+.portfolio-style--scrollytelling .portfolio-header {
+  position: sticky;
+  top: 0;
+  background: rgba(10, 10, 10, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.portfolio-style--scrollytelling .portfolio-nav {
+  color: #aaa;
+}
+
+.portfolio-style--scrollytelling .portfolio-headline {
+  color: #fff;
+  font-size: 4rem;
+  background: linear-gradient(90deg, #fff, #888);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: slideUpFade 1s ease-out forwards;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.portfolio-style--scrollytelling .portfolio-subheadline {
+  color: #888;
+  animation: slideUpFade 1s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.portfolio-style--scrollytelling .portfolio-cta {
+  background: #fff;
+  color: #000;
+  animation: slideUpFade 1s ease-out 0.4s forwards;
+  opacity: 0;
+}
+
+.portfolio-style--scrollytelling .portfolio-hero-image-placeholder {
+  background: #1a1a1a;
+  border-radius: 20px;
+  border: 1px solid #333;
+  animation: slideUpFade 1s ease-out 0.6s forwards;
+  opacity: 0;
+}
+
+.portfolio-style--scrollytelling .portfolio-featured {
+  background: #0a0a0a;
+}
+
+.portfolio-style--scrollytelling .portfolio-section-title {
+  color: #fff;
+}
+
+.portfolio-style--scrollytelling .portfolio-project-image {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.portfolio-style--scrollytelling .portfolio-project-card:hover .portfolio-project-image {
+  transform: scale(0.98);
+}
+
+.portfolio-style--scrollytelling .portfolio-project-title {
+  color: #fff;
+}
+
+.portfolio-style--scrollytelling .portfolio-project-desc {
+  color: #888;
+}
+
+.portfolio-style--scrollytelling .portfolio-project-link {
+  color: #fff;
+  border-bottom: 1px solid #555;
+}
+
+
+/* ==========================================================================
+   STYLE 5: MINIMAL + SOFT GRADIENT
+   ========================================================================== */
+.portfolio-style--soft-gradient {
+  background: #fff;
+  font-family: 'Outfit', sans-serif;
+}
+
+.portfolio-style--soft-gradient .portfolio-background {
+  background: radial-gradient(circle at top right, rgba(249, 238, 247, 1) 0%, rgba(238, 244, 255, 0.5) 40%, rgba(255, 255, 255, 0) 70%);
+}
+
+.portfolio-style--soft-gradient .portfolio-logo {
+  color: #4a5568;
+}
+
+.portfolio-style--soft-gradient .portfolio-headline {
+  font-family: 'Syne', sans-serif;
+  font-size: 4.5rem;
+  color: #2d3748;
+}
+
+.portfolio-style--soft-gradient .portfolio-subheadline {
+  color: #718096;
+}
+
+.portfolio-style--soft-gradient .portfolio-cta {
+  background: #667eea;
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.portfolio-style--soft-gradient .portfolio-hero-image-placeholder {
+  background: #fff;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+  border-radius: 24px;
+}
+
+.portfolio-style--soft-gradient .portfolio-featured {
+  background: transparent;
+}
+
+.portfolio-style--soft-gradient .portfolio-project-image {
+  background: linear-gradient(180deg, #f7fafc 0%, #edf2f7 100%);
+  border-radius: 16px;
+}
+
+.portfolio-style--soft-gradient .portfolio-project-title {
+  color: #2d3748;
+}
+
+.portfolio-style--soft-gradient .portfolio-footer {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+
+/* ==========================================================================
+   STYLE 6: PAPER / ZINE + COLLAGE
+   ========================================================================== */
+.portfolio-style--paper-zine {
+  background: #F5EFE0;
+  font-family: 'Courier Prime', monospace;
+  color: #222;
+}
+
+.portfolio-style--paper-zine .portfolio-background {
+  /* Simulated paper texture via repeating radial gradients for grain */
+  background-image:
+    radial-gradient(#000 1px, transparent 1px),
+    radial-gradient(#000 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+  opacity: 0.05;
+}
+
+.portfolio-style--paper-zine .portfolio-header {
+  border-bottom: 2px dashed #ccc;
+}
+
+.portfolio-style--paper-zine .portfolio-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 2rem;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+  display: inline-block;
+  background: #222;
+  color: #F5EFE0;
+  padding: 4px 12px;
+}
+
+.portfolio-style--paper-zine .portfolio-nav span {
+  border: 1px solid #222;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.portfolio-style--paper-zine .portfolio-headline {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 4rem;
+  line-height: 0.9;
+  mix-blend-mode: multiply;
+}
+
+.portfolio-style--paper-zine .portfolio-subheadline {
+  font-weight: 700;
+}
+
+.portfolio-style--paper-zine .portfolio-cta {
+  background: #D32F2F;
+  /* Ink red */
+  color: #F5EFE0;
+  border-radius: 0;
+  font-weight: 700;
+  box-shadow: 4px 4px 0 #222;
+}
+
+.portfolio-style--paper-zine .portfolio-hero-image-placeholder {
+  background: #ccc;
+  clip-path: polygon(5% 0%, 100% 5%, 95% 100%, 0% 95%);
+  filter: grayscale(100%) contrast(150%);
+}
+
+.portfolio-style--paper-zine .portfolio-featured {
+  background: transparent;
+  border-top: 3px solid #222;
+}
+
+.portfolio-style--paper-zine .portfolio-section-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+
+.portfolio-style--paper-zine .portfolio-project-image {
+  background: #ddd;
+  border: 1px solid #222;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.1);
+  clip-path: polygon(1% 2%, 99% 0%, 100% 98%, 0% 100%);
+}
+
+.portfolio-style--paper-zine .portfolio-project-title {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.portfolio-style--paper-zine .portfolio-footer {
+  background: #222;
+  color: #F5EFE0;
+  clip-path: polygon(0% 5%, 100% 0%, 100% 100%, 0% 100%);
+  padding-top: 100px;
+}

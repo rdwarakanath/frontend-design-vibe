@@ -2953,10 +2953,303 @@ const aiCategoryData = {
   ]
 };
 
-const categoryRegistry = [saasCategoryData, financeCategoryData, aiCategoryData]; // Extensible for future categories
+const portfolioCategoryData = {
+  id: 'portfolio',
+  title: '🎨 Portfolio / Personal / Creator',
+  covers: 'Personal websites, design portfolios, freelancer pages, case studies, indie creator platforms, resumes',
+  coreGoal: 'Identity + Clarity + Storytelling',
+  antipatterns: [
+    '❌ <strong>Generic portfolio templates</strong> → immediately signal that the creator doesn\'t design their own environment',
+    '❌ <strong>Too many projects</strong> → edit ruthlessly; 6–10 exceptional projects beats 30 average ones',
+    '❌ <strong>No "About" or personality section</strong> → portfolios must communicate who the person is, not just what they made',
+    '❌ <strong>Slow-loading project images</strong> → heavy unoptimized images on a portfolio destroy the perception of craft',
+    '❌ <strong>Missing contact information or a clear CTA</strong> → every portfolio must answer "what should I do next?"'
+  ],
+  options: [
+    {
+      key: 'minimal-type',
+      label: 'Minimal + Typography-First',
+      cssClass: 'portfolio-style--minimal-type',
+      doc: {
+        why: [
+          'Minimal → the person\'s work and words become the sole visual statement',
+          'Typography-First → lets voice, tone, and personality come through the typeface and hierarchy alone',
+          'Together they create the most sophisticated portfolio aesthetic — confident enough to need no decoration'
+        ],
+        bestFor: '👉 IDENTITY + VOICE',
+        useWhen: [
+          'Writers, journalists, designers, and brand strategists building personal sites',
+          'When the work is text-heavy (case studies, essays, long-form projects)',
+          'You want the portfolio to feel like a physical book or editorial publication'
+        ],
+        avoidWhen: [
+          'Visual artists or illustrators whose work needs strong image presentation',
+          'Anyone without a clear typographic voice and strong copy',
+          'Projects requiring complex navigation or multi-page apps'
+        ],
+        keyUi: [
+          'Display headline at 64–100px as the hero statement',
+          'Minimal navigation (3–5 items, all text)',
+          'Project list as a clean typographic list — no thumbnails, just title + descriptor',
+          'Footer with contact info in smaller, equally refined type'
+        ],
+        visual: [
+          'White or off-white background (#FAFAF8)',
+          'Near-black primary text (#111111)',
+          'One accent color used sparingly (underlines, hover states only)',
+          'Expressive display font (Cormorant, Playfair Display, Libre Baskerville, or PP Editorial)'
+        ],
+        mistakes: [
+          'Using a generic sans-serif system font — typography-first demands a handpicked typeface',
+          'Under-sizing the hero headline — it must be genuinely large to command the page',
+          'Adding unnecessary decorative elements that dilute the typographic purity'
+        ],
+        notes: [
+          'Set the hero using CSS clamp(): font-size: clamp(3rem, 8vw, 7rem) for fluid scaling',
+          'Apply -0.025em letter-spacing to the display headline at large sizes',
+          'Use a variable font with weight axis for expressive type-weight transitions on hover'
+        ],
+        prompt: 'Design a typography-first personal portfolio. Let the hero headline dominate the viewport at large scale. Use a minimal white background, an expressive serif or display typeface, and a near-black color palette with a single subtle accent. Present projects as a clean typographic list. No decorative imagery — the type carries everything.'
+      }
+    },
+    {
+      key: 'bento-minimal',
+      label: 'Bento + Minimal',
+      cssClass: 'portfolio-style--bento-minimal',
+      doc: {
+        why: [
+          'Bento → makes a portfolio feel contemporary and organized — the visual pattern of modern personal sites',
+          'Minimal → keeps every card focused on the person\'s work, not the interface chrome',
+          'Together they\'re the most widely adopted format for modern designer and developer portfolios'
+        ],
+        bestFor: '👉 MODERN APPROACHABILITY + ORGANIZED WORK',
+        useWhen: [
+          'Designers, developers, and product people showcasing multiple project types',
+          'You want the portfolio to feel fresh and contemporary without being experimental',
+          'The work spans multiple categories and needs clear visual organization'
+        ],
+        avoidWhen: [
+          'Work is deeply narrative and requires long sequential storytelling',
+          'You only have 2–3 projects (Bento needs enough content to fill the grid meaningfully)',
+          'The personal brand is highly unconventional or avant-garde'
+        ],
+        keyUi: [
+          'Bento grid hero section with varied-size project cards',
+          'One large "about" or "bio" card in the grid',
+          'Project cards: thumbnail + title + 2-word descriptor',
+          'A "currently available" or "status" badge in one card'
+        ],
+        visual: [
+          'Light neutral background: off-white or very pale gray',
+          'Cards: white surfaces, subtle box-shadow, border-radius: 16–24px',
+          'One brand accent color for hover states and availability badges',
+          'Clean geometric sans-serif (Inter, DM Sans, Satoshi)'
+        ],
+        mistakes: [
+          'Making all project cards the same size — vary sizes to create a natural reading priority',
+          'Using low-quality project thumbnails — the thumbnail IS the first impression of your work',
+          'No "About" or personality card in the grid — Bento portfolios need a human element'
+        ],
+        notes: [
+          'Place the largest card (2× or 4×) as the first visible featured project',
+          'Animate cards with a subtle stagger on load (animation-delay: calc(0.08s * var(--i)))',
+          'Add a cursor: pointer and scale hover: transform: scale(1.02) on project cards for tactile feedback'
+        ],
+        prompt: 'Design a modern personal portfolio using a Bento grid layout. Include varied-size project cards, an "About" personality card, and a status/availability badge. Use a light neutral background, clean white card surfaces, and subtle shadows. Animate cards with a staggered load-in. Keep it minimal and contemporary.'
+      }
+    },
+    {
+      key: 'editorial-split',
+      label: 'Editorial + Split Layout',
+      cssClass: 'portfolio-style--editorial-split',
+      doc: {
+        why: [
+          'Editorial → gives the portfolio the gravitas and production quality of a curated magazine',
+          'Split Layout → creates dynamic visual tension between image and text, making each project feel like a spread',
+          'Together they elevate a portfolio from "website" to "publication" — perfect for serious creative professionals'
+        ],
+        bestFor: '👉 PRESTIGE + CURATION',
+        useWhen: [
+          'Senior designers, art directors, photographers, and creative directors',
+          'Case studies that involve rich visual artifacts and need storytelling space',
+          'The personal brand is rooted in quality, curation, and editorial sensibility'
+        ],
+        avoidWhen: [
+          'Early-career portfolios with limited high-quality project assets',
+          'Fast browsing contexts where visitors skim rather than read',
+          'Developer portfolios where visual assets are code screenshots'
+        ],
+        keyUi: [
+          'Full-viewport split layout (50/50 or 60/40) for each featured project',
+          'Left side: large project image; right side: project details and CTA',
+          'Alternating split direction between projects for rhythm',
+          'Pull quotes extracted from project case studies'
+        ],
+        visual: [
+          'Light or white base, with full-bleed imagery filling one column',
+          'High-contrast text column: dark serif or display type',
+          'Thin horizontal rules to separate project sections',
+          'Restrained color palette — let the project imagery supply the color'
+        ],
+        mistakes: [
+          'Using identical 50/50 splits for every project — alternate and vary the ratio',
+          'Failing to maintain split layout integrity on mobile (stack image above text cleanly)',
+          'Low-quality project photography ruining the editorial effect'
+        ],
+        notes: [
+          'Use CSS Grid: grid-template-columns: 60fr 40fr for split sections, reversed on alternates',
+          'Apply object-fit: cover and object-position: center on project images within the split',
+          'Add slow scroll-triggered image reveal using Intersection Observer + CSS clip-path animation'
+        ],
+        prompt: 'Design an editorial portfolio with alternating split-layout project sections. Each project occupies a full-viewport section: one column is a large full-bleed image, the other is a refined text column with the project title, description, and CTA. Alternate the image/text column positions between projects. Use a white base, serif typography, and thin horizontal dividers.'
+      }
+    },
+    {
+      key: 'scrollytelling',
+      label: 'Scrollytelling + Motion',
+      cssClass: 'portfolio-style--scrollytelling',
+      doc: {
+        why: [
+          'Scrollytelling → turns the portfolio itself into a cinematic experience — the visitor is guided through the work',
+          'Motion → makes each project transition feel curated and deliberate, matching the craft shown in the work',
+          'Together they signal a designer who understands narrative, interaction, and storytelling at the highest level'
+        ],
+        bestFor: '👉 STORYTELLING + MEMORABLE EXPERIENCE',
+        useWhen: [
+          'Creative directors, senior UX designers, or motion designers who want the portfolio to demonstrate their skills',
+          'When the story of HOW you worked is as important as the final output',
+          'The target employer or client values craft in interaction design'
+        ],
+        avoidWhen: [
+          'Users skim portfolios and won\'t sit through the full scroll sequence',
+          'The portfolio will be primarily viewed on mobile with inconsistent scroll behavior',
+          'You\'re applying to companies that prioritize speed and brevity over craft'
+        ],
+        keyUi: [
+          'Scroll-triggered project reveals (images, text, and UI elements animating in)',
+          'Pinned sections where scroll progress drives an animation timeline',
+          'Smooth section transitions with page-level fades or slides',
+          'Progress indicator showing scroll position through the portfolio'
+        ],
+        visual: [
+          'Dark or light base depending on personal brand — dark is more cinematic',
+          'High-contrast section transitions (dark section → light section → dark) for drama',
+          'Motion accents: the brand accent color used in animated underlines, reveals, or highlights',
+          'Minimal UI chrome — let the content and motion do all the work'
+        ],
+        mistakes: [
+          'Scroll-jacking (overriding native scroll behavior) — triggers accessibility and UX violations',
+          'Animations that trigger so frequently they exhaust the visitor before they see the work',
+          'Not providing a way to skip or view the work without the full scrollytelling sequence'
+        ],
+        notes: [
+          'Use IntersectionObserver for all scroll-triggered reveals — never scroll event listeners',
+          'Pin sections using position: sticky for scroll-driven animation, not libraries when possible',
+          'Always test the scroll experience on iOS Safari and Firefox, not just Chrome'
+        ],
+        prompt: 'Design a scrollytelling portfolio where each project is revealed through scroll-triggered animations. Pin hero sections and animate in project details as the visitor scrolls through. Use smooth section transitions between projects, a subtle scroll progress indicator, and purposeful motion throughout. Keep the layout minimal so the motion and content are the full experience.'
+      }
+    },
+    {
+      key: 'soft-gradient',
+      label: 'Minimal + Soft Gradient',
+      cssClass: 'portfolio-style--soft-gradient',
+      doc: {
+        why: [
+          'Minimal → keeps the portfolio clean and approachable for any audience',
+          'Soft Gradient → adds warmth, personality, and a gentle visual signature without the visual risk of full color',
+          'Together they\'re ideal for creators who want to feel human, warm, and creative — not corporate'
+        ],
+        bestFor: '👉 WARMTH + PERSONAL CHARACTER',
+        useWhen: [
+          'Illustrators, product designers, UX researchers, and educators',
+          'Personal brands that want to feel approachable and warm, not cold and technical',
+          'Portfolios targeting creative agencies or human-centered design teams'
+        ],
+        avoidWhen: [
+          'Technical developer portfolios where warmth might undermine credibility',
+          'Dark-brand identities that would clash with soft gradient aesthetics',
+          'Highly minimal brands that reject all color as a design principle'
+        ],
+        keyUi: [
+          'Soft gradient used in the hero background (two adjacent hues, very low saturation)',
+          'White or near-white card surfaces sitting above the gradient',
+          'Rounded corners and generous padding for a warm, friendly feel',
+          'Hand-drawn or rounded typeface pairing'
+        ],
+        visual: [
+          'Hero gradient: #F9EEF7 → #EEF4FF (soft peach-to-lavender) or warm amber to cream',
+          'Cards: white #FFFFFF with subtle shadow',
+          'Accent: a deeper, saturated version of one of the gradient hues',
+          'Typeface: a rounded humanist sans (Nunito, Plus Jakarta Sans) for body + expressive display for heading'
+        ],
+        mistakes: [
+          'Using overly saturated gradients that distract from the work',
+          'Inconsistent gradient application — define one gradient used in exactly one zone',
+          'Choosing unrelated gradient hues that clash rather than harmonize'
+        ],
+        notes: [
+          'Limit gradient to the hero section only; keep the rest of the page white or very light',
+          'Derive your accent color from the deeper end of your gradient spectrum (HSL(240, 60%, 55%))',
+          'Use radial-gradient from a corner for a "light source" effect rather than a linear sweep'
+        ],
+        prompt: 'Design a warm personal portfolio with a soft pastel gradient hero section. Use a delicate two-hue gradient (peach to lavender, or cream to sky) in the hero background. Keep all project cards and content areas white with gentle shadows. Pair a rounded humanist sans-serif for body text with an expressive display typeface for the headline. Feel warm, human, and inviting.'
+      }
+    },
+    {
+      key: 'paper-zine',
+      label: 'Paper / Zine + Collage',
+      cssClass: 'portfolio-style--paper-zine',
+      doc: {
+        why: [
+          'Paper/Zine → gives the portfolio a handcrafted, authentic quality that can\'t be faked or templated',
+          'Collage → assembles the work into a tactile, curatorial presentation that itself demonstrates creative skill',
+          'Together they\'re the boldest portfolio approach — for creators whose identity IS their unconventional perspective'
+        ],
+        bestFor: '👉 UNIQUENESS + CREATIVE IDENTITY',
+        useWhen: [
+          'Independent illustrators, graphic designers, art directors, and visual artists',
+          'Anyone whose work itself involves collage, print, or mixed-media aesthetics',
+          'Creators targeting independent studios, boutique agencies, or art direction roles'
+        ],
+        avoidWhen: [
+          'Applying to large corporate tech companies with conservative hiring managers',
+          'The portfolio work doesn\'t match the raw, handcrafted aesthetic',
+          'Accessibility and universal usability are top priorities'
+        ],
+        keyUi: [
+          'Paper and photocopier texture applied globally via CSS blend modes',
+          'Project thumbnails presented as torn-edge or physically placed "prints"',
+          'Handwritten or typewriter-style typography for navigation and labels',
+          'Collage-assembled hero section with mixed-source imagery'
+        ],
+        visual: [
+          'Base color: aged off-white or cream (#F5EFE0) with paper texture PNG overlay',
+          'Accent colors: limited to 2–3 ink-press inspired hues (deep red, forest green, ink black)',
+          'Torn/rough edge SVG dividers between page sections',
+          'Mix of display fonts: rubber stamp, typewriter, and a period-appropriate sans'
+        ],
+        mistakes: [
+          'Using a single stock paper texture on the background and nothing else — the rawness must permeate all UI elements',
+          'Forgetting legibility — even zine aesthetics require readable project titles and CTAs',
+          'Applying the style without any structure — create a clear content hierarchy beneath the rawness'
+        ],
+        notes: [
+          'Apply the paper texture PNG with mix-blend-mode: multiply at opacity: 0.4 over elements',
+          'Use clip-path: polygon() with irregular coordinates to simulate torn paper edges on section breaks',
+          'Generate halftone effects on project images with CSS filter: contrast(1.5) url(#halftone-filter)'
+        ],
+        prompt: 'Design an indie creator portfolio with a Paper/Zine and Collage aesthetic. Apply aged paper textures globally using CSS blend modes. Present projects as physically placed prints with torn-edge effects. Use a handcrafted typographic system mixing typewriter, rubber stamp, and expressive display fonts. Maintain clear legibility and content hierarchy beneath the lo-fi rawness.'
+      }
+    }
+  ]
+};
+
+const categoryRegistry = [saasCategoryData, financeCategoryData, aiCategoryData, portfolioCategoryData]; // Extensible for future categories
 let currentSaasOption = null;
 let currentFinanceOption = null;
 let currentAiOption = null;
+let currentPortfolioOption = null;
 
 function renderCategoryMode(index) {
   const catData = categoryRegistry[index];
@@ -2967,6 +3260,8 @@ function renderCategoryMode(index) {
     renderFinanceCategoryHTML(catData);
   } else if (catData.id === 'ai') {
     renderAiCategoryHTML(catData);
+  } else if (catData.id === 'portfolio') {
+    renderPortfolioCategoryHTML(catData);
   }
 }
 
@@ -3575,7 +3870,7 @@ function renderAiCategoryHTML(catData) {
       </div>
     </div>
   `;
-  
+
   // Render options buttons
   const optionsGrid = document.getElementById('ai-options-grid');
   catData.options.forEach(opt => {
@@ -3586,7 +3881,7 @@ function renderAiCategoryHTML(catData) {
     btn.onclick = () => switchAiOption(opt);
     optionsGrid.appendChild(btn);
   });
-  
+
   // Auto-select first option
   currentAiOption = null;
   switchAiOption(catData.options[0]);
@@ -3595,33 +3890,256 @@ function renderAiCategoryHTML(catData) {
 function switchAiOption(opt) {
   if (currentAiOption === opt.key) return;
   currentAiOption = opt.key;
-  
+
   // Update buttons
   document.querySelectorAll('#ai-options-grid .style-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.key === opt.key);
   });
-  
+
   const previewBox = document.getElementById('ai-preview-box');
   const previewLabel = document.getElementById('ai-preview-label');
-  
+
   // Fade effect
   previewBox.style.opacity = '0';
   previewBox.style.transform = 'translateY(10px)';
-  
+
   setTimeout(() => {
     previewLabel.textContent = opt.label;
     previewBox.className = 'ai-preview ' + opt.cssClass;
-    
+
     previewBox.style.opacity = '1';
     previewBox.style.transform = 'translateY(0)';
   }, 200);
-  
+
   renderAiDoc(opt.doc);
 }
 
 function renderAiDoc(doc) {
   const container = document.getElementById('ai-doc-container');
-  
+
+  container.innerHTML = `
+    <div class="cat-doc-box">
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🤔 Why This Works</div>
+        <ul class="cat-doc-list">${doc.why.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🎯 Best For</div>
+        <div class="cat-doc-text"><strong>${doc.bestFor}</strong></div>
+      </div>
+      
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:32px;">
+        <div style="flex:1;min-width:250px;">
+          <div class="cat-doc-heading">✅ Use When</div>
+          <ul class="cat-doc-list">${doc.useWhen.map(i => `<li>${i}</li>`).join('')}</ul>
+        </div>
+        <div style="flex:1;min-width:250px;">
+          <div class="cat-doc-heading">🚫 Avoid When</div>
+          <ul class="cat-doc-list">${doc.avoidWhen.map(i => `<li>${i}</li>`).join('')}</ul>
+        </div>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">⚙️ Key UI Elements</div>
+        <ul class="cat-doc-list">${doc.keyUi.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🎨 Visual Direction</div>
+        <ul class="cat-doc-list">${doc.visual.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">⚠️ Common Mistakes</div>
+        <ul class="cat-doc-list">${doc.mistakes.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">💡 Design Notes (Practical)</div>
+        <ul class="cat-doc-list">${doc.notes.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">💻 Prompt (for vibe coding)</div>
+        <div class="cat-prompt-box">${doc.prompt}</div>
+      </div>
+    </div>
+  `;
+}
+
+
+
+
+
+
+function renderPortfolioCategoryHTML(catData) {
+  categoriesModeContainer.innerHTML = `
+    <div class="cat-mode">
+      <div class="cat-header">
+        <h2 class="cat-header__title">${catData.title}</h2>
+        <div class="cat-header__badges">
+          <div class="cat-badge"><strong>👉 Covers:</strong> ${catData.covers}</div>
+          <div class="cat-badge"><strong>🧠 Core Goal:</strong> ${catData.coreGoal}</div>
+        </div>
+      </div>
+      
+      <div class="cat-options-grid" id="portfolio-options-grid"></div>
+      
+      <div class="portfolio-preview-wrapper">
+        <div class="preview-label">
+          <span class="preview-label__dot"></span>
+          Live Preview — <span id="portfolio-preview-label">Minimal + Typography-First</span>
+        </div>
+        
+        <div class="portfolio-preview" id="portfolio-preview-box">
+          <div class="portfolio-background"></div>
+          
+          <div class="portfolio-header">
+            <div class="portfolio-logo">Alex Rivera.</div>
+            <div class="portfolio-nav">
+              <span>Work</span>
+              <span>About</span>
+              <span>Contact</span>
+            </div>
+          </div>
+          
+          <div class="portfolio-hero">
+            <div class="portfolio-hero-content">
+              <h1 class="portfolio-headline">Designing digital<br>experiences with intent.</h1>
+              <p class="portfolio-subheadline">I'm a multidisciplinary designer and creative director based in New York, helping brands build memorable digital products.</p>
+              <button class="portfolio-cta">Available for work</button>
+            </div>
+            <div class="portfolio-hero-visual">
+              <div class="portfolio-hero-image-placeholder">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+              </div>
+            </div>
+          </div>
+          
+          <div class="portfolio-featured">
+            <div class="portfolio-section-title">Selected Work</div>
+            
+            <div class="portfolio-work-grid">
+              
+              <div class="portfolio-project-card portfolio-project-card--large">
+                <div class="portfolio-project-image">
+                  <span class="portfolio-project-tag">Case Study</span>
+                </div>
+                <div class="portfolio-project-details">
+                  <h3 class="portfolio-project-title">Reimagining Fintech</h3>
+                  <p class="portfolio-project-desc">A complete UX overhaul for a global payments app, increasing conversion by 42%.</p>
+                  <a href="#" class="portfolio-project-link">View Project →</a>
+                </div>
+              </div>
+              
+              <div class="portfolio-project-card">
+                <div class="portfolio-project-image"></div>
+                <div class="portfolio-project-details">
+                  <h3 class="portfolio-project-title">Oasis Botanical</h3>
+                  <p class="portfolio-project-desc">E-commerce experience.</p>
+                </div>
+              </div>
+              
+              <div class="portfolio-project-card">
+                <div class="portfolio-project-image"></div>
+                <div class="portfolio-project-details">
+                  <h3 class="portfolio-project-title">Chronos Watch OS</h3>
+                  <p class="portfolio-project-desc">Interface design.</p>
+                </div>
+              </div>
+              
+            </div>
+          </div>
+          
+          <div class="portfolio-footer">
+            <div class="portfolio-footer-content">
+              <h2>Let's build something together.</h2>
+              <p>hello@alexrivera.design</p>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      <div id="portfolio-doc-container"></div>
+      
+      <!-- Anti-Pattern Warning Box -->
+      <div class="cat-warning-box">
+        <div class="cat-warning-heading">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Anti-Patterns for Portfolio / Personal / Creator
+        </div>
+        <ul class="cat-doc-list" style="color: inherit;">
+          ${catData.antipatterns.map(a => `<li>${a}</li>`).join('')}
+        </ul>
+      </div>
+
+      <!-- Quick Decision Table -->
+      <div class="cat-decision-table-container">
+        <div class="cat-decision-table-title">⚡ Quick Decision Guide</div>
+        <table class="cat-decision-table">
+          <thead>
+            <tr>
+              <th>If your priority is…</th>
+              <th>Use this combo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Voice + sophistication</td><td>Minimal + Typography-First</td></tr>
+            <tr><td>Modern + organized work</td><td>Bento + Minimal</td></tr>
+            <tr><td>Prestige + curation</td><td>Editorial + Split Layout</td></tr>
+            <tr><td>Memorable experience</td><td>Scrollytelling + Motion</td></tr>
+            <tr><td>Warmth + personality</td><td>Minimal + Soft Gradient</td></tr>
+            <tr><td>Unique creative identity</td><td>Paper / Zine + Collage</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  const optionsGrid = document.getElementById('portfolio-options-grid');
+  catData.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'style-btn';
+    btn.dataset.key = opt.key;
+    btn.textContent = opt.label;
+    btn.onclick = () => switchPortfolioOption(opt);
+    optionsGrid.appendChild(btn);
+  });
+
+  currentPortfolioOption = null;
+  switchPortfolioOption(catData.options[0]);
+}
+
+function switchPortfolioOption(opt) {
+  if (currentPortfolioOption === opt.key) return;
+  currentPortfolioOption = opt.key;
+
+  document.querySelectorAll('#portfolio-options-grid .style-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.key === opt.key);
+  });
+
+  const previewBox = document.getElementById('portfolio-preview-box');
+  const previewLabel = document.getElementById('portfolio-preview-label');
+
+  previewBox.style.opacity = '0';
+  previewBox.style.transform = 'translateY(10px)';
+
+  setTimeout(() => {
+    previewLabel.textContent = opt.label;
+    previewBox.className = 'portfolio-preview ' + opt.cssClass;
+
+    previewBox.style.opacity = '1';
+    previewBox.style.transform = 'translateY(0)';
+  }, 200);
+
+  renderPortfolioDoc(opt.doc);
+}
+
+function renderPortfolioDoc(doc) {
+  const container = document.getElementById('portfolio-doc-container');
+
   container.innerHTML = `
     <div class="cat-doc-box">
       <div class="cat-doc-section">
