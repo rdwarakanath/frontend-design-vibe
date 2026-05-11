@@ -3245,11 +3245,304 @@ const portfolioCategoryData = {
   ]
 };
 
-const categoryRegistry = [saasCategoryData, financeCategoryData, aiCategoryData, portfolioCategoryData]; // Extensible for future categories
+const marketingCategoryData = {
+  id: 'marketing',
+  title: '🛍️ Marketing / Landing / Business',
+  covers: 'Product landing pages, startup homepages, agency websites, service pages, business websites, promotional pages',
+  coreGoal: 'Conversion + Engagement + Visual Appeal',
+  options: [
+    {
+      key: 'bento-gradient',
+      label: 'Bento + Gradient',
+      cssClass: 'marketing-style--bento-gradient',
+      doc: {
+        why: [
+          'Bento blocks → break your value prop into scannable chunks that feel modern and premium',
+          'Gradient accents → add energy and brand excitement without overwhelming the CTA',
+          'Together they create a high-converting landing rhythm: message → proof → features → action'
+        ],
+        bestFor: '👉 FEATURE CLARITY + ENERGY',
+        useWhen: [
+          'You have multiple benefits to communicate quickly',
+          'You want a modern, premium hero without heavy visuals',
+          'Your landing page needs a clear “overview at a glance” section'
+        ],
+        avoidWhen: [
+          'Your product has only one core feature (bento can feel like padding)',
+          'Your brand is ultra-minimal and forbids decorative accents',
+          'You can’t maintain strict hierarchy (bento needs careful emphasis)'
+        ],
+        keyUi: [
+          'Bento feature grid with one primary “hero” card',
+          'High-contrast primary CTA + quieter secondary CTA',
+          'Logo trust strip above the fold',
+          'Testimonial cards with role + company'
+        ],
+        visual: [
+          'Light base with soft violet/indigo/teal gradients as accents',
+          'Rounded cards with subtle borders and depth',
+          'Clear type hierarchy: headline → subheadline → bullets',
+          'Accent gradients used on badges, highlights, and hero media'
+        ],
+        mistakes: [
+          'Making all bento cards identical importance (no hierarchy)',
+          'Using saturated gradients behind body text',
+          'Too many badges/pills competing with the CTA'
+        ],
+        notes: [
+          'Make one bento card 2× the visual weight to establish a scan path',
+          'Keep gradients on small surfaces (badges, hero panel, dividers)',
+          'Ensure the primary CTA is the highest-contrast element on the page'
+        ],
+        prompt: 'Design a premium marketing landing page using a Bento layout and subtle gradient accents. Create a hero with a clear value proposition, two CTAs, a trust-logo strip, a modular features grid, testimonials, and a final CTA section. Keep the background light and clean; use gradients only as accents to support hierarchy and conversion.'
+      }
+    },
+    {
+      key: 'minimal-motion',
+      label: 'Minimal + Motion UI',
+      cssClass: 'marketing-style--minimal-motion',
+      doc: {
+        why: [
+          'Minimal layout → keeps the conversion path obvious and frictionless',
+          'Motion UI → adds “premium” perception through subtle reveal + microinteraction',
+          'Together they feel like a modern product homepage: calm, confident, and high-trust'
+        ],
+        bestFor: '👉 CONVERSION + MODERN FEEL',
+        useWhen: [
+          'Your messaging is strong and you want it to lead',
+          'You want a premium feel without gradients everywhere',
+          'You’re optimizing for clarity and CTA focus'
+        ],
+        avoidWhen: [
+          'Your audience prefers static pages (motion can feel distracting)',
+          'You can’t support reduced-motion fallbacks',
+          'You need extreme visual differentiation from competitors via rich visuals'
+        ],
+        keyUi: [
+          'Soft section reveals (opacity/translate) with staggering',
+          'Hover microinteractions on cards and CTAs',
+          'Clean icon + short-copy feature cards',
+          'Sticky-ish CTA emphasis near hero area (visual, not actual sticky if not already used)'
+        ],
+        visual: [
+          'Mostly white surfaces with subtle borders',
+          'One strong brand accent for CTAs and highlights',
+          'Motion uses transforms only for smoothness',
+          'Comfortable spacing rhythm: generous top padding, tight CTA grouping'
+        ],
+        mistakes: [
+          'Over-animating every component',
+          'Animating layout properties (jank)',
+          'Low-contrast CTAs in a “minimal” palette'
+        ],
+        notes: [
+          'Use one consistent easing curve for all microinteractions',
+          'Stagger reveals by 60–120ms increments',
+          'Always provide a no-motion baseline with prefers-reduced-motion'
+        ],
+        prompt: 'Design a minimal, conversion-focused landing page with refined Motion UI. Use a clean white layout, strong typographic hierarchy, subtle section reveals, and tactile CTA interactions. Include hero, trust strip, feature cards, testimonials, and a final CTA. Keep motion elegant and purposeful, never flashy.'
+      }
+    },
+    {
+      key: 'glass-cta',
+      label: 'Glassmorphism + CTA-Focused Layout',
+      cssClass: 'marketing-style--glass-cta',
+      doc: {
+        why: [
+          'Glass hero panel → instant premium impression without heavy imagery',
+          'CTA-focused layout → the page always “points” to the action',
+          'Together they create a glossy, high-end landing experience that sells confidently'
+        ],
+        bestFor: '👉 PREMIUM IMPRESSION',
+        useWhen: [
+          'You want a polished “startup premium” vibe',
+          'Your product benefits from a visually elevated hero',
+          'You need the CTA to remain visually dominant in every section'
+        ],
+        avoidWhen: [
+          'Your page has long, dense text (glass reduces readability)',
+          'Performance on low-end devices is critical (blur is expensive)',
+          'You need strict accessibility contrast everywhere'
+        ],
+        keyUi: [
+          'Frosted hero card with CTA cluster',
+          'High-contrast CTA button styling (solid, not glass)',
+          'Glass feature cards with subtle inner borders',
+          'Clear social proof block with rating + quote'
+        ],
+        visual: [
+          'Light premium gradient background',
+          'Glass surfaces: rgba white + blur + thin strokes',
+          'CTAs: solid fill with crisp shadow for click affordance',
+          'Typography stays dark/ink for readability'
+        ],
+        mistakes: [
+          'Glass CTA buttons (low-contrast, looks inactive)',
+          'Too much blur on text surfaces',
+          'Using glass everywhere (no focal point)'
+        ],
+        notes: [
+          'Use glass on containers; keep CTAs solid',
+          'Increase spacing between hero content and background to reduce visual noise',
+          'Always test readability across the lightest part of the gradient'
+        ],
+        prompt: 'Design a premium marketing landing page with light glassmorphism for hero and cards, but keep CTAs solid and high-contrast. Include a hero glass panel with a value prop and CTA cluster, a trust strip, feature cards, testimonials, and a final CTA. Use a soft violet/indigo/teal gradient background with clean white atmosphere.'
+      }
+    },
+    {
+      key: 'bold-type',
+      label: 'Bold Typography + Minimal',
+      cssClass: 'marketing-style--bold-type',
+      doc: {
+        why: [
+          'Huge headline → communicates value instantly and confidently',
+          'Minimal supporting UI → removes distraction and keeps the message persuasive',
+          'Together they feel like a brand-forward homepage that converts via clarity and voice'
+        ],
+        bestFor: '👉 BRAND CONFIDENCE + MESSAGING',
+        useWhen: [
+          'Your proposition is simple and strong',
+          'You want a “copy-first” landing page aesthetic',
+          'You need a high-impact hero without heavy visuals'
+        ],
+        avoidWhen: [
+          'You need to explain a complex product quickly via visuals',
+          'Your headline is long or jargon-heavy',
+          'You rely on dense feature lists above the fold'
+        ],
+        keyUi: [
+          'Oversized headline with tight letter-spacing',
+          'CTA row directly under the subheadline',
+          'Short, punchy feature statements (not long paragraphs)',
+          'Testimonials as bold pull-quotes'
+        ],
+        visual: [
+          'Very light base with strong ink text',
+          'One accent color used sparingly on CTAs and key words',
+          'Minimal borders and minimal shadows',
+          'High-contrast typographic scale'
+        ],
+        mistakes: [
+          'Using a huge headline without tightening tracking/leading',
+          'Adding too many decorative elements that dilute the voice',
+          'Weak CTA styling (it must still stand out)'
+        ],
+        notes: [
+          'Use clamp() style scaling for the headline feel',
+          'Keep line length under control (max-width on hero copy)',
+          'The CTA should be visually “attached” to the message, not floating away'
+        ],
+        prompt: 'Design a brand-forward landing page that converts using bold typography and minimal UI. Create a massive headline, a confident subheadline, and a prominent CTA row. Support the story with a tight features section, a strong social proof/testimonial block, and a final CTA. Keep the background light and premium.'
+      }
+    },
+    {
+      key: 'hero-3d',
+      label: '3D Hero Section + Minimal',
+      cssClass: 'marketing-style--hero-3d',
+      doc: {
+        why: [
+          '3D centerpiece → creates instant “wow” without turning the whole page into a demo',
+          'Minimal layout → keeps the 3D as a hero moment, not a distraction',
+          'Together they’re ideal for startups that need memorability while keeping conversion clean'
+        ],
+        bestFor: '👉 IMMEDIATE WOW FACTOR',
+        useWhen: [
+          'You need a standout hero moment to differentiate',
+          'Your brand supports a slightly playful premium vibe',
+          'You can keep the rest of the layout crisp and minimal'
+        ],
+        avoidWhen: [
+          'The 3D adds significant load time or motion sickness',
+          'Your audience is conservative and expects zero flourish',
+          'You can’t keep the CTA dominant (3D must not compete)'
+        ],
+        keyUi: [
+          'Hero split: copy + 3D-style visual block',
+          'CTA cluster remains primary',
+          'Features and testimonials stay minimal and supportive',
+          'Final CTA repeats the offer cleanly'
+        ],
+        visual: [
+          'Light background with subtle gradient energy',
+          '3D block uses soft highlights and shadows (no harsh neon)',
+          'Clean cards and restrained borders',
+          'Premium spacing: big hero breathing room'
+        ],
+        mistakes: [
+          'Heavy 3D that delays load',
+          'Over-animating the 3D hero',
+          'Letting the 3D become the only message'
+        ],
+        notes: [
+          'Use the 3D as an accent “product sculpture,” not a full scene',
+          'Keep motion slow and subtle; provide reduced-motion fallback',
+          'Anchor the eye: headline → CTA → proof'
+        ],
+        prompt: 'Design a marketing landing page with a premium 3D-inspired hero centerpiece and minimal supporting layout. Use a light, clean background with subtle gradient energy. Keep the CTA cluster dominant and readable. Include trust logos, a crisp features grid, testimonials, and a final CTA section. Ensure the 3D moment enhances the message without slowing perceived performance.'
+      }
+    },
+    {
+      key: 'mesh-soft',
+      label: 'Gradient Mesh + Soft UI',
+      cssClass: 'marketing-style--mesh-soft',
+      doc: {
+        why: [
+          'Gradient mesh → creates a warm, brand-forward atmosphere that feels modern and human',
+          'Soft UI cards → make the page approachable and friendly while staying premium',
+          'Together they communicate “polished + inviting” — ideal for services and agencies'
+        ],
+        bestFor: '👉 WARMTH + DISTINCTIVENESS',
+        useWhen: [
+          'You want a more human, friendly premium feel',
+          'Your brand needs warmth without looking playful',
+          'You want a distinct aesthetic that still converts'
+        ],
+        avoidWhen: [
+          'Your brand is ultra-corporate and forbids softness',
+          'You can’t maintain CTA contrast against colorful backdrops',
+          'Your content is extremely text-heavy'
+        ],
+        keyUi: [
+          'Mesh-backed hero with soft pill badge and headline',
+          'Rounded feature cards with gentle shadows',
+          'Testimonial cards with subtle gradients',
+          'Final CTA panel with a soft glow emphasis'
+        ],
+        visual: [
+          'Light base with violet/indigo/teal/sky mesh energy',
+          'Soft corners, gentle shadows, subtle borders',
+          'Typography remains crisp and dark',
+          'Accent glow used to guide attention to the CTA'
+        ],
+        mistakes: [
+          'Over-saturating the mesh so it competes with CTA',
+          'Using too many colors without a hierarchy',
+          'Softening everything equally (lose emphasis)'
+        ],
+        notes: [
+          'Keep mesh behind hero only; let content sections go calmer',
+          'Use one primary accent for CTAs and a secondary accent for highlights',
+          'Use larger radii for hero surfaces and slightly smaller radii for cards'
+        ],
+        prompt: 'Design a warm, premium landing page using a light gradient mesh hero background and soft UI cards. Keep the CTA highly visible with strong contrast. Include hero, trust strip, feature cards, testimonials, and a final CTA panel. Use soft rounded corners, gentle shadows, and a clean modern typographic hierarchy.'
+      }
+    }
+  ],
+  antipatterns: [
+    '❌ <strong>Buried or unclear CTAs</strong> → if the action is hard to find, conversion collapses',
+    '❌ <strong>Too many competing messages</strong> → the visitor can’t decide what the page is about',
+    '❌ <strong>Autoplay video with sound</strong> → breaks trust and annoys users immediately',
+    '❌ <strong>Heavy 3D that delays load</strong> → “wow” loses to slow first paint',
+    '❌ <strong>Glass CTA buttons</strong> → low contrast and looks inactive, reducing clicks'
+  ]
+};
+
+const categoryRegistry = [saasCategoryData, financeCategoryData, aiCategoryData, portfolioCategoryData, marketingCategoryData]; // Extensible for future categories
 let currentSaasOption = null;
 let currentFinanceOption = null;
 let currentAiOption = null;
 let currentPortfolioOption = null;
+let currentMarketingOption = null;
 
 function renderCategoryMode(index) {
   const catData = categoryRegistry[index];
@@ -3262,7 +3555,312 @@ function renderCategoryMode(index) {
     renderAiCategoryHTML(catData);
   } else if (catData.id === 'portfolio') {
     renderPortfolioCategoryHTML(catData);
+  } else if (catData.id === 'marketing') {
+    renderMarketingCategoryHTML(catData);
   }
+}
+
+/* ============================================
+   MARKETING / LANDING / BUSINESS CATEGORY
+   ============================================ */
+
+function renderMarketingCategoryHTML(catData) {
+  categoriesModeContainer.innerHTML = `
+    <div class="cat-mode">
+      <div class="cat-header">
+        <h2 class="cat-header__title">${catData.title}</h2>
+        <div class="cat-header__badges">
+          <div class="cat-badge"><strong>👉 Covers:</strong> ${catData.covers}</div>
+          <div class="cat-badge"><strong>🧠 Core Goal:</strong> ${catData.coreGoal}</div>
+        </div>
+      </div>
+      
+      <div class="cat-options-grid" id="marketing-options-grid"></div>
+      
+      <div class="marketing-preview-wrapper">
+        <div class="preview-label">
+          <span class="preview-label__dot"></span>
+          Live Preview — <span id="marketing-preview-label">${catData.options[0].label}</span>
+        </div>
+        
+        <div class="marketing-preview" id="marketing-preview-box">
+          <div class="marketing-bg"></div>
+          
+          <div class="marketing-topbar">
+            <div class="marketing-brand">
+              <div class="marketing-brand-mark"></div>
+              VibeLaunch
+            </div>
+            <div class="marketing-nav">
+              <div class="marketing-nav-item">Product</div>
+              <div class="marketing-nav-item">Solutions</div>
+              <div class="marketing-nav-item">Customers</div>
+              <div class="marketing-nav-item">Pricing</div>
+            </div>
+            <div class="marketing-topbar-cta">
+              <button class="marketing-btn marketing-btn--ghost">Contact</button>
+              <button class="marketing-btn marketing-btn--primary">Get Started</button>
+            </div>
+          </div>
+          
+          <div class="marketing-hero">
+            <div class="marketing-hero-content">
+              <div class="marketing-pill">New • Launch-ready homepage system</div>
+              <h3 class="marketing-h1">Turn visitors into customers with a premium landing rhythm.</h3>
+              <p class="marketing-subhead">A modern, conversion-first layout with clear messaging, social proof, crisp features, and CTAs that feel inevitable — not pushy.</p>
+              <div class="marketing-cta-row">
+                <button class="marketing-btn marketing-btn--primary">Start Free</button>
+                <button class="marketing-btn marketing-btn--secondary">View Demo</button>
+              </div>
+              <div class="marketing-metrics">
+                <div class="marketing-metric">
+                  <div class="marketing-metric-value">+32%</div>
+                  <div class="marketing-metric-label">Signup lift</div>
+                </div>
+                <div class="marketing-metric">
+                  <div class="marketing-metric-value">2.1s</div>
+                  <div class="marketing-metric-label">Avg time-to-value</div>
+                </div>
+                <div class="marketing-metric">
+                  <div class="marketing-metric-value">4.9★</div>
+                  <div class="marketing-metric-label">Customer rating</div>
+                </div>
+              </div>
+            </div>
+            <div class="marketing-hero-media">
+              <div class="marketing-hero-card">
+                <div class="marketing-hero-card-top">
+                  <div class="marketing-hero-card-badge">Live</div>
+                  <div class="marketing-hero-card-title">Conversion Snapshot</div>
+                </div>
+                <div class="marketing-hero-card-body">
+                  <div class="marketing-mini-row">
+                    <div class="marketing-mini-kpi">
+                      <div class="marketing-mini-kpi-label">Visitors</div>
+                      <div class="marketing-mini-kpi-value">18.2k</div>
+                    </div>
+                    <div class="marketing-mini-kpi">
+                      <div class="marketing-mini-kpi-label">Leads</div>
+                      <div class="marketing-mini-kpi-value">1,024</div>
+                    </div>
+                    <div class="marketing-mini-kpi">
+                      <div class="marketing-mini-kpi-label">CVR</div>
+                      <div class="marketing-mini-kpi-value">5.6%</div>
+                    </div>
+                  </div>
+                  <div class="marketing-sparkline"></div>
+                  <div class="marketing-hero-card-cta">
+                    <button class="marketing-btn marketing-btn--primary">Publish Landing</button>
+                    <button class="marketing-btn marketing-btn--ghost">Edit Copy</button>
+                  </div>
+                </div>
+              </div>
+              <div class="marketing-float-badge marketing-float-badge--1">No-code sections</div>
+              <div class="marketing-float-badge marketing-float-badge--2">A/B ready</div>
+            </div>
+          </div>
+          
+          <div class="marketing-trust">
+            <div class="marketing-trust-label">Trusted by teams shipping fast</div>
+            <div class="marketing-logo-row">
+              <div class="marketing-logo">Nimbus</div>
+              <div class="marketing-logo">Arcwell</div>
+              <div class="marketing-logo">Juniper</div>
+              <div class="marketing-logo">Northwind</div>
+              <div class="marketing-logo">Brightside</div>
+            </div>
+          </div>
+          
+          <div class="marketing-section marketing-features">
+            <div class="marketing-section-head">
+              <div class="marketing-eyebrow">Features</div>
+              <div class="marketing-h2">Everything you need to convert — above the fold and beyond.</div>
+              <div class="marketing-section-sub">A crisp story: clarity first, proof second, detail third. Built for modern product marketing.</div>
+            </div>
+            <div class="marketing-feature-grid">
+              <div class="marketing-feature-card">
+                <div class="marketing-feature-icon">⚡</div>
+                <div class="marketing-feature-title">CTA-first hierarchy</div>
+                <div class="marketing-feature-text">Buttons, proof, and benefits align to a single primary action.</div>
+              </div>
+              <div class="marketing-feature-card">
+                <div class="marketing-feature-icon">🧠</div>
+                <div class="marketing-feature-title">Message clarity</div>
+                <div class="marketing-feature-text">Headline + subhead + bullets keep the value prop unmistakable.</div>
+              </div>
+              <div class="marketing-feature-card">
+                <div class="marketing-feature-icon">🧾</div>
+                <div class="marketing-feature-title">Social proof system</div>
+                <div class="marketing-feature-text">Logos, testimonials, and metrics work together — not randomly.</div>
+              </div>
+              <div class="marketing-feature-card">
+                <div class="marketing-feature-icon">✨</div>
+                <div class="marketing-feature-title">Premium polish</div>
+                <div class="marketing-feature-text">Modern surface treatments that feel business-ready and brand-forward.</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="marketing-section marketing-proof">
+            <div class="marketing-proof-grid">
+              <div class="marketing-quote-card">
+                <div class="marketing-stars">★★★★★</div>
+                <div class="marketing-quote">“Our demo requests went up within days. The page finally feels like a real product.”</div>
+                <div class="marketing-quote-meta">Asha R. • Growth Lead, Northwind</div>
+              </div>
+              <div class="marketing-quote-card">
+                <div class="marketing-stars">★★★★★</div>
+                <div class="marketing-quote">“Crisp, persuasive, and fast. It’s the first layout we’ve shipped that sales loves.”</div>
+                <div class="marketing-quote-meta">Mateo S. • Founder, Nimbus</div>
+              </div>
+              <div class="marketing-proof-side">
+                <div class="marketing-proof-title">Proof that reduces hesitation</div>
+                <div class="marketing-proof-text">Use testimonials, trust logos, and concrete outcomes to answer “Is this for me?” before the visitor scrolls away.</div>
+                <button class="marketing-btn marketing-btn--primary">See Customer Stories</button>
+              </div>
+            </div>
+          </div>
+          
+          <div class="marketing-section marketing-final-cta">
+            <div class="marketing-final-inner">
+              <div>
+                <div class="marketing-h2">Ready to launch a landing page that sells?</div>
+                <div class="marketing-section-sub">Clean story. Premium visuals. Obvious CTA. The conversion path stays clear on every device.</div>
+              </div>
+              <div class="marketing-final-actions">
+                <button class="marketing-btn marketing-btn--primary">Start Free</button>
+                <button class="marketing-btn marketing-btn--secondary">Talk to Sales</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div id="marketing-doc-container"></div>
+      
+      <!-- Anti-Pattern Warning Box -->
+      <div class="cat-warning-box cat-warning-box--marketing">
+        <div class="cat-warning-heading">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Anti-Patterns for Marketing / Landing / Business
+        </div>
+        <ul class="cat-doc-list" style="color: inherit;">
+          ${catData.antipatterns.map(a => `<li>${a}</li>`).join('')}
+        </ul>
+      </div>
+
+      <!-- Quick Decision Table -->
+      <div class="cat-decision-table-container">
+        <div class="cat-decision-table-title">⚡ Quick Decision Guide</div>
+        <table class="cat-decision-table">
+          <thead>
+            <tr>
+              <th>If your priority is…</th>
+              <th>Use this combo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Feature clarity + energy</td><td>Bento + Gradient</td></tr>
+            <tr><td>Conversion + modern feel</td><td>Minimal + Motion UI</td></tr>
+            <tr><td>Premium impression</td><td>Glassmorphism + CTA-Focused Layout</td></tr>
+            <tr><td>Brand confidence + messaging</td><td>Bold Typography + Minimal</td></tr>
+            <tr><td>Immediate wow factor</td><td>3D Hero Section + Minimal</td></tr>
+            <tr><td>Warmth + distinctiveness</td><td>Gradient Mesh + Soft UI</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  const optionsGrid = document.getElementById('marketing-options-grid');
+  catData.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'style-btn';
+    btn.dataset.key = opt.key;
+    btn.innerHTML = `<span class="style-btn__label">${opt.label}</span>`;
+    btn.onclick = () => switchMarketingOption(opt);
+    optionsGrid.appendChild(btn);
+  });
+
+  currentMarketingOption = null;
+  switchMarketingOption(catData.options[0]);
+}
+
+function switchMarketingOption(opt) {
+  if (currentMarketingOption === opt.key) return;
+  currentMarketingOption = opt.key;
+
+  document.querySelectorAll('#marketing-options-grid .style-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.key === opt.key);
+  });
+
+  const previewBox = document.getElementById('marketing-preview-box');
+  const previewLabel = document.getElementById('marketing-preview-label');
+
+  previewBox.style.opacity = '0';
+  previewBox.style.transform = 'translateY(10px)';
+
+  setTimeout(() => {
+    previewLabel.textContent = opt.label;
+    previewBox.className = 'marketing-preview ' + opt.cssClass;
+    previewBox.style.opacity = '1';
+    previewBox.style.transform = 'translateY(0)';
+  }, 200);
+
+  renderMarketingDoc(opt.doc);
+}
+
+function renderMarketingDoc(doc) {
+  const container = document.getElementById('marketing-doc-container');
+  container.innerHTML = `
+    <div class="cat-doc-box cat-doc-box--marketing">
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🤔 Why This Works</div>
+        <ul class="cat-doc-list">${doc.why.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🎯 Best For</div>
+        <div class="cat-doc-text"><strong>${doc.bestFor}</strong></div>
+      </div>
+      
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:32px;">
+        <div style="flex:1;min-width:250px;">
+          <div class="cat-doc-heading">✅ Use When</div>
+          <ul class="cat-doc-list">${doc.useWhen.map(i => `<li>${i}</li>`).join('')}</ul>
+        </div>
+        <div style="flex:1;min-width:250px;">
+          <div class="cat-doc-heading">🚫 Avoid When</div>
+          <ul class="cat-doc-list">${doc.avoidWhen.map(i => `<li>${i}</li>`).join('')}</ul>
+        </div>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">⚙️ Key UI Elements</div>
+        <ul class="cat-doc-list">${doc.keyUi.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🎨 Visual Direction</div>
+        <ul class="cat-doc-list">${doc.visual.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">⚠️ Common Mistakes</div>
+        <ul class="cat-doc-list">${doc.mistakes.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">💡 Design Notes</div>
+        <ul class="cat-doc-list">${doc.notes.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">💻 Prompt</div>
+        <div class="cat-prompt-box">${doc.prompt}</div>
+      </div>
+    </div>
+  `;
 }
 
 function renderSaasCategoryHTML(catData) {
