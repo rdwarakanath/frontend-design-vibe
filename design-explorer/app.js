@@ -3537,12 +3537,125 @@ const marketingCategoryData = {
   ]
 };
 
-const categoryRegistry = [saasCategoryData, financeCategoryData, aiCategoryData, portfolioCategoryData, marketingCategoryData]; // Extensible for future categories
+const creativeCategoryData = {
+  id: 'creative',
+  title: '🎭 Creative / Media / Entertainment',
+  covers: 'Fashion brands, music artists, creative agencies, art platforms, magazines, film/media sites, experimental web experiences',
+  coreGoal: 'Attention + Uniqueness + Expression',
+  options: [
+    {
+      key: 'maximal-collage',
+      label: 'Maximalism + Collage',
+      cssClass: 'creative-style--maximal-collage',
+      doc: {
+        why: ['Maximalism commands attention instantly in culture-driven spaces', 'Collage adds layered editorial tension and visual storytelling', 'Together they create fashion/music-grade art direction with memorable impact'],
+        bestFor: '👉 FASHION EDITORIAL IMPACT',
+        useWhen: ['Building campaign pages for fashion, music, and culture brands', 'You need a highly expressive homepage that feels curated and art-directed', 'The site itself should feel like a creative statement'],
+        avoidWhen: ['You need strict usability-first transaction flows', 'Audience expects conservative corporate layouts', 'You cannot maintain a clear focal hierarchy'],
+        keyUi: ['Layered hero media with overlap and depth', 'Typographic overlays as design objects', 'Editorial feature blocks with mixed card sizes', 'Media cards with badges and directional accents'],
+        visual: ['Cream/ivory base with burgundy-plum accents', 'Collage overlaps and angular masks', 'Controlled decorative density with one dominant focal zone', 'Display type + refined supporting serif/grotesk'],
+        mistakes: ['Random clutter without hierarchy', 'Too many competing focal points', 'Over-texturing until readability drops'],
+        notes: ['Anchor each section with one dominant visual element', 'Use z-index layers intentionally to create editorial rhythm', 'Keep CTA and key labels clean even in dense compositions'],
+        prompt: 'Design a premium creative editorial page using maximal collage composition. Build a layered hero with overlapping imagery and typographic overlays, followed by expressive feature blocks and media cards. Maintain one clear focal anchor per section and preserve readability with controlled contrast.'
+      }
+    },
+    {
+      key: 'brutal-type',
+      label: 'Brutalism + Typography',
+      cssClass: 'creative-style--brutal-type',
+      doc: {
+        why: ['Brutalism creates confrontation and memorability', 'Typography as structure makes the message feel raw and bold', 'Together they produce high-impact creative identity pages'],
+        bestFor: '👉 CONFRONTATIONAL MEMORABILITY',
+        useWhen: ['Brand voice is rebellious, anti-polish, or provocative', 'You want immediate visual character and bold messaging', 'A project needs a non-generic creative statement'],
+        avoidWhen: ['You need soft luxury aesthetics', 'Content requires dense long-form reading comfort', 'Users expect familiar safe layouts'],
+        keyUi: ['Hard-edge framed cards', 'Oversized headlines and labels', 'Deliberate asymmetric spacing', 'Minimal decorative effects, maximum typographic force'],
+        visual: ['High contrast cream/charcoal palette with bold accent', 'Hard borders, minimal radius', 'Raw display type scale', 'No decorative softness in core surfaces'],
+        mistakes: ['Adding too much polish (soft shadows, fancy gradients)', 'Using brutal style without strong copy hierarchy', 'Applying aggressive style to everything equally'],
+        notes: ['Let scale, border, and spacing carry the style', 'Use one accent color for strategic emphasis only', 'Maintain clear navigation cues despite the raw look'],
+        prompt: 'Design a brutalist creative landing experience with huge typography, hard borders, and intentional asymmetry. Keep surfaces raw and structural, with high-contrast editorial hierarchy. Make it confrontational but still navigable.'
+      }
+    },
+    {
+      key: 'retro-y2k',
+      label: 'Retro / Y2K + Gradient',
+      cssClass: 'creative-style--retro-y2k',
+      doc: {
+        why: ['Y2K references resonate with pop-culture audiences', 'Iridescent gradients and chrome accents add recognizable era flavor', 'Together they create nostalgic but modern entertainment energy'],
+        bestFor: '👉 GEN Z / MILLENNIAL RESONANCE',
+        useWhen: ['Music drops, fashion campaigns, or youth-focused media launches', 'You want playful premium nostalgia', 'Brand identity embraces pop-culture references'],
+        avoidWhen: ['Brand requires timeless understated minimalism', 'Audience expects conservative trust-first visuals', 'You cannot keep decorative effects controlled'],
+        keyUi: ['Iridescent hero accents', 'Chrome-like CTA and badges', 'Decorative sparkle motifs with restraint', 'Gradient-heavy visual separators'],
+        visual: ['Plum, magenta, cyan, and metallic silver accents', 'Glossy gradients on key surfaces', 'Strong contrast between playful elements and readable text', 'Editorial layout still preserved beneath style'],
+        mistakes: ['Applying chrome effects to body copy', 'Turning nostalgia into low-quality throwback design', 'Overloading every element with rainbow gradients'],
+        notes: ['Use chrome/iridescent selectively on hero and interactive elements', 'Keep copy zones calm for readability', 'Balance nostalgia with premium spacing and structure'],
+        prompt: 'Design a premium Y2K-inspired creative page with iridescent gradients, chrome accents, and editorial composition. Keep body copy readable while hero/media zones carry playful nostalgic energy. Make it culturally resonant, not kitsch.'
+      }
+    },
+    {
+      key: 'cyber-motion',
+      label: 'Cyberpunk + Motion',
+      cssClass: 'creative-style--cyber-motion',
+      doc: {
+        why: ['Cyberpunk creates dramatic immersive atmosphere', 'Motion adds cinematic tension and depth', 'Together they fit gaming, music-tech, and futuristic media narratives'],
+        bestFor: '👉 GAMING + TECH DRAMA',
+        useWhen: ['Building immersive dark entertainment experiences', 'Brand identity leans futuristic and high-energy', 'You need strong visual tension and mood'],
+        avoidWhen: ['Users need calm long-read experiences', 'Accessibility contrast constraints are strict and untested', 'Project tone should feel warm and human-first'],
+        keyUi: ['Neon edge accents on key cards', 'Glitch-like subtle motion overlays', 'Dark layered hero with luminous focal points', 'High-contrast CTA and media badges'],
+        visual: ['Deep charcoal base with cyan/magenta accents', 'Soft scanline/noise overlays used carefully', 'Motion is subtle and deliberate, not chaotic', 'Typography remains legible despite atmosphere'],
+        mistakes: ['Using neon on every element', 'Aggressive looping effects that distract', 'Poor readability on dark surfaces'],
+        notes: ['Animate only hero highlights and accent lines', 'Keep one dominant neon and one secondary accent', 'Respect reduced-motion users where possible'],
+        prompt: 'Design a cinematic cyberpunk creative page with dark layers, neon accents, and refined motion atmosphere. Use subtle glitch/scanline energy around hero and media cards while preserving clear hierarchy and readable text.'
+      }
+    },
+    {
+      key: 'liquid-organic',
+      label: 'Liquid + Organic Shapes',
+      cssClass: 'creative-style--liquid-organic',
+      doc: {
+        why: ['Liquid geometry adds expressive movement and human warmth', 'Organic shapes break rigid digital geometry', 'Together they create elegant experimental identity for creative studios'],
+        bestFor: '👉 ORGANIC CREATIVE IDENTITY',
+        useWhen: ['Brand tone is artistic, fluid, or experimental', 'You want soft immersive atmosphere with motion cues', 'You need distinct creative identity without harsh aesthetics'],
+        avoidWhen: ['Project requires strict geometric system language', 'You need brutally direct industrial tone', 'Organic styling competes with dense data content'],
+        keyUi: ['Blob-like hero shapes and layered curves', 'Rounded fluid media surfaces', 'Organic divider shapes across sections', 'Soft depth and drift-like motion cues'],
+        visual: ['Warm cream with deep plum/forest accents', 'Fluid gradients with smooth transitions', 'Large radii and soft edge treatments', 'Refined editorial type to balance fluidity'],
+        mistakes: ['Over-animating blob shapes until unstable', 'Weak contrast on flowing backgrounds', 'Making every component equally soft'],
+        notes: ['Keep fluid style strongest in hero and feature separators', 'Preserve crisp text surfaces on top of organic backgrounds', 'Use asymmetry with restraint to avoid clutter'],
+        prompt: 'Design an elegant creative layout with liquid organic shapes, flowing section transitions, and premium editorial typography. Use warm light surfaces with deep artistic accents, soft depth, and controlled motion to create expressive identity.'
+      }
+    },
+    {
+      key: 'experimental-asym',
+      label: 'Experimental + Asymmetrical Layout',
+      cssClass: 'creative-style--experimental-asym',
+      doc: {
+        why: ['Asymmetry creates editorial tension and uniqueness', 'Experimental composition turns layout into artistic statement', 'Together they deliver award-style creative direction'],
+        bestFor: '👉 ARTISTIC STATEMENT SITE',
+        useWhen: ['You want high-concept creative identity', 'A portfolio/agency presence must feel unconventional', 'Visual storytelling is more important than conventional symmetry'],
+        avoidWhen: ['Users need straightforward utilitarian navigation', 'Project demands strict layout familiarity', 'Team cannot maintain art-direction consistency across sections'],
+        keyUi: ['Offset section blocks and layered overlaps', 'Split rhythm between type-heavy and media-heavy zones', 'Intentional crop/bleed effects', 'Directional accents that guide scan path'],
+        visual: ['Deep charcoal + ivory + burgundy-plum accents', 'Intentional imbalance with clear hierarchy', 'Thin luxury borders and controlled shadows', 'Magazine-like spacing with visual pauses'],
+        mistakes: ['Random layout chaos without intentional rhythm', 'Overlapping content that blocks readability', 'Inconsistent typography scale across sections'],
+        notes: ['Define a repeatable asymmetric rhythm before styling', 'Use spacing to create tension, not confusion', 'Keep CTAs anchored in predictable positions'],
+        prompt: 'Design an experimental asymmetrical creative page with editorial tension, intentional overlaps, and premium art-direction. Balance unconventional composition with clear hierarchy, readable typography, and strong focal anchors for hero, media, and CTA sections.'
+      }
+    }
+  ],
+  antipatterns: [
+    '❌ <strong>Generic polished SaaS aesthetics</strong> → instantly removes creative personality',
+    '❌ <strong>Excessive navigation complexity</strong> → expressive design still needs discoverable paths',
+    '❌ <strong>Full cyberpunk on every element</strong> → no contrast means no impact',
+    '❌ <strong>Y2K without ironic awareness</strong> → feels outdated instead of intentional',
+    '❌ <strong>Maximalism without a focal anchor</strong> → visual noise replaces direction'
+  ]
+};
+
+const categoryRegistry = [saasCategoryData, financeCategoryData, aiCategoryData, portfolioCategoryData, marketingCategoryData, creativeCategoryData]; // Extensible for future categories
 let currentSaasOption = null;
 let currentFinanceOption = null;
 let currentAiOption = null;
 let currentPortfolioOption = null;
 let currentMarketingOption = null;
+let currentCreativeOption = null;
 
 function renderCategoryMode(index) {
   const catData = categoryRegistry[index];
@@ -3557,6 +3670,8 @@ function renderCategoryMode(index) {
     renderPortfolioCategoryHTML(catData);
   } else if (catData.id === 'marketing') {
     renderMarketingCategoryHTML(catData);
+  } else if (catData.id === 'creative') {
+    renderCreativeCategoryHTML(catData);
   }
 }
 
@@ -3855,6 +3970,222 @@ function renderMarketingDoc(doc) {
         <ul class="cat-doc-list">${doc.notes.map(i => `<li>${i}</li>`).join('')}</ul>
       </div>
       
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">💻 Prompt</div>
+        <div class="cat-prompt-box">${doc.prompt}</div>
+      </div>
+    </div>
+  `;
+}
+
+/* ============================================
+   CREATIVE / MEDIA / ENTERTAINMENT CATEGORY
+   ============================================ */
+
+function renderCreativeCategoryHTML(catData) {
+  categoriesModeContainer.innerHTML = `
+    <div class="cat-mode">
+      <div class="cat-header">
+        <h2 class="cat-header__title">${catData.title}</h2>
+        <div class="cat-header__badges">
+          <div class="cat-badge"><strong>👉 Covers:</strong> ${catData.covers}</div>
+          <div class="cat-badge"><strong>🧠 Core Goal:</strong> ${catData.coreGoal}</div>
+        </div>
+      </div>
+
+      <div class="cat-options-grid" id="creative-options-grid"></div>
+
+      <div class="creative-preview-wrapper">
+        <div class="preview-label">
+          <span class="preview-label__dot"></span>
+          Live Preview — <span id="creative-preview-label">${catData.options[0].label}</span>
+        </div>
+
+        <div class="creative-preview" id="creative-preview-box">
+          <div class="creative-bg"></div>
+          <div class="creative-grain"></div>
+
+          <div class="creative-topbar">
+            <div class="creative-brand">ATELIER / SCENE</div>
+            <div class="creative-nav">
+              <span>Stories</span>
+              <span>Collections</span>
+              <span>Films</span>
+              <span>Studio</span>
+            </div>
+            <button class="creative-topbar-btn">Enter Issue 19</button>
+          </div>
+
+          <section class="creative-hero">
+            <div class="creative-hero-copy">
+              <div class="creative-kicker">Editorial Drop • Winter Capsule</div>
+              <h3 class="creative-title">Culture in Motion. Direction in Detail.</h3>
+              <p class="creative-subtitle">A cinematic creative platform blending fashion narrative, sound-led storytelling, and art-directed media showcases.</p>
+              <div class="creative-cta-row">
+                <button class="creative-btn creative-btn--primary">Watch Campaign</button>
+                <button class="creative-btn creative-btn--ghost">View Lookbook</button>
+              </div>
+            </div>
+            <div class="creative-hero-visual">
+              <div class="creative-hero-card creative-layer-a">
+                <div class="creative-card-label">Feature Film</div>
+                <div class="creative-card-title">Nocturne — Director’s Cut</div>
+              </div>
+              <div class="creative-hero-card creative-layer-b">
+                <div class="creative-card-label">New Collection</div>
+                <div class="creative-card-title">Velvet Syntax</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="creative-editorial-grid">
+            <article class="creative-panel creative-panel--lead">
+              <div class="creative-panel-kicker">Lead Story</div>
+              <div class="creative-panel-title">The New Language of Fashion Cinema</div>
+              <div class="creative-panel-text">Editorial framing, cinematic pacing, and composition-led interfaces shape how modern creative brands are perceived.</div>
+            </article>
+            <article class="creative-panel">
+              <div class="creative-panel-kicker">Agency Notes</div>
+              <div class="creative-panel-title">Visual Tension That Feels Intentional</div>
+            </article>
+            <article class="creative-panel">
+              <div class="creative-panel-kicker">Sound / Motion</div>
+              <div class="creative-panel-title">Interactive Rhythm for Immersive Pages</div>
+            </article>
+          </section>
+
+          <section class="creative-media-showcase">
+            <div class="creative-media-head">
+              <div class="creative-media-title">Media Showcase</div>
+              <div class="creative-media-sub">Film stills, campaign frames, and curated creative moments.</div>
+            </div>
+            <div class="creative-media-grid">
+              <div class="creative-media-card">
+                <div class="creative-media-thumb"></div>
+                <div class="creative-media-meta">Campaign / 04:12</div>
+              </div>
+              <div class="creative-media-card">
+                <div class="creative-media-thumb"></div>
+                <div class="creative-media-meta">Editorial / Issue 19</div>
+              </div>
+              <div class="creative-media-card">
+                <div class="creative-media-thumb"></div>
+                <div class="creative-media-meta">Studio Reel / 02:48</div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div id="creative-doc-container"></div>
+
+      <div class="cat-warning-box cat-warning-box--creative">
+        <div class="cat-warning-heading">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          ⚠️ Anti-Patterns for Creative / Media / Entertainment
+        </div>
+        <ul class="cat-doc-list" style="color: inherit;">
+          ${catData.antipatterns.map(a => `<li>${a}</li>`).join('')}
+        </ul>
+      </div>
+
+      <div class="cat-decision-table-container">
+        <div class="cat-decision-table-title">⚡ Quick Decision Guide</div>
+        <table class="cat-decision-table">
+          <thead>
+            <tr>
+              <th>If your priority is…</th>
+              <th>Use this combo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Fashion editorial impact</td><td>Maximalism + Collage</td></tr>
+            <tr><td>Confrontational memorability</td><td>Brutalism + Typography</td></tr>
+            <tr><td>Gen Z / Millennial resonance</td><td>Retro / Y2K + Gradient</td></tr>
+            <tr><td>Gaming + tech drama</td><td>Cyberpunk + Motion</td></tr>
+            <tr><td>Organic creative identity</td><td>Liquid + Organic Shapes</td></tr>
+            <tr><td>Artistic statement site</td><td>Experimental + Asymmetrical Layout</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+
+  const optionsGrid = document.getElementById('creative-options-grid');
+  catData.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'style-btn';
+    btn.dataset.key = opt.key;
+    btn.innerHTML = `<span class="style-btn__label">${opt.label}</span>`;
+    btn.onclick = () => switchCreativeOption(opt);
+    optionsGrid.appendChild(btn);
+  });
+
+  currentCreativeOption = null;
+  switchCreativeOption(catData.options[0]);
+}
+
+function switchCreativeOption(opt) {
+  if (currentCreativeOption === opt.key) return;
+  currentCreativeOption = opt.key;
+
+  document.querySelectorAll('#creative-options-grid .style-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.key === opt.key);
+  });
+
+  const previewBox = document.getElementById('creative-preview-box');
+  const previewLabel = document.getElementById('creative-preview-label');
+  previewBox.style.opacity = '0';
+  previewBox.style.transform = 'translateY(10px)';
+
+  setTimeout(() => {
+    previewLabel.textContent = opt.label;
+    previewBox.className = 'creative-preview ' + opt.cssClass;
+    previewBox.style.opacity = '1';
+    previewBox.style.transform = 'translateY(0)';
+  }, 200);
+
+  renderCreativeDoc(opt.doc);
+}
+
+function renderCreativeDoc(doc) {
+  const container = document.getElementById('creative-doc-container');
+  container.innerHTML = `
+    <div class="cat-doc-box cat-doc-box--creative">
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🤔 Why This Works</div>
+        <ul class="cat-doc-list">${doc.why.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🎯 Best For</div>
+        <div class="cat-doc-text"><strong>${doc.bestFor}</strong></div>
+      </div>
+      <div style="display:flex;gap:20px;flex-wrap:wrap;margin-bottom:32px;">
+        <div style="flex:1;min-width:250px;">
+          <div class="cat-doc-heading">✅ Use When</div>
+          <ul class="cat-doc-list">${doc.useWhen.map(i => `<li>${i}</li>`).join('')}</ul>
+        </div>
+        <div style="flex:1;min-width:250px;">
+          <div class="cat-doc-heading">🚫 Avoid When</div>
+          <ul class="cat-doc-list">${doc.avoidWhen.map(i => `<li>${i}</li>`).join('')}</ul>
+        </div>
+      </div>
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">⚙️ Key UI Elements</div>
+        <ul class="cat-doc-list">${doc.keyUi.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">🎨 Visual Direction</div>
+        <ul class="cat-doc-list">${doc.visual.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">⚠️ Common Mistakes</div>
+        <ul class="cat-doc-list">${doc.mistakes.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
+      <div class="cat-doc-section">
+        <div class="cat-doc-heading">💡 Design Notes</div>
+        <ul class="cat-doc-list">${doc.notes.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>
       <div class="cat-doc-section">
         <div class="cat-doc-heading">💻 Prompt</div>
         <div class="cat-prompt-box">${doc.prompt}</div>
